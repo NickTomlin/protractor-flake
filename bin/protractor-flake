@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var argv = require('minimist')(process.argv.slice(2), {
+  '--': true,
+  default: {
+    'max-attempts': 3,
+    'protractor-path':  './node_modules/protractor/bin/protractor'
+  }
+});
+var flake = require('../index');
+
+flake(argv, function (status) {
+  process.exit(status);
+});
