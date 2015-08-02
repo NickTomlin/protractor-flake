@@ -1,7 +1,15 @@
-var spawn = require('child_process').spawn;
+import {spawn} from 'child_process';
+import 'core-js/shim'
 
-module.exports = function (options, callback) {
-  var testAttempt = 1;
+const DEFAULT_OPTIONS = {
+  maxAttempts: 3,
+  protractorPath:  './node_modules/protractor/bin/protractor',
+  '--': []
+};
+
+export default function (options = {}, callback) {
+  let parsedOptions = Object.assign(DEFAULT_OPTIONS, options);
+  let testAttempt = 1;
 
   function handleTestEnd(status) {
     if (status === 0) {
@@ -17,10 +25,9 @@ module.exports = function (options, callback) {
   }
 
   function startProtractor() {
-    // todo: make this path configurable or "smart"
     var protractor = spawn(
-      options['protractor-path'],
-      options['--'],
+      parsedOptions.protractorPath,
+      parsedOptions['--'],
       {stdio: 'inherit'}
     );
 
