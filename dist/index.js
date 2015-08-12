@@ -14,8 +14,9 @@ var DEFAULT_OPTIONS = {
   '--': []
 };
 
-exports['default'] = function (options, callback) {
-  if (options === undefined) options = {};
+exports['default'] = function () {
+  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+  var callback = arguments.length <= 1 || arguments[1] === undefined ? function noop() {} : arguments[1];
 
   var parsedOptions = Object.assign(DEFAULT_OPTIONS, options);
   var testAttempt = 1;
@@ -24,7 +25,7 @@ exports['default'] = function (options, callback) {
     if (status === 0) {
       callback(status);
     } else {
-      if (++testAttempt <= options['max-attempts']) {
+      if (++testAttempt <= options.maxAttempts) {
         console.log('re-running tests: test attempt ' + testAttempt);
         return startProtractor();
       }
@@ -34,9 +35,16 @@ exports['default'] = function (options, callback) {
   }
 
   function startProtractor() {
+    var output = '';
     var protractor = (0, _child_process.spawn)(parsedOptions.protractorPath, parsedOptions['--'], { stdio: 'inherit' });
 
-    protractor.on('exit', handleTestEnd);
+    protractor.stdout.on('data', function (buffer) {
+      output = output + buffer.toString();
+    });
+
+    protractor.on('exit', function (status) {
+      handleTestEnd(status, output);
+    });
   }
 
   startProtractor();

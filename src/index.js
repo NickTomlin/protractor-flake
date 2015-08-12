@@ -7,7 +7,7 @@ const DEFAULT_OPTIONS = {
   '--': []
 };
 
-export default function (options = {}, callback) {
+export default function (options = {}, callback = function noop () {}) {
   let parsedOptions = Object.assign(DEFAULT_OPTIONS, options);
   let testAttempt = 1;
 
@@ -15,7 +15,7 @@ export default function (options = {}, callback) {
     if (status === 0) {
       callback(status);
     } else {
-      if (++testAttempt <= options['max-attempts']) {
+      if (++testAttempt <= options.maxAttempts) {
         console.log('re-running tests: test attempt ' + testAttempt);
         return startProtractor();
       }
@@ -25,13 +25,20 @@ export default function (options = {}, callback) {
   }
 
   function startProtractor() {
-    var protractor = spawn(
+    let output = '';
+    let protractor = spawn(
       parsedOptions.protractorPath,
       parsedOptions['--'],
       {stdio: 'inherit'}
     );
 
-    protractor.on('exit', handleTestEnd);
+    protractor.stdout.on('data', (buffer) => {
+      output = output + buffer.toString();
+    });
+
+    protractor.on('exit', function (status) {
+      handleTestEnd(status, output)
+    });
   }
 
   startProtractor();
