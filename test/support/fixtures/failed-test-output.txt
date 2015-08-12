@@ -1,0 +1,20 @@
+Using ChromeDriver directly...
+[launcher] Running 1 instances of WebDriver
+[31mF[0m
+
+Failures:
+
+  1) a flakey integration test fails, in a horribly consistent manner
+   Message:
+     [31mExpected false to be truthy.[0m
+   Stacktrace:
+     Error: Failed expectation
+    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+
+Finished in 0.538 seconds
+[31m1 test, 1 assertion, 1 failure
+[0m
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 1 test(s)
+[launcher] overall: 1 failed spec(s)
+[launcher] Process exited with error code 1

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var app = require('../server');
+var app = require('../test/support/server');
 var port = process.env.PORT || '3000';
 app.listen(port, function () {
   console.log('listening at ', port);

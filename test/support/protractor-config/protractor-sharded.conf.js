@@ -6,12 +6,15 @@ var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    'test/support/a-flakey.test.js'
+    '../a-flakey.test.js',
+    '../another-flakey.test.js'
   ],
 
   capabilities: {
     browserName: 'chrome',
-    name: JOB_NAME
+    name: JOB_NAME,
+    shardTestFiles: true,
+    maxInstances: 2
   },
 
   baseUrl: 'http://localhost:3000/',

@@ -1,0 +1,49 @@
+[launcher] Running 2 instances of WebDriver
+F
+------------------------------------
+[chrome #1-0] PID: 88177
+[chrome #1-0] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js
+[chrome #1-0]
+[chrome #1-0] Using ChromeDriver directly...
+[chrome #1-0] F
+[chrome #1-0]
+[chrome #1-0] Failures:
+[chrome #1-0]
+[chrome #1-0]   1) a flakey integration test fails, in a horribly consistent manner
+[chrome #1-0]    Message:
+[chrome #1-0]      Expected false to be truthy.
+[chrome #1-0]    Stacktrace:
+[chrome #1-0]      Error: Failed expectation
+[chrome #1-0]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1-0]
+[chrome #1-0] Finished in 0.968 seconds
+[chrome #1-0] 1 test, 1 assertion, 1 failure
+[chrome #1-0]
+
+[launcher] 1 instance(s) of WebDriver still running
+F
+------------------------------------
+[chrome #1-1] PID: 88178
+[chrome #1-1] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js
+[chrome #1-1]
+[chrome #1-1] Using ChromeDriver directly...
+[chrome #1-1] F
+[chrome #1-1]
+[chrome #1-1] Failures:
+[chrome #1-1]
+[chrome #1-1]   1) another flakey integration test fails, in a horribly consistent manner
+[chrome #1-1]    Message:
+[chrome #1-1]      Expected false to be truthy.
+[chrome #1-1]    Stacktrace:
+[chrome #1-1]      Error: Failed expectation
+[chrome #1-1]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+[chrome #1-1]
+[chrome #1-1] Finished in 1.055 seconds
+[chrome #1-1] 1 test, 1 assertion, 1 failure
+[chrome #1-1]
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1-0 failed 1 test(s)
+[launcher] chrome #1-1 failed 1 test(s)
+[launcher] overall: 2 failed spec(s)
+[launcher] Process exited with error code 1

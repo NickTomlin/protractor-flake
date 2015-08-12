@@ -9,7 +9,7 @@ export default function (args = [], callback) {
   });
 
   flakedProcess.stderr.on('data', (err) => {
-    callback(err, null);
+    callback(err.toString(), null);
   });
 
   flakedProcess.on('close', (status) => {
