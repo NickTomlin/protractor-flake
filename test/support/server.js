@@ -50,7 +50,7 @@ app.get('/flake/:timesToFlake', function (req, res, next) {
 });
 
 module.exports = {
-  listen: function (options) {
+  listen: function (options, callback) {
     options = options || {};
     if (options.shouldLog) {
       app.use(require('morgan')());
@@ -60,6 +60,7 @@ module.exports = {
     var port = process.env.PORT || '3000';
     server = app.listen(port, function () {
       console.log('Test server listening at ', port);
+      if (callback) { callback(); }
     });
   },
   close: function () {

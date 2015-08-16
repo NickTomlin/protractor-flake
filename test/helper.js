@@ -1,6 +1,5 @@
 import sinon from 'sinon';
 import chai from 'chai';
-import server from './support/server';
 
 chai.use(require('sinon-chai'));
 
@@ -14,16 +13,4 @@ if (process.env.PROTRACTOR_FLAKE_LOG_LEVEL === undefined) {
 
 afterEach(function () {
   global.sandbox.restore();
-});
-
-
-before((done) => {
-  server.listen(process.env.PORT || '3000', () => {
-    console.log('listening at ', port);
-    done();
-  });
-});
-
-after(() => {
-  server.close();
 });
