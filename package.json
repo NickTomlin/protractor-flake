@@ -20,6 +20,7 @@
     "express-session": "^1.11.3",
     "mocha": "^2.2.5",
     "morgan": "^1.6.1",
+    "mversion": "^1.10.0",
     "protractor": "^2.1.0",
     "proxyquire": "^1.6.0",
     "sinon": "^1.15.4",
