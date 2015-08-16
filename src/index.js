@@ -5,7 +5,7 @@ import log from './logger';
 
 const DEFAULT_OPTIONS = {
   maxAttempts: 3,
-  protractorPath:  './node_modules/protractor/bin/protractor',
+  protractorPath:  './node_modules/.bin/protractor',
   '--': []
 };
 
