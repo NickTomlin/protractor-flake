@@ -1,8 +1,7 @@
 {
   "name": "protractor-flake",
-  "version": "1.0.0",
-  "private": true,
-  "description": "",
+  "version": "0.1.0",
+  "description": "A wrapper for protractor to automatically re-run failed specs for a specific number of attempts",
   "main": "dist/index.js",
   "scripts": {
     "serve": "bin/www",
@@ -29,5 +28,10 @@
   "dependencies": {
     "minimist": "^1.1.2",
     "core-js": "^0.9.18"
-  }
+  },
+  "keywords": [
+    "protractor",
+    "flake",
+    "retry"
+  ]
 }
