@@ -1,3 +1,4 @@
 node_modules
 test/support/times-flaked
 dist
+!dist/.gitkeep
