@@ -6,11 +6,12 @@
   "main": "dist/index.js",
   "scripts": {
     "serve": "bin/www",
-    "test": "npm run build && mocha",
-    "build": "babel -d dist src"
+    "test": "webdriver-manager update && npm run build && mocha",
+    "build": "babel -d dist src",
+    "prepublish": "npm run build"
   },
   "bin": "./bin/protractor-flake",
-  "author": "",
+  "author": "Nick Tomlin",
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.8.20",
