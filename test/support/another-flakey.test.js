@@ -1,4 +1,4 @@
-const TIMES_TO_FLAKE = process.env.TIMES_TO_FLAKE || 2;
+const TIMES_TO_FLAKE = process.env.TIMES_TO_FLAKE || 3;
 
 describe('another flakey integration test', function () {
   it('fails, in a horribly consistent manner', function () {

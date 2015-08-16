@@ -6,8 +6,7 @@ var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../a-flakey.test.js',
-    '../another-flakey.test.js'
+    '../*.test.js'
   ],
 
   capabilities: {

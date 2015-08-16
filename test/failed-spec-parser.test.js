@@ -1,10 +1,5 @@
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
+import readFixture from './support/read-fixture';
 import failedSpecParser from '../src/failed-spec-parser';
-
-function readFixture (fixtureFile) {
-  return readFileSync(resolve(__dirname, `./support/fixtures/${fixtureFile}`), 'utf8');
-}
 
 describe('failed spec parser', () => {
     it('properly identifies failed spec files', () => {

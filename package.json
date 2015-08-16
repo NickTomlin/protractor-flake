@@ -5,6 +5,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "serve": "bin/www",
     "test": "npm run build && mocha",
     "build": "babel -d dist src"
   },

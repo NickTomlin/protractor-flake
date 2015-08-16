@@ -1,21 +1,25 @@
 import proxyquire from 'proxyquire';
 import {spawn} from 'child_process';
+import readFixture from './support/read-fixture';
+
+const failedSingleTestOutput = readFixture('failed-test-output.txt');
+const failedShardedTestOutput = readFixture('sharded-failed-test-output.txt');
 
 describe('Protractor Flake', () => {
-  describe.only('failed specs', () => {
+  describe('failed specs', () => {
     let spawnStub = null;
     let protractorFlake = null;
 
     beforeEach(() => {
       spawnStub = sinon.stub().returns({
-        stdout: {
-          on: sinon.stub()
-        },
         on (event, callback) {
-          if (event === 'exit') {
-            spawnStub.endCallback = callback;
-          }
+          spawnStub.endCallback = callback;
         },
+        stdout: {
+          on (event, callback) {
+            spawnStub.dataCallback = callback;
+          },
+        }
       });
 
       protractorFlake = proxyquire('../src/index', {
@@ -68,6 +72,24 @@ describe('Protractor Flake', () => {
       expect(() => {
         spawnStub.endCallback(1);
       }).to.not.throw();
+    });
+
+    it('isolates individual failed specs from protractor output', () => {
+      protractorFlake({protractorPath: 'protractor', maxAttempts: 3});
+
+      spawnStub.dataCallback(failedSingleTestOutput);
+      spawnStub.endCallback(1);
+
+      expect(spawnStub).to.have.been.calledWith('protractor', ['--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js']);
+    });
+
+    it('isolates failed specs for sharded protractor output', () => {
+      protractorFlake({protractorPath: 'protractor', maxAttempts: 3});
+
+      spawnStub.dataCallback(failedShardedTestOutput);
+      spawnStub.endCallback(1);
+
+      expect(spawnStub).to.have.been.calledWith('protractor', ['--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js']);
     });
   });
 });

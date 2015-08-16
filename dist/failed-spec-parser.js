@@ -1,13 +1,19 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 var FAILED_LINE = /at \[object Object\]\.<anonymous> \((.*)\)/g;
 
-exports["default"] = function (output) {
+exports['default'] = function () {
+  var output = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+
   // this could all probably fit into one regex...
   var failedSpecLines = output.match(FAILED_LINE);
+
+  if (!failedSpecLines) {
+    return [];
+  }
 
   return failedSpecLines.map(function (line) {
     var path = line.match(/\((.*):/)[1];
@@ -15,4 +21,4 @@ exports["default"] = function (output) {
   });
 };
 
-module.exports = exports["default"];
+module.exports = exports['default'];

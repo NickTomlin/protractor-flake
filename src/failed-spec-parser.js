@@ -1,8 +1,10 @@
 const FAILED_LINE = /at \[object Object\]\.<anonymous> \((.*)\)/g;
 
-export default function (output) {
+export default function (output = '') {
   // this could all probably fit into one regex...
   var failedSpecLines = output.match(FAILED_LINE);
+
+  if (!failedSpecLines) { return []; }
 
   return failedSpecLines.map(function (line) {
     let path = line.match(/\((.*):/)[1];
