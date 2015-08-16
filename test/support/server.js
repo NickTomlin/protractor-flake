@@ -1,11 +1,21 @@
+// we keep this es6 for easier interop with bin files
 var express = require('express');
 var expressSession = require('express-session');
 var app = express();
 var fs = require('fs');
 
 var FLAKE_FILE = __dirname + '/times-flaked';
+var server = null;
 
-app.use(require('morgan')());
+app.use(function logMiddleware (req, res, next) {
+  req.logger = function () {
+    if (app.get('log')) {
+      console.log.apply(console, arguments)
+    }
+  }
+
+  next();
+});
 
 app.get('/', function (req, res) {
   res.send('<html><body><div id="home">Hello.</div></html></body>');
@@ -23,7 +33,7 @@ app.get('/flake/:timesToFlake', function (req, res, next) {
       timesFlaked = parseInt(buffer.toString());
     }
 
-    console.log('Flaked', timesFlaked, '/', timesToFlake);
+    req.logger('Flaked', timesFlaked, '/', timesToFlake);
 
     if (timesFlaked >= timesToFlake) {
       res.send('<div id="success">Success!</div>');
@@ -39,4 +49,20 @@ app.get('/flake/:timesToFlake', function (req, res, next) {
   });
 });
 
-module.exports = app;
+module.exports = {
+  listen: function (options) {
+    options = options || {};
+    if (options.shouldLog) {
+      app.use(require('morgan')());
+      app.set('log', true);
+    }
+
+    var port = process.env.PORT || '3000';
+    server = app.listen(port, function () {
+      console.log('Test server listening at ', port);
+    });
+  },
+  close: function () {
+    server.close();
+  }
+}

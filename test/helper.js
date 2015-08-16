@@ -1,5 +1,6 @@
 import sinon from 'sinon';
 import chai from 'chai';
+import server from './support/server';
 
 chai.use(require('sinon-chai'));
 
@@ -15,3 +16,14 @@ afterEach(function () {
   global.sandbox.restore();
 });
 
+
+before((done) => {
+  server.listen(process.env.PORT || '3000', () => {
+    console.log('listening at ', port);
+    done();
+  });
+});
+
+after(() => {
+  server.close();
+});
