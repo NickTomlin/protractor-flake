@@ -2,9 +2,9 @@ Protractor Flake
 
 ---
 
-> This module is still 0.x so please contribute a PR or issue if you encounter any bugs.
+Rerun potentially flake protractor tests before failing.
 
-Rerun potentially flake protractor flake a certain number of times before failing.
+> This module is still 0.x so please contribute a PR or issue if you encounter any bugs.
 
 ```
 npm i protractor-flake
@@ -29,7 +29,11 @@ var protractorFlake = require('protractor-flake');
 
 protractorFlake({
   maxAttempts: 3,
-  protractorPath: './node_modules/.bin/protractor'
+  // expects protractor to be in path
+  // set this to wherever the protractor bin
+  // is located
+  protractorPath: 'protractor',
+  protractorArgs: []
 }, function (status, output) {
 
 });
