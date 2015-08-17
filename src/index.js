@@ -17,7 +17,7 @@ export default function (options = {}, callback = function noop () {}) {
     if (status === 0) {
       callback(status);
     } else {
-      if (++testAttempt <= options.maxAttempts) {
+      if (++testAttempt <= parsedOptions.maxAttempts) {
         let failedSpecs = failedSpecParser(output);
         log('info', `re-running tests: test attempt ${testAttempt}\n`);
         return startProtractor(failedSpecs);
