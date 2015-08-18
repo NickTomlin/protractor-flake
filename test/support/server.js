@@ -52,12 +52,13 @@ app.get('/flake/:timesToFlake', function (req, res, next) {
 module.exports = {
   listen: function (options, callback) {
     options = options || {};
+    var port = options.port || '3000';
+
     if (options.shouldLog) {
       app.use(require('morgan')());
       app.set('log', true);
     }
 
-    var port = process.env.PORT || '3000';
     server = app.listen(port, function () {
       console.log('Test server listening at ', port);
       if (callback) { callback(); }

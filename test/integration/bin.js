@@ -10,7 +10,7 @@ const SINGLE_INSTANCE_PATH = `${CONFIG_PATH}/protractor-sharded.conf.js`;
 
 describe('Protractor Flake Executable', function () {
   before((done) => {
-    server.listen(process.env.PORT || '3000', () => {
+    server.listen({port: process.env.PORT}, () => {
       done();
     });
   });
