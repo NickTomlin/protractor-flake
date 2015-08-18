@@ -2,11 +2,11 @@ Protractor Flake
 
 ---
 
-Rerun potentially flake protractor tests before failing.
+Rerun potentially flakey protractor tests before failing.
 
 > This module is still 0.x so please contribute a PR or issue if you encounter any bugs.
 
-```
+```shell
 npm i protractor-flake
 
 # or globally
@@ -24,7 +24,7 @@ protractor-flake --max-attempts=3 -- protractor.conf.js
 
 Or programmatically:
 
-```javacript
+```javascript
 var protractorFlake = require('protractor-flake');
 
 protractorFlake({
@@ -35,7 +35,7 @@ protractorFlake({
   protractorPath: 'protractor',
   protractorArgs: []
 }, function (status, output) {
-
+  process.exit(status);
 });
 
 ```
@@ -59,3 +59,5 @@ npm run test:dev
 # run unit integration tests
 npm run test:integration
 ```
+
+Please try to add test coverage for any new features.
