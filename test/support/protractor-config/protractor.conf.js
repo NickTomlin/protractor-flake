@@ -10,7 +10,7 @@ exports.config = {
   ],
 
   capabilities: {
-    browserName: 'chrome',
+    browserName: 'firefox',
     name: JOB_NAME
   },
 
