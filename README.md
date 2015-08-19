@@ -1,6 +1,8 @@
 Protractor Flake
 
 ---
+[![Build Status](http://img.shields.io/travis/NickTomlin/protractor-flake.svg?style=flat&branch=master)](https://travis-ci.org/NickTomlin/protractor-flake)
+![NPM package](https://img.shields.io/npm/v/protractor-flake.svg)
 
 Rerun potentially flakey protractor tests before failing.
 
