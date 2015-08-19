@@ -6,3 +6,4 @@ before_install:
 node_js:
   - "0.10"
   - "0.12"
+script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test
