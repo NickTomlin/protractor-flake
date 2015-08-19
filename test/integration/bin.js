@@ -1,8 +1,8 @@
-import runner from '../support/runner';
 import server from '../support/server';
 import {unlink} from 'fs';
 import {resolve} from 'path';
 import {writeFileSync} from 'fs';
+import {spawn} from 'child_process';
 
 const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked');
 const CONFIG_PATH = 'test/support/protractor-config';
@@ -30,15 +30,18 @@ describe('Protractor Flake Executable', function () {
   });
 
   it('Exits successfully if test passes before max limit is reached',  (done) => {
-    runner(['--max-attempts=3', '--', SINGLE_INSTANCE_PATH], (err, status) => {
-      expect(err).to.equal(null);
+    let process = spawn('./bin/protractor-flake', ['--max-attempts', '2', '--', SINGLE_INSTANCE_PATH], {stdio: 'inherit'});
+
+    process.on('close', (status) => {
       expect(status).to.equal(0);
       done();
     });
   });
 
   it('exits unsuccessfully if test fails outside of max limit', (done) => {
-    runner(['--max-attempts=1', '--', SINGLE_INSTANCE_PATH], (err, status, output) => {
+    let process = spawn('./bin/protractor-flake', ['--max-attempts', '1', '--', SINGLE_INSTANCE_PATH], {stdio: 'inherit'});
+
+    process.on('close', (status) => {
       expect(status).to.equal(1);
       done();
     });
