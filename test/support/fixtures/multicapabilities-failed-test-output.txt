@@ -1,0 +1,94 @@
+[launcher] Running 2 instances of WebDriver
+F.F
+------------------------------------
+[chrome #1] PID: 55391
+[chrome #1] Using ChromeDriver directly...
+[chrome #1] F.F
+[chrome #1]
+[chrome #1] Failures:
+[chrome #1]
+[chrome #1]   1) a flakey integration test fails, in a horribly consistent manner
+[chrome #1]    Message:
+[chrome #1]      Expected false to be truthy.
+[chrome #1]    Stacktrace:
+[chrome #1]      Error: Failed expectation
+[chrome #1]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1]
+[chrome #1]   2) another flakey integration test fails, in a horribly consistent manner
+[chrome #1]    Message:
+[chrome #1]      Expected false to be truthy.
+[chrome #1]    Stacktrace:
+[chrome #1]      Error: Failed expectation
+[chrome #1]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+[chrome #1]     at runMicrotasksCallback (node.js:337:7)
+[chrome #1]     at process._tickCallback (node.js:355:11)
+[chrome #1]
+[chrome #1] Finished in 3.718 seconds
+[chrome #1] 3 tests, 3 assertions, 2 failures
+[chrome #1]
+
+[launcher] 1 instance(s) of WebDriver still running
+F.F
+------------------------------------
+[firefox #2] PID: 55392
+[firefox #2] Using FirefoxDriver directly...
+[firefox #2] F.F
+[firefox #2]
+[firefox #2] Failures:
+[firefox #2]
+[firefox #2]   1) a flakey integration test fails, in a horribly consistent manner
+[firefox #2]    Message:
+[firefox #2]      Expected false to be truthy.
+[firefox #2]    Stacktrace:
+[firefox #2]      Error: Failed expectation
+[firefox #2]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[firefox #2]
+[firefox #2]   2) another flakey integration test fails, in a horribly consistent manner
+[firefox #2]    Message:
+[firefox #2]      Expected false to be truthy.
+[firefox #2]    Stacktrace:
+[firefox #2]      Error: Failed expectation
+[firefox #2]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+[firefox #2]     at runMicrotasksCallback (node.js:337:7)
+[firefox #2]     at process._tickCallback (node.js:355:11)
+[firefox #2]
+[firefox #2] Finished in 1.916 seconds
+[firefox #2] 3 tests, 3 assertions, 2 failures
+[firefox #2]
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 2 test(s)
+[launcher] firefox #2 failed 2 test(s)
+[launcher] overall: 4 failed spec(s)
+[launcher] Process exited with error code 1
+[~/workspace/protractor-flake]
+master ?:1 ᎒ ne protractor test/support/protractor-config/protractor.conf.js
+Using ChromeDriver directly...
+[launcher] Running 1 instances of WebDriver
+F.F
+
+Failures:
+
+  1) a flakey integration test fails, in a horribly consistent manner
+   Message:
+     Expected false to be truthy.
+   Stacktrace:
+     Error: Failed expectation
+    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+
+  2) another flakey integration test fails, in a horribly consistent manner
+   Message:
+     Expected false to be truthy.
+   Stacktrace:
+     Error: Failed expectation
+    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+    at runMicrotasksCallback (node.js:337:7)
+    at process._tickCallback (node.js:355:11)
+
+Finished in 2.415 seconds
+3 tests, 3 assertions, 2 failures
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 2 test(s)
+[launcher] overall: 2 failed spec(s)
+[launcher] Process exited with error code 1
