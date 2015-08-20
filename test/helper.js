@@ -7,7 +7,7 @@ global.expect = chai.expect;
 global.sinon = sinon;
 global.sandbox = sinon.sandbox.create();
 
-if (process.env.PROTRACTOR_FLAKE_LOG_LEVEL === undefined) {
+if (!process.env.PROTRACTOR_FLAKE_LOG_LEVEL) {
   process.env.PROTRACTOR_FLAKE_LOG_LEVEL = 'silent';
 }
 

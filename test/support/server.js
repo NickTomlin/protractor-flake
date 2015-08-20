@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 // we keep this es6 for easier interop with bin files
 var express = require('express');
 var expressSession = require('express-session');
@@ -10,7 +12,7 @@ var server = null;
 app.use(function logMiddleware (req, res, next) {
   req.logger = function () {
     if (app.get('log')) {
-      console.log.apply(console, arguments)
+      console.log.apply(console, arguments);
     }
   }
 
@@ -30,7 +32,7 @@ app.get('/flake/:timesToFlake', function (req, res, next) {
     if (err && err.code === 'ENOENT') {
       timesFlaked = 1;
     } else {
-      timesFlaked = parseInt(buffer.toString());
+      timesFlaked = parseInt(buffer.toString(), 10);
     }
 
     req.logger('Flaked', timesFlaked, '/', timesToFlake);
