@@ -9,7 +9,9 @@
   },
   "scripts": {
     "serve": "bin/www",
-    "test": "webdriver-manager update && npm run build && mocha test/helper.js test/integration/bin.js --slow 30000 --timeout 30000 --reporter tap",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "mocha",
+    "test:integration": "webdriver-manager update && npm run build && mocha test/helper.js test/integration/bin.js --slow 30000 --timeout 30000 --reporter tap",
     "test:dev": "mocha --watch",
     "build": "babel -d dist src",
     "prepublish": "npm run build"
