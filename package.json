@@ -19,6 +19,9 @@
   },
   "bin": "./bin/protractor-flake",
   "author": "Nick Tomlin",
+  "contributors": [
+    {"name": "Oliver Daems"}
+  ],
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.8.20",
