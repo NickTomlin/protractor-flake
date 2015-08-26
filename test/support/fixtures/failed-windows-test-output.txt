@@ -1,0 +1,49 @@
+C:\Users\IEUser\Documents\protractor-flake-master>node bin\protractor-flake --pr
+otractor-path=node_modules\.bin\protractor.cmd -- test\support\protractor-config
+\protractor.conf.js
+Using ChromeDriver directly...
+[launcher] Running 1 instances of WebDriver
+FFF
+
+Failures:
+
+  1) a flakey integration test fails, in a horribly consistent manner
+   Message:
+     Expected false to be truthy.
+   Stacktrace:
+     Error: Failed expectation
+    at [object Object].<anonymous> (C:\Users\IEUser\Documents\protractor-flake-master\test\support\a-flakey.test.js:9:39)
+    at C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor
+\node_modules\jasminewd\index.js:94:14
+    at [object Object].promise.ControlFlow.runInFrame_ (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdrive
+r\lib\webdriver\promise.js:1877:20)
+    at [object Object].promise.ControlFlow.runEventLoop_ (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdri
+ver\lib\webdriver\promise.js:1755:8)
+    at [object Object].<anonymous> (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdriver\lib\webdriver\promise.js:2056:12)
+    at goog.async.run.processWorkQueue (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdriver\lib\goog\async
+\run.js:125:21)
+
+  2) another flakey integration test fails, in a horribly consistent manner
+   Message:
+     Expected false to be truthy.
+   Stacktrace:
+     Error: Failed expectation
+    at [object Object].<anonymous> (C:\Users\IEUser\Documents\protractor-flake-master\test\support\another-flakey.test.js:9:39)
+    at C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\jasminewd\index.js:94:14
+    at [object Object].promise.ControlFlow.runInFrame_ (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdrive
+r\lib\webdriver\promise.js:1877:20)
+    at [object Object].promise.ControlFlow.runEventLoop_ (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdri
+ver\lib\webdriver\promise.js:1755:8)
+    at [object Object].<anonymous> (C:\Users\IEUser\Documents\protractor-flake-m aster\node_modules\protractor\node_modules\selenium-webdriver\lib\webdriver\promise.js:2056:12)
+    at goog.async.run.processWorkQueue (C:\Users\IEUser\Documents\protractor-flake-master\node_modules\protractor\node_modules\selenium-webdriver\lib\goog\async
+\run.js:125:21)
+    at runMicrotasksCallback (node.js:337:7)
+    at process._tickCallback (node.js:355:11)
+
+Finished in 6.621 seconds
+3 tests, 3 assertions, 3 failures
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 3 test(s)
+[launcher] overall: 3 failed spec(s)
+[launcher] Process exited with error code 1

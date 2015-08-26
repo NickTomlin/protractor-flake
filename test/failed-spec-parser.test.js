@@ -19,6 +19,15 @@ describe('failed spec parser', () => {
     ]);
   });
 
+  it('handles output on windows', function () {
+    let output = readFixture('failed-windows-test-output.txt');
+
+    expect(failedSpecParser(output)).to.eql([
+      'C:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\a-flakey.test.js',
+      'C:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\another-flakey.test.js',
+    ]);
+  });
+
   it('does not duplicate specs with multicapabilities output', () => {
     let output = readFixture('multicapabilities-failed-test-output.txt');
 
