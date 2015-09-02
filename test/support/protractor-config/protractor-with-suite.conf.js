@@ -9,8 +9,12 @@ exports.config = {
     '../*.test.js'
   ],
 
+  suites: {
+    fail: ['../*.test.js']
+  },
+
   capabilities: {
-    browserName: process.platform === 'darwin' ? 'chrome' : 'firefox',
+    browserName: 'firefox',
     name: JOB_NAME
   },
 

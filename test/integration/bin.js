@@ -30,18 +30,18 @@ describe('Protractor Flake Executable', function () {
   });
 
   it('Exits successfully if test passes before max limit is reached',  (done) => {
-    let process = spawn('./bin/protractor-flake', ['--max-attempts', '2', '--', SINGLE_INSTANCE_PATH], {stdio: 'inherit'});
+    let proc = spawn('./bin/protractor-flake', ['--max-attempts', '3', '--', SINGLE_INSTANCE_PATH]);
 
-    process.on('close', (status) => {
+    proc.on('close', (status) => {
       expect(status).to.equal(0);
       done();
     });
   });
 
   it('exits unsuccessfully if test fails outside of max limit', (done) => {
-    let process = spawn('./bin/protractor-flake', ['--max-attempts', '1', '--', SINGLE_INSTANCE_PATH], {stdio: 'inherit'});
+    let proc = spawn('./bin/protractor-flake', ['--max-attempts', '1', '--', SINGLE_INSTANCE_PATH]);
 
-    process.on('close', (status) => {
+    proc.on('close', (status) => {
       expect(status).to.equal(1);
       done();
     });

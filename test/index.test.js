@@ -92,6 +92,34 @@ describe('Protractor Flake', () => {
 
       expect(spawnStub).to.have.been.calledWith('protractor', ['--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js']);
     });
+
+    context('with --suite in protractorArgs', function () {
+      it('removes --suite argument from protractorArgs if it is passed', () => {
+        protractorFlake({
+          protractorPath: 'protractor',
+          maxAttempts: 3,
+          '--': ['--suite=fail']
+        });
+
+        spawnStub.dataCallback(failedShardedTestOutput);
+        spawnStub.endCallback(1);
+
+        expect(spawnStub).to.have.been.calledWith('protractor', ['--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js']);
+      });
+
+      it('does not remove --suite for first test run', () => {
+        protractorFlake({
+          protractorPath: 'protractor',
+          maxAttempts: 3,
+          '--': ['--suite=fail']
+        });
+
+        expect(spawnStub).to.have.been.calledWith('protractor', [
+          '--suite=fail'
+        ]);
+      });
+    });
+
   });
 
   context('options', () => {

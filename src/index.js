@@ -24,7 +24,9 @@ export default function (options = {}, callback = function noop () {}) {
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
         let failedSpecs = failedSpecParser(output);
-        log('info', `re-running tests: test attempt ${testAttempt}\n`);
+        log('info', `Re-running tests: test attempt ${testAttempt}\n`);
+        log('info','Re-running the following test files:\n');
+        log('info',  failedSpecs.join('\n') + '\n');
         return startProtractor(failedSpecs);
       }
 
@@ -37,8 +39,7 @@ export default function (options = {}, callback = function noop () {}) {
     let output = '';
 
     if (specFiles.length) {
-      log('debug','Targeting spec files:\n');
-      log('debug', specFiles.join('\n') + '\n');
+      protractorArgs = protractorArgs.filter((arg) => !/^--suite=/.test(arg));
       protractorArgs.push('--specs', specFiles.join(','));
     }
 
