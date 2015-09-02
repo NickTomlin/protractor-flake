@@ -6,7 +6,8 @@ var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../*.test.js'
+    '../*.test.js',
+    '../failing-test.js'
   ],
 
   capabilities: {
