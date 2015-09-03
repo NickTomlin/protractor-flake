@@ -7,6 +7,9 @@ var argv = require('minimist')(process.argv.slice(2), {
     protractorPath: 'protractor-path'
   }
 });
+
+argv.protractorArgs = argv['--'];
+
 var flake = require('../dist/index');
 
 flake(argv, function (status) {

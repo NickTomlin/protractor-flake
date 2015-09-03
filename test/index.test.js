@@ -92,4 +92,18 @@ describe('Protractor Flake', () => {
       expect(spawnStub).to.have.been.calledWith('protractor', ['--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js']);
     });
   });
+
+  context('options', () => {
+    it('defaults protractorPath to protractor on path', () => {
+      protractorFlake();
+
+      expect(spawnStub).to.have.been.calledWithMatch('protractor');
+    });
+
+    it('passes protractorArgs to spawned protractor process', () => {
+      protractorFlake({protractorPath: 'protractor', protractorArgs: ['--suite=fail']})
+
+      expect(spawnStub).to.have.been.calledWithMatch('protractor', ['--suite=fail']);
+    });
+  });
 });
