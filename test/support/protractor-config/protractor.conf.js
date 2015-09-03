@@ -10,7 +10,7 @@ exports.config = {
   ],
 
   capabilities: {
-    browserName: 'firefox',
+    browserName: process.platform === 'darwin' ? 'chrome' : 'firefox',
     name: JOB_NAME
   },
 
