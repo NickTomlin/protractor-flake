@@ -6,35 +6,36 @@ const failedSingleTestOutput = readFixture('failed-test-output.txt');
 const failedShardedTestOutput = readFixture('sharded-failed-test-output.txt');
 
 describe('Protractor Flake', () => {
-  describe('failed specs', () => {
-    let spawnStub = null;
-    let protractorFlake = null;
+  let spawnStub = null;
+  let protractorFlake = null;
 
-    beforeEach(() => {
-      spawnStub = sinon.stub().returns({
+  beforeEach(() => {
+    spawnStub = sinon.stub().returns({
+      on (event, callback) {
+        spawnStub.endCallback = callback;
+      },
+      stdout: {
         on (event, callback) {
-          spawnStub.endCallback = callback;
+          spawnStub.dataCallback = callback;
         },
-        stdout: {
-          on (event, callback) {
-            spawnStub.dataCallback = callback;
-          },
-        }
-      });
-
-      protractorFlake = proxyquire('../src/index', {
-        child_process: {
-          spawn: spawnStub
-        }
-      });
+      }
     });
 
-    it('runs protractor', () => {
-      protractorFlake({protractorPath: 'protractor'});
-
-      expect(spawnStub).to.have.been.calledWithMatch('protractor');
+    protractorFlake = proxyquire('../src/index', {
+      child_process: {
+        spawn: spawnStub
+      }
     });
+  });
 
+  it('runs protractor', () => {
+    protractorFlake({protractorPath: 'protractor'});
+
+    expect(spawnStub).to.have.been.calledWithMatch('protractor');
+  });
+
+
+  context('failed specs', () => {
     it('calls callback with an err if a negative status is returned', (done) => {
       protractorFlake({protractorPath: 'protractor', maxAttempts: 1}, (status) => {
         expect(status).to.equal(status, 1);
