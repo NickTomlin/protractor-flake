@@ -15,6 +15,8 @@ const DEFAULT_OPTIONS = {
 export default function (options = {}, callback = function noop () {}) {
   let parsedOptions = Object.assign(DEFAULT_OPTIONS, options);
   let testAttempt = 1;
+  // todo: remove this in the next major version
+  parsedOptions.protractorArgs = parsedOptions.protractorArgs.concat(parsedOptions['--']);
 
   function handleTestEnd(status, output) {
     if (status === 0) {
