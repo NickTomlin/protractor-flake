@@ -134,5 +134,11 @@ describe('Protractor Flake', () => {
 
       expect(spawnStub).to.have.been.calledWithMatch('protractor', ['--suite=fail']);
     });
+
+    it('uses protractorSpawnOptions for spawned protractor process', () => {
+      protractorFlake({protractorPath: 'protractor', protractorSpawnOptions: { cwd: './' }});
+
+      expect(spawnStub).to.have.been.calledWithMatch('protractor', [], { cwd: './' });
+    });
   });
 });

@@ -45,7 +45,8 @@ export default function (options = {}, callback = function noop () {}) {
 
     let protractor = spawn(
       parsedOptions.protractorPath,
-      protractorArgs
+      protractorArgs,
+      options.protractorSpawnOptions
     );
 
     protractor.stdout.on('data', (buffer) => {
