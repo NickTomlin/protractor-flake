@@ -1,0 +1,13 @@
+[launcher] Running 1 instances of WebDriver
+@testing
+Feature: Working stuff
+
+
+
+  Scenario: Good scenario                   # features/automated/success.feature:4
+    Then it succeeds in a consistent manner # features/automated/success.feature:5
+
+
+1 scenario (1 passed)
+1 step (1 passed)
+[launcher] 0 instance(s) of
