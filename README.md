@@ -49,4 +49,4 @@ This has not yet been tested with Protractor + Mocha. It _should_ function simil
 
 # Contributors
 
-See [CONTRIBUTING.md][CONTRIBUTING.md]
+See [CONTRIBUTING.md](CONTRIBUTING.md)
