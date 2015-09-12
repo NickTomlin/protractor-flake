@@ -19,6 +19,14 @@ describe('failed spec parser', () => {
     ]);
   });
 
+  it('properly identifies failed cucumberjs feature files', () => {
+    let output = readFixture('failed-cucumberjs-output.txt');
+
+    expect(failedSpecParser(output)).to.eql([
+      '/Users/jrust/code/features/automated/fail.feature'
+    ]);
+  });
+
   it('handles output on windows', function () {
     let output = readFixture('failed-windows-test-output.txt');
 
@@ -59,6 +67,12 @@ describe('failed spec parser', () => {
       object Object
       Wow
     `
+
+    expect(failedSpecParser(output)).to.eql([]);
+  });
+
+  it('returns an empty array if cucumberjs output has no matches', () => {
+    let output = readFixture('success-cucumberjs-output.txt');
 
     expect(failedSpecParser(output)).to.eql([]);
   });

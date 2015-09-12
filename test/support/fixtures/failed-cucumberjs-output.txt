@@ -1,0 +1,21 @@
+[launcher] Running 1 instances of WebDriver
+Feature: Failing stuff
+
+
+
+  Scenario: Flakey scenario              # features/automated/fail.feature:4
+    Then it fails in a consistent manner # features/automated/fail.feature:5
+      AssertionError: expected false to be true
+
+(::) failed steps (::)
+
+AssertionError: expected false to be true
+
+
+Failing scenarios:
+/Users/jrust/code/features/automated/fail.feature:4 # Scenario: Flakey scenario
+
+1 scenario (1 failed)
+1 step (1 failed)
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 2 test(s)
