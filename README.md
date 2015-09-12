@@ -49,18 +49,4 @@ This has not yet been tested with Protractor + Mocha. It _should_ function simil
 
 # Contributors
 
-```
-# clone this repository
-npm i
-
-# run the tests
-npm t
-
-# run unit tests in watch mode
-npm run test:dev
-
-# run unit integration tests
-npm run test:integration
-```
-
-Please try to add test coverage for any new features.
+See [CONTRIBUTING.md][CONTRIBUTING.md]
