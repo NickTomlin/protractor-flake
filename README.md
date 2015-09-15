@@ -20,7 +20,7 @@ Via the CLI:
 npm i -g protractor-flake
 
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --protractor-path ./node_modules/.bin/protractor --max-attempts=3 -- protractor.conf.js
+protractor-flake --node-bin node --max-attempts=3 -- protractor.conf.js
 ```
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
@@ -32,10 +32,9 @@ var protractorFlake = require('protractor-flake');
 
 protractorFlake({
   maxAttempts: 3,
-  // expects protractor to be in path
-  // set this to wherever the protractor bin
-  // is located
-  protractorPath: 'protractor',
+  // expects node to be in path
+  // set this to wherever the node bin is located
+  nodeBin: 'node',
   protractorArgs: []
 }, function (status, output) {
   process.exit(status);

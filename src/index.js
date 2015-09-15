@@ -1,4 +1,5 @@
 import {spawn} from 'child_process';
+import {resolve} from 'path'
 import 'core-js/shim'
 import failedSpecParser from './failed-spec-parser';
 import log from './logger';
@@ -6,8 +7,8 @@ import log from './logger';
 const DEFAULT_PROTRACTOR_ARGS = [];
 
 const DEFAULT_OPTIONS = {
+  nodeBin: 'node',
   maxAttempts: 3,
-  protractorPath:  'protractor',
   '--': DEFAULT_PROTRACTOR_ARGS,
   protractorArgs: DEFAULT_PROTRACTOR_ARGS
 };
@@ -35,7 +36,12 @@ export default function (options = {}, callback = function noop () {}) {
   }
 
   function startProtractor(specFiles = []) {
-    let protractorArgs = parsedOptions.protractorArgs;
+    // '.../node_modules/protractor/lib/protractor.js'
+    var protractorMainPath = require.resolve('protractor');
+    // '.../node_modules/protractor/bin/protractor'
+    var protractorBinPath = resolve(protractorMainPath, '../../bin/protractor');
+
+    let protractorArgs = [protractorBinPath].concat(parsedOptions.protractorArgs);
     let output = '';
 
     if (specFiles.length) {
@@ -44,7 +50,7 @@ export default function (options = {}, callback = function noop () {}) {
     }
 
     let protractor = spawn(
-      parsedOptions.protractorPath,
+      parsedOptions.nodeBin,
       protractorArgs,
       options.protractorSpawnOptions
     );

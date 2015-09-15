@@ -45,6 +45,9 @@
     "minimist": "^1.1.2",
     "core-js": "^0.9.18"
   },
+  "peerDependencies": {
+    "protractor": "2.x"
+  },
   "keywords": [
     "protractor",
     "flake",
