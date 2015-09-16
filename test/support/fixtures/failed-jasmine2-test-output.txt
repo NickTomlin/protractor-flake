@@ -1,0 +1,29 @@
+[launcher] Running 1 instances of WebDriver
+Started
+FF.
+
+Failures:
+1) another flakey integration test fails, in a horribly consistent manner
+  Message:
+    Expected false to be truthy.
+  Stack:
+    Error: Failed expectation
+        at Object.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:7:39)
+        at runMicrotasksCallback (node.js:337:7)
+        at process._tickCallback (node.js:355:11)
+
+2) a flakey integration test fails, in a horribly consistent manner
+  Message:
+    Expected false to be truthy.
+  Stack:
+    Error: Failed expectation
+        at Object.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/flakey.test.js:7:39)
+        at runMicrotasksCallback (node.js:337:7)
+        at process._tickCallback (node.js:355:11)
+
+3 specs, 2 failures
+Finished in 0.749 seconds
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 failed 2 test(s)
+[launcher] overall: 2 failed spec(s)
+[launcher] Process exited with error code 1

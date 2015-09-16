@@ -9,7 +9,7 @@ export default function (output = '') {
       failedSpecs.add(match[1]);
     }
   } else {
-    let FAILED_LINES = /at \[object Object\]\.<anonymous> \((([A-Z]:\\)?.*?):.*\)/g;
+    let FAILED_LINES = /at (?:\[object Object\]|Object)\.<anonymous> \((([A-Z]:\\)?.*?):.*\)/g;
     while (match = FAILED_LINES.exec(output)) {
       // windows output includes stack traces from
       // webdriver so we filter those out here
