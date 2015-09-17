@@ -46,6 +46,8 @@ protractorFlake({
 
 This has not yet been tested with Protractor + Mocha. It _should_ function similarly. Please update with an issue or PR if this is not the case.
 
+Tests will not re-run properly (all tests will run each time) if you use a custom reporter that does not log stacktraces for failed tests. For example, if you are using jasmine-spec-reporter with Jasmine 2.0, make sure to set `displayStacktrace: 'specs'` or `displayStacktrace: 'all'`.
+
 # Contributors
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
