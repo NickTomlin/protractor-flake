@@ -3,8 +3,6 @@ Protractor Flake [![Build Status](http://img.shields.io/travis/NickTomlin/protra
 
 Rerun potentially flakey protractor tests before failing.
 
-> This module is still 0.x so please contribute a PR or issue if you encounter any bugs.
-
 ```shell
 npm i protractor-flake
 
@@ -19,8 +17,11 @@ Via the CLI:
 ```shell
 npm i -g protractor-flake
 
+protractor-flake
+
+# Full options
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --node-bin node --max-attempts=3 -- protractor.conf.js
+protractor-flake --node-bin node --max-attempts=3 -- path/to/protractor.conf.js
 ```
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
