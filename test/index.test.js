@@ -60,14 +60,14 @@ describe('Protractor Flake', () => {
     })
 
     it('calls callback with output from protractor process', (done) => {
-      let fakeOutput = 'Test'
-      protractorFlake({maxAttempts: 3}, (status, output) => {
+      protractorFlake({maxAttempts: 1}, (status, output) => {
         expect(status).to.equal(status, 1)
         expect(output).to.equal('Test')
         done()
       })
 
-      spawnStub.endCallback(1, fakeOutput)
+      spawnStub.dataCallback('Test')
+      spawnStub.endCallback(1)
     })
 
     it('does not blow up if no callback is passed', function () {

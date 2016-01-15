@@ -31,7 +31,7 @@ export default function (options = {}, callback = function noop () {}) {
         return startProtractor(failedSpecs)
       }
 
-      callback(status)
+      callback(status, output)
     }
   }
 
