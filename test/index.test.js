@@ -121,6 +121,12 @@ describe('Protractor Flake', () => {
   })
 
   context('options', () => {
+    it('allows a different path for protractor by using protractorPath option', () => {
+      protractorFlake({protractorPath: '/arbitrary/path/to/protractor'})
+
+      expect(spawnStub).to.have.been.calledWith('node', ['/arbitrary/path/to/protractor'])
+    })
+
     it('allows a different path for node by using nodeBin option', () => {
       protractorFlake({nodeBin: '/path/node'})
 
