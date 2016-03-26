@@ -36,10 +36,15 @@ export default function (options = {}, callback = function noop () {}) {
   }
 
   function startProtractor (specFiles = []) {
-    // '.../node_modules/protractor/lib/protractor.js'
-    var protractorMainPath = require.resolve('protractor')
-    // '.../node_modules/protractor/bin/protractor'
-    var protractorBinPath = resolve(protractorMainPath, '../../bin/protractor')
+    var protractorBinPath
+    if (parsedOptions.protractorPath) {
+      protractorBinPath = resolve(parsedOptions.protractorPath)
+    } else {
+      // '.../node_modules/protractor/lib/protractor.js'
+      var protractorMainPath = require.resolve('protractor')
+      // '.../node_modules/protractor/bin/protractor'
+      protractorBinPath = resolve(protractorMainPath, '../../bin/protractor')
+    }
 
     let protractorArgs = [protractorBinPath].concat(parsedOptions.protractorArgs)
     let output = ''
