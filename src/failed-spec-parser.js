@@ -9,7 +9,7 @@ export default function (output = '') {
       failedSpecs.add(match[1])
     }
   } else {
-    let FAILED_LINES = /at (?:\[object Object\]|Object)\.<anonymous> \((([A-Z]:\\)?.*?):.*\)/g
+    let FAILED_LINES = /at (?:\[object Object\]|Object)\.<anonymous> \((([A-Za-z]:\\)?.*?):.*\)/g
     while (match = FAILED_LINES.exec(output)) { // eslint-disable-line no-cond-assign
       // windows output includes stack traces from
       // webdriver so we filter those out here

@@ -31,7 +31,7 @@ describe('failed spec parser', () => {
     let output = readFixture('failed-windows-test-output.txt')
 
     expect(failedSpecParser(output)).to.eql([
-      'C:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\a-flakey.test.js',
+      'd:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\a-flakey.test.js',
       'C:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\another-flakey.test.js'
     ])
   })
