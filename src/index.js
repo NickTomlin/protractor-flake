@@ -66,6 +66,12 @@ export default function (options = {}, callback = function noop () {}) {
       output = output + text
     })
 
+    protractor.stderr.on('data', (buffer) => {
+      let text = buffer.toString()
+      log('info', text)
+      output = output + text
+    })
+
     protractor.on('exit', function (status) {
       handleTestEnd(status, output)
     })
