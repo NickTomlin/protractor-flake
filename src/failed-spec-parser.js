@@ -18,6 +18,16 @@ export default function (output = '') {
       }
     }
   }
+  let FAILED_UNEXPECTED = /UnknownError:/g
+  while (match = FAILED_UNEXPECTED.exec(output)) { // eslint-disable-line no-cond-assign
+    // specfiles can not be discovered with UnknownErrors
+    // so we reset the entire failedSpecs
+    // to make sure these specs are not skipped
+    if (!/node_modules/.test(match[1])) {
+      console.log('Something terrible happened (UnknownError found), clearing failedSpecs')
+      failedSpecs = new Set()
+    }
+  }
 
   return [...failedSpecs]
 }

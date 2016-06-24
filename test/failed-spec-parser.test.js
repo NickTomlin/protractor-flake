@@ -85,4 +85,10 @@ describe('failed spec parser', () => {
       '/Users/ntomlin/workspace/protractor-flake/test/support/flakey.test.js'
     ])
   })
+
+  it('clears failedspecs if an UnknownError occurs', () => {
+    let output = readFixture('sharded-unknown-test-output.txt')
+
+    expect(failedSpecParser(output)).to.eql([])
+  })
 })
