@@ -1,9 +1,16 @@
-import parsers from './parsers/all'
+import {allParsers, findParser} from './parsers'
 
-export default function (output = '') {
-  let parser =  parsers.find((p) => {
-    return p.test(output)
-  })
+export default function (output = '', parserName = '') {
+  let parser
+
+  if (parserName) {
+    parser = findParser(parserName)
+  } else {
+    parser = allParsers.find((p) => {
+      return p.test(output)
+    })
+  }
+
   let failedSpecs = parser.parse(new Set(), output)
 
   return [...failedSpecs]
