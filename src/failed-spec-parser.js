@@ -2,10 +2,10 @@ export default function (output = '') {
   let match = null
   let CUCUMBERJS_TEST = /^\d+ scenarios?/m
   let failedSpecs = new Set()
-  let PROTRACTOR_SHARDED = /------------------------------------/g
+  let MULTI_TESTS = /------------------------------------/g
   let SPECFILE_REG = /.+Specs:\s(.*\.js)/g
 
-  if (PROTRACTOR_SHARDED.test(output) && SPECFILE_REG.test(output)) {
+  if (MULTI_TESTS.test(output) && SPECFILE_REG.test(output)) {
     let testsOutput = output.split('------------------------------------').slice(1)
 
     let RESULT_REG = /,\s(\d+)\sfailures?/g
