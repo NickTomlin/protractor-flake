@@ -1,0 +1,86 @@
+[launcher] Running 2 instances of WebDriver
+.
+------------------------------------
+[chrome #1-1] PID: 9865
+[chrome #1-1] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-good-test.test.js
+[chrome #1-1] 
+[chrome #1-1] Using ChromeDriver directly...
+[chrome #1-1] [32m.[0m
+[chrome #1-1] 
+[chrome #1-1] Finished in 0.041 seconds
+[chrome #1-1] [32m1 test, 1 assertion, 0 failures
+[0m[chrome #1-1] 
+
+[launcher] 2 instance(s) of WebDriver still running
+F
+------------------------------------
+[chrome #1-0] PID: 9864
+[chrome #1-0] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js
+[chrome #1-0] 
+[chrome #1-0] Using ChromeDriver directly...
+[chrome #1-0] [31mF[0m
+[chrome #1-0] 
+[chrome #1-0] Failures:
+[chrome #1-0] 
+[chrome #1-0]   1) a flakey integration test fails, in a horribly consistent manner
+[chrome #1-0]    Message:
+[chrome #1-0]      [31mExpected false to be truthy.[0m
+[chrome #1-0]    Stacktrace:
+[chrome #1-0]      Error: Failed expectation
+[chrome #1-0]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1-0] 
+[chrome #1-0] Finished in 1.021 seconds
+[chrome #1-0] [31m1 test, 1 assertion, 1 failure
+[0m[chrome #1-0] 
+
+[launcher] 1 instance(s) of WebDriver still running
+F
+------------------------------------
+[chrome #1-43] PID: 7548
+[chrome #1-43] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js
+[chrome #1-43]
+[chrome #1-43] Using the selenium server at http://10.10.100.34:4444/wd/hub
+[chrome #1-43] Spec started
+[chrome #1-43] Started
+[chrome #1-43] Executing on selenium node: [http://10.10.100.103:5556]
+[chrome #1-43]
+[chrome #1-43]   The Patient dialog
+[chrome #1-43]
+[chrome #1-43]     should respond to selecting a conversation by
+[chrome #1-43]       ✓ displaying a conversation
+[chrome #1-43] .      ✗ focusing the message
+[chrome #1-43]         - Failed: Session [41abf706-688f-44be-ac49-9c4c051ab53b] was terminated due to SO_TIMEOUT
+[chrome #1-43]             at new bot.Error (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:108:18)
+[chrome #1-43]             at Object.bot.response.checkResponse (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/response.js:109:9)
+[chrome #1-43]             at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:379:20
+[chrome #1-43]             at [object Object].promise.Promise.goog.defineClass.invokeCallback_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:1337:14)
+[chrome #1-43]             at [object Object].promise.ControlFlow.goog.defineClass.goog.defineClass.abort_.error.executeNext_.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2776:14)
+[chrome #1-43]             at [object Object].promise.ControlFlow.goog.defineClass.goog.defineClass.abort_.error.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2758:21)
+[chrome #1-43]             at goog.async.run.processWorkQueue (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:124:15)
+[chrome #1-43]             at process._tickCallback (node.js:379:9)
+[chrome #1-43]         From: Task: Run beforeEach in control flow
+[chrome #1-43]             at Object.<anonymous> (/usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:81:14)
+[chrome #1-43]         From asynchronous test:
+[chrome #1-43]         Error
+[chrome #1-43]             at Suite.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1-43] F
+[chrome #1-43] /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:108
+[chrome #1-43]   var template = new Error(this.message);
+[chrome #1-43]                  ^
+[chrome #1-43] UnknownError: Session [41abf706-688f-44be-ac49-9c4c051ab53b] was terminated due to SO_TIMEOUT
+[chrome #1-43]     at new bot.Error (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:108:18)
+[chrome #1-43]     at Object.bot.response.checkResponse (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/response.js:109:9)
+[chrome #1-43]     at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:379:20
+[chrome #1-43]     at [object Object].promise.Promise.goog.defineClass.invokeCallback_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:1337:14)
+[chrome #1-43]     at [object Object].promise.ControlFlow.goog.defineClass.goog.defineClass.abort_.error.executeNext_.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2776:14)
+[chrome #1-43]     at [object Object].promise.ControlFlow.goog.defineClass.goog.defineClass.abort_.error.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2758:21)
+[chrome #1-43]     at goog.async.run.processWorkQueue (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/goog/async/run.js:124:15)
+[chrome #1-43]     at process._tickCallback (node.js:379:9)
+
+[launcher] Runner process exited unexpectedly with error code: 1
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1-1 passed
+[launcher] chrome #1-0 failed 1 test(s)
+[launcher] chrome #1-2 failed 1 test(s)
+[launcher] overall: 2 failed spec(s)
+[launcher] Process exited with error code 1
