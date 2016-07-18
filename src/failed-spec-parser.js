@@ -8,7 +8,7 @@ export default function (output = '') {
   if (MULTI_TESTS.test(output) && SPECFILE_REG.test(output)) {
     let testsOutput = output.split('------------------------------------').slice(1)
 
-    let RESULT_REG = /,\s(\d+)\sfailures?/g
+    let RESULT_REG = /,\s0 failures/g
     testsOutput.forEach(function (test) {
       let specfile
       let result = 'failed'
@@ -18,9 +18,7 @@ export default function (output = '') {
       }
       // check for string 'X specs, X failures' and verify that failures === 0;
       while (match = RESULT_REG.exec(test)) { // eslint-disable-line no-cond-assign
-        if (match[1] === '0') {
-          result = 'passed'
-        }
+        result = 'passed'
       }
       if (result === 'failed') {
         if (!/node_modules/.test(specfile)) {
