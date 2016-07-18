@@ -3,13 +3,12 @@ export default function (output = '') {
   let CUCUMBERJS_TEST = /^\d+ scenarios?/m
   let failedSpecs = new Set()
   let PROTRACTOR_SHARDED = /------------------------------------/g
-  let SPECFILE_REG = /.+Specs:\s(.*\.js)/g
+  let SPECFILE_REG = /.*Specs:\s(.*\.js)/g
 
   if (PROTRACTOR_SHARDED.test(output) && SPECFILE_REG.test(output)) {
-    console.log('sharded test found')
-    let testsOutput = output.split('------------------------------------')
-    testsOutput.shift()
-    let RESULT_REG = /\d+\sspec|assertions?,\s(\d+)\sfailures?/g
+    let testsOutput = output.split('------------------------------------').slice(1)
+
+    let RESULT_REG = /,\s(\d+)\sfailures?/g
     testsOutput.forEach(function (test) {
       let specfile
       let result = 'failed'

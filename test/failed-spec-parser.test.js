@@ -86,12 +86,20 @@ describe('failed spec parser', () => {
     ])
   })
 
-  it('properly handles error output', function () {
+  it('properly handles error output in sharded tests', function () {
     let output = readFixture('sharded-error-test-output.txt')
 
     expect(failedSpecParser(output)).to.eql([
       '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js',
       '/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js'
+    ])
+  })
+
+  it('properly handles error output in multicapabilities tests', function () {
+    let output = readFixture('multicapabilities-withspecs.txt')
+
+    expect(failedSpecParser(output)).to.eql([
+      '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js'
     ])
   })
 })
