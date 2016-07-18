@@ -3,7 +3,7 @@ export default function (output = '') {
   let CUCUMBERJS_TEST = /^\d+ scenarios?/m
   let failedSpecs = new Set()
   let PROTRACTOR_SHARDED = /------------------------------------/g
-  let SPECFILE_REG = /.*Specs:\s(.*\.js)/g
+  let SPECFILE_REG = /.+Specs:\s(.*\.js)/g
 
   if (PROTRACTOR_SHARDED.test(output) && SPECFILE_REG.test(output)) {
     let testsOutput = output.split('------------------------------------').slice(1)
