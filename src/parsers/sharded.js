@@ -15,11 +15,11 @@ export default {
     testsOutput.forEach(function (test) {
       let specfile
       let result = 'failed'
-      // retrieve specfile from run;
+      // retrieve specfile from run
       while (match = SPECFILE_REG.exec(test)) { // eslint-disable-line no-cond-assign
         specfile = match[1]
       }
-      // check for string 'X specs, X failures' and verify that failures === 0;
+      // check for string 'X specs, X failures' and verify that failures === 0
       while (match = RESULT_REG.exec(test)) { // eslint-disable-line no-cond-assign
         if (match[1] === '0') {
           result = 'passed'

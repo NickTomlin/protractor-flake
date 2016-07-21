@@ -1,7 +1,7 @@
 export default {
   name: 'StandardParser',
   test (output) {
-    return true;
+    return true
   },
 
   parse (failedSpecs, output) {
