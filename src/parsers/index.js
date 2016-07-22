@@ -1,8 +1,8 @@
 import CucumberParser from './cucumber'
-import ShardedParser from './sharded'
+import MultiTestParser from './multitest'
 import StandardParser from './standard'
 
-let allParsers = [CucumberParser, ShardedParser, StandardParser]
+let allParsers = [CucumberParser, MultiTestParser, StandardParser]
 
 function findParser (name) {
   let parser = allParsers.find((parser) => name === parser.name)
