@@ -1,7 +1,7 @@
 const CUCUMBERJS_TEST = /^\d+ scenarios?/m
 
 export default {
-  name: 'CucumberParser',
+  name: 'cucumberParser',
   test (output) {
     return CUCUMBERJS_TEST.test(output)
   },

@@ -2,7 +2,7 @@ const PROTRACTOR_MULTITEST = /------------------------------------/g
 const SPECFILE_REG = /.+Specs:\s(.*\.js)/g
 
 export default {
-  name: 'MultiTestParser',
+  name: 'multiTestParser',
   test (output) {
     return PROTRACTOR_MULTITEST.test(output) && SPECFILE_REG.test(output)
   },

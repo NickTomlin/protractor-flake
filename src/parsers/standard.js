@@ -1,5 +1,5 @@
 export default {
-  name: 'StandardParser',
+  name: 'standardParser',
   test (output) {
     return true
   },
