@@ -1,5 +1,5 @@
 import CucumberParser from './cucumber'
-import ShardedParser from './sharded'
+import MultiTestParser from './multitest'
 import StandardParser from './standard'
 
-export default [CucumberParser, ShardedParser, StandardParser]
+export default [CucumberParser, MultiTestParser, StandardParser]

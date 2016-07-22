@@ -1,17 +1,16 @@
-const PROTRACTOR_SHARDED = /------------------------------------/g
+const PROTRACTOR_MULTITEST = /------------------------------------/g
 const SPECFILE_REG = /.+Specs:\s(.*\.js)/g
 
 export default {
-  name: 'ShardedParser',
+  name: 'MultiTestParser',
   test (output) {
-    return PROTRACTOR_SHARDED.test(output) && SPECFILE_REG.test(output)
+    return PROTRACTOR_MULTITEST.test(output) && SPECFILE_REG.test(output)
   },
 
   parse (failedSpecs, output) {
     let match = null
     let testsOutput = output.split('------------------------------------')
-    testsOutput.shift()
-    let RESULT_REG = /\d+\sspec|assertions?,\s(\d+)\sfailures?/g
+    let RESULT_REG = /,\s0 failures/g
     testsOutput.forEach(function (test) {
       let specfile
       let result = 'failed'
@@ -19,13 +18,11 @@ export default {
       while (match = SPECFILE_REG.exec(test)) { // eslint-disable-line no-cond-assign
         specfile = match[1]
       }
-      // check for string 'X specs, X failures' and verify that failures === 0;
+      // check for string '0 failures' and then marks the test as passed
       while (match = RESULT_REG.exec(test)) { // eslint-disable-line no-cond-assign
-        if (match[1] === '0') {
-          result = 'passed'
-        }
+        result = 'passed'
       }
-      if (result === 'failed') {
+      if (specfile && result === 'failed') {
         if (!/node_modules/.test(specfile)) {
           failedSpecs.add(specfile)
         }
