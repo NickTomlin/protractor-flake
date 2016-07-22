@@ -7,6 +7,8 @@ const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked')
 const CONFIG_PATH = 'test/support/protractor-config'
 const SINGLE_INSTANCE_PATH = `${CONFIG_PATH}/protractor-sharded.conf.js`
 
+// NOTE: until tagging support lands in mocha, all integration it()'s must be prefaced with integration:
+// because I am lazy an don't want to overcomplicate test setup
 describe('Protractor Flake Executable', function () {
   before((done) => {
     server.listen({port: process.env.PORT}, () => {
@@ -28,7 +30,7 @@ describe('Protractor Flake Executable', function () {
     })
   })
 
-  it('Exits successfully if test passes before max limit is reached', (done) => {
+  it('integration: Exits successfully if test passes before max limit is reached', (done) => {
     let proc = spawn('./bin/protractor-flake', ['--max-attempts', '3', '--', SINGLE_INSTANCE_PATH])
 
     proc.on('close', (status) => {
@@ -37,7 +39,7 @@ describe('Protractor Flake Executable', function () {
     })
   })
 
-  it('exits unsuccessfully if test fails outside of max limit', (done) => {
+  it('integration: exits unsuccessfully if test fails outside of max limit', (done) => {
     let proc = spawn('./bin/protractor-flake', ['--max-attempts', '1', '--', SINGLE_INSTANCE_PATH])
 
     proc.on('close', (status) => {

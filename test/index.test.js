@@ -14,7 +14,7 @@ describe('Protractor Flake', () => {
   }
 
   beforeEach(() => {
-    spawnStub = sinon.stub().returns({
+    spawnStub = sandbox.stub().returns({
       on (event, callback) {
         spawnStub.endCallback = callback
       },

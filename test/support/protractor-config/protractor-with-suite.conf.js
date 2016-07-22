@@ -6,7 +6,7 @@ var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../*.test.js'
+    '../*-test.js'
   ],
 
   suites: {

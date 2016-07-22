@@ -61,34 +61,3 @@ F.F
 [launcher] firefox #2 failed 2 test(s)
 [launcher] overall: 4 failed spec(s)
 [launcher] Process exited with error code 1
-[~/workspace/protractor-flake]
-master ?:1 ᎒ ne protractor test/support/protractor-config/protractor.conf.js
-Using ChromeDriver directly...
-[launcher] Running 1 instances of WebDriver
-F.F
-
-Failures:
-
-  1) a flakey integration test fails, in a horribly consistent manner
-   Message:
-     Expected false to be truthy.
-   Stacktrace:
-     Error: Failed expectation
-    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
-
-  2) another flakey integration test fails, in a horribly consistent manner
-   Message:
-     Expected false to be truthy.
-   Stacktrace:
-     Error: Failed expectation
-    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
-    at runMicrotasksCallback (node.js:337:7)
-    at process._tickCallback (node.js:355:11)
-
-Finished in 2.415 seconds
-3 tests, 3 assertions, 2 failures
-
-[launcher] 0 instance(s) of WebDriver still running
-[launcher] chrome #1 failed 2 test(s)
-[launcher] overall: 2 failed spec(s)
-[launcher] Process exited with error code 1

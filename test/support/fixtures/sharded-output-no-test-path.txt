@@ -1,0 +1,39 @@
+[launcher] Running 2 instances of WebDriver
+...
+------------------------------------
+04:39:44.056 [chrome #01-33] PID: 13612
+04:39:44.056 [chrome #01-33] Specs: /home/failed-spec.js
+04:39:44.056 [chrome #01-33]
+04:39:44.056 [chrome #01-33] Using the selenium server at http://10.216.1.49:4444/wd/hub
+04:39:44.056 [chrome #01-33]
+04:39:44.056 [chrome #01-33] /home/node_modules/selenium-webdriver/error.js:26
+04:39:44.056 [chrome #01-33]   constructor(opt_error) {
+04:39:44.056 [chrome #01-33]                          ^
+04:39:44.056 [chrome #01-33] WebDriverError: Error forwarding the new session Error forwarding the request Read timed out
+04:39:44.056 [chrome #01-33]     at WebDriverError (/home/web-tests/node_modules/selenium-webdriver/error.js:26:26)
+04:39:44.056 [chrome #01-33]     at Object.checkLegacyResponse (/home/web-tests/node_modules/selenium-webdriver/error.js:580:13)
+04:39:44.056 [chrome #01-33]     at /home/web-tests/node_modules/selenium-webdriver/lib/webdriver.js:64:13
+04:39:44.056 [chrome #01-33]     at Promise.invokeCallback_ (/home/web-tests/node_modules/selenium-webdriver/lib/promise.js:1329:14)
+04:39:44.056 [chrome #01-33]     at TaskQueue.execute_ (/home/web-tests/node_modules/selenium-webdriver/lib/promise.js:2790:14)
+04:39:44.056 [chrome #01-33]     at TaskQueue.executeNext_ (/home/web-tests/node_modules/selenium-webdriver/lib/promise.js:2773:21)
+04:39:44.057 [chrome #01-33]     at /home/web-tests/node_modules/selenium-webdriver/lib/promise.js:2652:27
+04:39:44.057 [chrome #01-33]     at /home/web-tests/node_modules/selenium-webdriver/lib/promise.js:639:7
+04:39:44.057 [chrome #01-33]     at process._tickCallback (node.js:405:9)
+04:39:44.057 [chrome #01-33] From: Task: WebDriver.createSession()
+04:39:44.057 [chrome #01-33]     at acquireSession (/home/web-tests/node_modules/selenium-webdriver/lib/webdriver.js:62:22)
+04:39:44.057 [chrome #01-33]     at Function.createSession (/home/web-tests/node_modules/selenium-webdriver/lib/webdriver.js:295:12)
+04:39:44.057 [chrome #01-33]     at Builder.build (/home/web-tests/node_modules/selenium-webdriver/builder.js:458:24)
+04:39:44.057 [chrome #01-33]     at [object Object].DriverProvider.getNewDriver (/home/web-tests/node_modules/protractor/built/driverProviders/driverProvider.js:42:27)
+04:39:44.057 [chrome #01-33]     at [object Object].Runner.createBrowser (/home/web-tests/node_modules/protractor/built/runner.js:203:37)
+04:39:44.057 [chrome #01-33]     at /home/web-tests/node_modules/protractor/built/runner.js:293:21
+04:39:44.057 [chrome #01-33]     at _fulfilled (/home/web-tests/node_modules/q/q.js:834:54)
+04:39:44.057 [chrome #01-33]     at self.promiseDispatch.done (/home/web-tests/node_modules/q/q.js:863:30)
+04:39:44.057 [chrome #01-33]     at Promise.promise.promiseDispatch (/home/web-tests/node_modules/q/q.js:796:13)
+04:39:44.057 [chrome #01-33]     at /home/web-tests/node_modules/q/q.js:556:49
+04:39:44.057
+04:39:44.057 [launcher] Runner process exited unexpectedly with error code: 1
+04:39:44.057 [launcher] 0 instance(s) of WebDriver still running
+04:39:44.058 [launcher] chrome #01-0 passed
+04:39:44.058 [launcher] chrome #01-1 failed with exit code: 1
+04:39:44.060 [launcher] overall: 1 process(es) failed to complete
+04:39:44.060 [launcher] Process exited with error code 100
