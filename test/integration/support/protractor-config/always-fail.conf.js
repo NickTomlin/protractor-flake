@@ -1,17 +1,18 @@
 'use strict';
 
-require('babel/register');
-
 var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../*-test.js'
+    '../passing-test.js',
+    '../failing-test.js'
   ],
 
   capabilities: {
     browserName: process.platform === 'darwin' ? 'chrome' : 'firefox',
-    name: JOB_NAME
+    name: JOB_NAME,
+    shardTestFiles: true,
+    maxInstances: 2
   },
 
   baseUrl: 'http://localhost:3000/',

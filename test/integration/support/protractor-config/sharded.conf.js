@@ -1,12 +1,11 @@
 'use strict';
 
-require('babel/register');
-
 var JOB_NAME = 'Flake';
 
 exports.config = {
   specs: [
-    '../*-test.js'
+    '../flakey-test.js',
+    '../passing-test.js'
   ],
 
   capabilities: {

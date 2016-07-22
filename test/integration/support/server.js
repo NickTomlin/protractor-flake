@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-// we keep this es6 for easier interop with bin files
+// we keep this es5 for easier interop with bin files
 var express = require('express')
 var app = express()
 var fs = require('fs')

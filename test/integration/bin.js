@@ -4,11 +4,25 @@ import { resolve } from 'path'
 import { spawn } from 'child_process'
 
 const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked')
-const CONFIG_PATH = 'test/integration/support/protractor-config'
-const SINGLE_INSTANCE_PATH = `${CONFIG_PATH}/protractor-sharded.conf.js`
+const CONFIG_DIR = resolve(__dirname, 'support/protractor-config')
 
-// NOTE: until tagging support lands in mocha, all integration it()'s must be prefaced with integration:
-// because I am lazy an don't want to overcomplicate test setup
+function configPath (filename) {
+  return `${CONFIG_DIR}/${filename}.conf.js`
+}
+
+function spawnFlake(flakeArgs = []) {
+  let proc = spawn('./bin/protractor-flake', flakeArgs)
+  proc.stdout.on('data', (buff) => {
+    process.stdout.write(buff.toString())
+  })
+
+  proc.stderr.on('data', (x) => {
+    process.stdout.write(x.toString())
+  })
+
+  return proc
+}
+
 describe('Protractor Flake Executable', function () {
   before((done) => {
     server.listen({port: process.env.PORT}, () => {
@@ -31,8 +45,7 @@ describe('Protractor Flake Executable', function () {
   })
 
   it('integration: Exits successfully if test passes before max limit is reached', (done) => {
-    let proc = spawn('./bin/protractor-flake', ['--max-attempts', '3', '--', SINGLE_INSTANCE_PATH])
-
+    let proc = spawnFlake(['--max-attempts', '3', '--', configPath('sharded')])
     proc.on('close', (status) => {
       expect(status).to.equal(0)
       done()
@@ -40,8 +53,7 @@ describe('Protractor Flake Executable', function () {
   })
 
   it('integration: exits unsuccessfully if test fails outside of max limit', (done) => {
-    let proc = spawn('./bin/protractor-flake', ['--max-attempts', '1', '--', SINGLE_INSTANCE_PATH])
-
+    let proc = spawnFlake(['--max-attempts', '1', '--', configPath('always-fail')])
     proc.on('close', (status) => {
       expect(status).to.equal(1)
       done()

@@ -1,5 +1,5 @@
 npm-debug.log
 node_modules
-test/support/times-flaked
+test/integration/support/times-flaked
 dist
 !dist/.gitkeep
