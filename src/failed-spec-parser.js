@@ -1,12 +1,12 @@
-import {allParsers, findParser} from './parsers'
+import parsers from './parsers'
 
 export default function (output = '', parserName = '') {
   let parser
 
   if (parserName) {
-    parser = findParser(parserName)
+    parser = parsers.find(parserName)
   } else {
-    parser = allParsers.find((p) => {
+    parser = parsers.all.find((p) => {
       return p.test(output)
     })
   }
