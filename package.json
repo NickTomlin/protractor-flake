@@ -10,9 +10,9 @@
     "serve": "bin/www",
     "lint": "standard",
     "test": "npm run lint && npm run test:unit && npm run test:integration",
-    "test:unit": "mocha",
-    "test:integration": "webdriver-manager update && npm run build && mocha test/helper.js test/integration/bin.js --grep integration --slow 30001 --timeout 30000 --reporter tap",
-    "test:dev": "mocha --watch",
+    "test:unit": "mocha --opts test/unit/mocha.opts",
+    "test:integration": "webdriver-manager update && npm run build && mocha --opts test/integration/mocha.opts --slow 30001 --timeout 30000 --reporter tap",
+    "test:dev": "mocha --watch --opts test/unit/mocha.opts",
     "build": "babel -d dist src",
     "prepublish": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -55,7 +55,7 @@
   ],
   "standard": {
     "ignore": [
-      "test/support/protractor-config",
+      "test/integration/support/protractor-config",
       "dist"
     ],
     "globals": [

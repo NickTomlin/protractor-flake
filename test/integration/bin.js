@@ -1,10 +1,10 @@
-import server from '../support/server'
+import server from './support/server'
 import { unlink } from 'fs'
 import { resolve } from 'path'
 import { spawn } from 'child_process'
 
 const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked')
-const CONFIG_PATH = 'test/support/protractor-config'
+const CONFIG_PATH = 'test/integration/support/protractor-config'
 const SINGLE_INSTANCE_PATH = `${CONFIG_PATH}/protractor-sharded.conf.js`
 
 // NOTE: until tagging support lands in mocha, all integration it()'s must be prefaced with integration:

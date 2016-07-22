@@ -1,5 +1,5 @@
 test/helper.js
-test/**/*.test.js
+test/integration/bin.js
 --compilers js:babel/register
 --timeout 12000
 --slow 12000

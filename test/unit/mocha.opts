@@ -1,0 +1,5 @@
+test/helper.js
+test/unit/**/*.test.js
+--compilers js:babel/register
+--timeout 12000
+--slow 12000

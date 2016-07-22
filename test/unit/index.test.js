@@ -30,7 +30,7 @@ describe('Protractor Flake', () => {
       }
     })
 
-    protractorFlake = proxyquire('../src/index', {
+    protractorFlake = proxyquire('../../src/index', {
       child_process: {
         spawn: spawnStub
       }

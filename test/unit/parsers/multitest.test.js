@@ -1,5 +1,5 @@
 import readFixture from '../support/read-fixture'
-import multiTestParser from '../../src/parsers/multitest'
+import multiTestParser from '../../../src/parsers/multitest'
 
 context('multiTestParser', function () {
   describe('#test', () => {

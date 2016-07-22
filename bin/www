@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-var app = require('../test/support/server');
+var app = require('../test/integration/support/server');
 app.listen({shouldLog: true});

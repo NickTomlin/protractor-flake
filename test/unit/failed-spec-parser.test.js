@@ -1,5 +1,5 @@
-import failedSpecParser from '../src/failed-spec-parser'
-import parsers from '../src/parsers'
+import failedSpecParser from '../../src/failed-spec-parser'
+import parsers from '../../src/parsers'
 
 describe('failed spec parser', () => {
   it('allows overriding parser with parserName option', () => {

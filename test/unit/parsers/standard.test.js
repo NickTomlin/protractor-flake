@@ -1,5 +1,5 @@
 import readFixture from '../support/read-fixture'
-import standardParser from '../../src/parsers/standard'
+import standardParser from '../../../src/parsers/standard'
 
 context('standardParser', function () {
   describe('#test', () => {

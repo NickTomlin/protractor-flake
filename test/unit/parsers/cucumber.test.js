@@ -1,5 +1,5 @@
 import readFixture from '../support/read-fixture'
-import cucumberParser from '../../src/parsers/cucumber'
+import cucumberParser from '../../../src/parsers/cucumber'
 
 describe('cucumberParser', () => {
   const failedOutput = readFixture('failed-cucumberjs-output.txt')
