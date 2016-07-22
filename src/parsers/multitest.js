@@ -29,6 +29,6 @@ export default {
       }
     })
 
-    return failedSpecs
+    return [...failedSpecs]
   }
 }

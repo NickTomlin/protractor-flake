@@ -13,6 +13,6 @@ export default {
       failedSpecs.add(match[1])
     }
 
-    return failedSpecs
+    return [...failedSpecs]
   }
 }
