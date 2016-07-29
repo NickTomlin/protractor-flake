@@ -15,8 +15,8 @@ context('multiTestParser', function () {
       let output = readFixture('sharded-error-test-output.txt')
 
       expect(multiTestParser.parse(new Set(), output)).to.eql([
-        '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js',
-        '/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js'
+        '/tests/a-flakey.test.js',
+        '/tests/another-flakey.test.js'
       ])
     })
 
@@ -24,7 +24,7 @@ context('multiTestParser', function () {
       let output = readFixture('sharded-output-single-failure.txt')
 
       expect(multiTestParser.parse(new Set(), output)).to.eql([
-        '/home/failed-spec.js'
+        '/tests/failed-spec.js'
       ])
     })
 
@@ -32,7 +32,7 @@ context('multiTestParser', function () {
       let output = readFixture('sharded-output-no-test-path.txt')
 
       expect(multiTestParser.parse(new Set(), output)).to.eql([
-        '/home/failed-spec.js'
+        '/tests/failed-spec.js'
       ])
     })
 
@@ -40,7 +40,7 @@ context('multiTestParser', function () {
       let output = readFixture('multicapabilities-withspecs.txt')
 
       expect(multiTestParser.parse(new Set(), output)).to.eql([
-        '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js'
+        '/tests/a-flakey.test.js'
       ])
     })
   })

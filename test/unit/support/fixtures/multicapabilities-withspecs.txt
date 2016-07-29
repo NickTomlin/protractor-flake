@@ -5,7 +5,7 @@ Report destination:   target/reports/report.html
 ........
 ------------------------------------
 [chrome #1] PID: 58317
-[chrome #1] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-working.test.js
+[chrome #1] Specs: /tests/a-working.test.js
 [chrome #1]
 [chrome #1] Using ChromeDriver directly...
 [chrome #1] Spec started
@@ -27,7 +27,7 @@ Report destination:   target/reports/report.html
 
 ------------------------------------
 [firefox #2] PID: 58318
-[firefox #2] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js
+[firefox #2] Specs: /tests/a-flakey.test.js
 [firefox #2]
 [firefox #2] Using FirefoxDriver directly...
 [firefox #2]

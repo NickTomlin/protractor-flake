@@ -12,14 +12,14 @@ F.F
 [chrome #1]      Expected false to be truthy.
 [chrome #1]    Stacktrace:
 [chrome #1]      Error: Failed expectation
-[chrome #1]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1]     at [object Object].<anonymous> (/tests/a-flakey.test.js:9:39)
 [chrome #1]
 [chrome #1]   2) another flakey integration test fails, in a horribly consistent manner
 [chrome #1]    Message:
 [chrome #1]      Expected false to be truthy.
 [chrome #1]    Stacktrace:
 [chrome #1]      Error: Failed expectation
-[chrome #1]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+[chrome #1]     at [object Object].<anonymous> (/tests/another-flakey.test.js:9:39)
 [chrome #1]     at runMicrotasksCallback (node.js:337:7)
 [chrome #1]     at process._tickCallback (node.js:355:11)
 [chrome #1]
@@ -41,14 +41,14 @@ F.F
 [firefox #2]      Expected false to be truthy.
 [firefox #2]    Stacktrace:
 [firefox #2]      Error: Failed expectation
-[firefox #2]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[firefox #2]     at [object Object].<anonymous> (/tests/a-flakey.test.js:9:39)
 [firefox #2]
 [firefox #2]   2) another flakey integration test fails, in a horribly consistent manner
 [firefox #2]    Message:
 [firefox #2]      Expected false to be truthy.
 [firefox #2]    Stacktrace:
 [firefox #2]      Error: Failed expectation
-[firefox #2]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:9:39)
+[firefox #2]     at [object Object].<anonymous> (/tests/another-flakey.test.js:9:39)
 [firefox #2]     at runMicrotasksCallback (node.js:337:7)
 [firefox #2]     at process._tickCallback (node.js:355:11)
 [firefox #2]

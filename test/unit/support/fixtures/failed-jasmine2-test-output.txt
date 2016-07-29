@@ -8,7 +8,7 @@ Failures:
     Expected false to be truthy.
   Stack:
     Error: Failed expectation
-        at Object.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js:7:39)
+        at Object.<anonymous> (/tests/another-flakey.test.js:7:39)
         at runMicrotasksCallback (node.js:337:7)
         at process._tickCallback (node.js:355:11)
 
@@ -17,7 +17,7 @@ Failures:
     Expected false to be truthy.
   Stack:
     Error: Failed expectation
-        at Object.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/flakey.test.js:7:39)
+        at Object.<anonymous> (/tests/flakey.test.js:7:39)
         at runMicrotasksCallback (node.js:337:7)
         at process._tickCallback (node.js:355:11)
 

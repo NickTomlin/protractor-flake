@@ -2,7 +2,7 @@
 .
 ------------------------------------
 [chrome #1-1] PID: 9865
-[chrome #1-1] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-good-test.test.js
+[chrome #1-1] Specs: /tests/a-good-test.test.js
 [chrome #1-1] 
 [chrome #1-1] Using ChromeDriver directly...
 [chrome #1-1] [32m.[0m
@@ -15,7 +15,7 @@
 F
 ------------------------------------
 [chrome #1-0] PID: 9864
-[chrome #1-0] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js
+[chrome #1-0] Specs: /tests/a-flakey.test.js
 [chrome #1-0] 
 [chrome #1-0] Using ChromeDriver directly...
 [chrome #1-0] [31mF[0m
@@ -27,7 +27,7 @@ F
 [chrome #1-0]      [31mExpected false to be truthy.[0m
 [chrome #1-0]    Stacktrace:
 [chrome #1-0]      Error: Failed expectation
-[chrome #1-0]     at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1-0]     at [object Object].<anonymous> (/tests/a-flakey.test.js:9:39)
 [chrome #1-0] 
 [chrome #1-0] Finished in 1.021 seconds
 [chrome #1-0] [31m1 test, 1 assertion, 1 failure
@@ -37,7 +37,7 @@ F
 F
 ------------------------------------
 [chrome #1-43] PID: 7548
-[chrome #1-43] Specs: /Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js
+[chrome #1-43] Specs: /tests/another-flakey.test.js
 [chrome #1-43]
 [chrome #1-43] Using the selenium server at http://10.10.100.34:4444/wd/hub
 [chrome #1-43] Spec started
@@ -62,7 +62,7 @@ F
 [chrome #1-43]             at Object.<anonymous> (/usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:81:14)
 [chrome #1-43]         From asynchronous test:
 [chrome #1-43]         Error
-[chrome #1-43]             at Suite.<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:9:39)
+[chrome #1-43]             at Suite.<anonymous> (/tests/a-flakey.test.js:9:39)
 [chrome #1-43] F
 [chrome #1-43] /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:108
 [chrome #1-43]   var template = new Error(this.message);

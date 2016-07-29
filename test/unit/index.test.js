@@ -89,7 +89,7 @@ describe('Protractor Flake', () => {
       spawnStub.dataCallback(failedSingleTestOutput)
       spawnStub.endCallback(1)
 
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js'])
     })
 
     it('isolates failed specs for sharded protractor output', () => {
@@ -98,7 +98,7 @@ describe('Protractor Flake', () => {
       spawnStub.dataCallback(failedShardedTestOutput)
       spawnStub.endCallback(1)
 
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
     })
 
     context('with --suite in protractorArgs', function () {
@@ -111,7 +111,7 @@ describe('Protractor Flake', () => {
         spawnStub.dataCallback(failedShardedTestOutput)
         spawnStub.endCallback(1)
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js,/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js'])
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
       })
 
       it('does not remove --suite for first test run', () => {

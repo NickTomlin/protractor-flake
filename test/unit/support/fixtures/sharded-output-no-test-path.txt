@@ -2,7 +2,7 @@
 ...
 ------------------------------------
 04:39:44.056 [chrome #01-33] PID: 13612
-04:39:44.056 [chrome #01-33] Specs: /home/failed-spec.js
+04:39:44.056 [chrome #01-33] Specs: /tests/failed-spec.js
 04:39:44.056 [chrome #01-33]
 04:39:44.056 [chrome #01-33] Using the selenium server at http://10.216.1.49:4444/wd/hub
 04:39:44.056 [chrome #01-33]

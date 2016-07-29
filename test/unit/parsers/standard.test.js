@@ -27,14 +27,14 @@ context('standardParser', function () {
       let output = readFixture('failed-jasmine2-test-output.txt')
 
       expect(standardParser.parse(new Set(), output)).to.eql([
-        '/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js',
-        '/Users/ntomlin/workspace/protractor-flake/test/support/flakey.test.js'
+        '/tests/another-flakey.test.js',
+        '/tests/flakey.test.js'
       ])
     })
 
     it('properly handles large line numbers', () => {
       let output = `
-    at [object Object].<anonymous> (/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js:999:102)
+    at [object Object].<anonymous> (/tests/a-flakey.test.js:999:102)
 
     Finished in 0.538 seconds
     [31m1 test, 1 assertion, 1 failure
@@ -42,7 +42,7 @@ context('standardParser', function () {
       `
 
       expect(standardParser.parse(new Set(), output)).to.eql([
-        '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js'
+        '/tests/a-flakey.test.js'
       ])
     })
 
@@ -59,8 +59,8 @@ context('standardParser', function () {
       let output = readFixture('multicapabilities-failed-test-output.txt')
 
       expect(standardParser.parse(new Set(), output)).to.eql([
-        '/Users/ntomlin/workspace/protractor-flake/test/support/a-flakey.test.js',
-        '/Users/ntomlin/workspace/protractor-flake/test/support/another-flakey.test.js'
+        '/tests/a-flakey.test.js',
+        '/tests/another-flakey.test.js'
       ])
     })
   })
