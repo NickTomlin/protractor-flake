@@ -10,7 +10,7 @@ function configPath (filename) {
   return `${CONFIG_DIR}/${filename}.conf.js`
 }
 
-function spawnFlake(flakeArgs = []) {
+function spawnFlake (flakeArgs = []) {
   let proc = spawn('./bin/protractor-flake', flakeArgs)
   proc.stdout.on('data', (buff) => {
     process.stdout.write(buff.toString())

@@ -56,7 +56,7 @@ module.exports = {
     var port = options.port || '3000'
 
     if (options.shouldLog) {
-      app.use(require('morgan')())
+      app.use(require('morgan')('combined'))
       app.set('log', true)
     }
 
