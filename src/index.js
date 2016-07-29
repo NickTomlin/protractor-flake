@@ -9,7 +9,6 @@ const DEFAULT_PROTRACTOR_ARGS = []
 const DEFAULT_OPTIONS = {
   nodeBin: 'node',
   maxAttempts: 3,
-  '--': DEFAULT_PROTRACTOR_ARGS,
   protractorArgs: DEFAULT_PROTRACTOR_ARGS,
   parser: false
 }
@@ -17,8 +16,6 @@ const DEFAULT_OPTIONS = {
 export default function (options = {}, callback = function noop () {}) {
   let parsedOptions = Object.assign(DEFAULT_OPTIONS, options)
   let testAttempt = 1
-  // todo: remove this in the next major version
-  parsedOptions.protractorArgs = parsedOptions.protractorArgs.concat(parsedOptions['--'])
 
   function handleTestEnd (status, output = '') {
     if (status === 0) {

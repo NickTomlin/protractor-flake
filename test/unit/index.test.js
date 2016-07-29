@@ -105,7 +105,7 @@ describe('Protractor Flake', () => {
       it('removes --suite argument from protractorArgs if it is passed', () => {
         protractorFlake({
           maxAttempts: 3,
-          '--': ['--suite=fail']
+          protractorArgs: ['--suite=fail']
         })
 
         spawnStub.dataCallback(failedShardedTestOutput)
@@ -117,7 +117,7 @@ describe('Protractor Flake', () => {
       it('does not remove --suite for first test run', () => {
         protractorFlake({
           maxAttempts: 3,
-          '--': ['--suite=fail']
+          protractorArgs: ['--suite=fail']
         })
 
         expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--suite=fail'])
