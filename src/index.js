@@ -1,7 +1,7 @@
 import { spawn } from 'child_process'
 import { resolve } from 'path'
+import { getParser } from './parsers'
 import 'core-js/shim'
-import failedSpecParser from './failed-spec-parser'
 import log from './logger'
 
 const DEFAULT_PROTRACTOR_ARGS = []
@@ -11,7 +11,7 @@ const DEFAULT_OPTIONS = {
   maxAttempts: 3,
   '--': DEFAULT_PROTRACTOR_ARGS,
   protractorArgs: DEFAULT_PROTRACTOR_ARGS,
-  parser: undefined
+  parser: false
 }
 
 export default function (options = {}, callback = function noop () {}) {
@@ -20,12 +20,14 @@ export default function (options = {}, callback = function noop () {}) {
   // todo: remove this in the next major version
   parsedOptions.protractorArgs = parsedOptions.protractorArgs.concat(parsedOptions['--'])
 
-  function handleTestEnd (status, output) {
+  function handleTestEnd (status, output = '') {
     if (status === 0) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        let failedSpecs = failedSpecParser(output, parsedOptions.parser)
+        let parser = getParser(parsedOptions.parser, output)
+        log('info', `Using ${parser.name} to parse output`)
+        let failedSpecs = parser.parse(new Set(), output)
         log('info', `Re-running tests: test attempt ${testAttempt}\n`)
         log('info', 'Re-running the following test files:\n')
         log('info', failedSpecs.join('\n') + '\n')

@@ -4,13 +4,17 @@ import standardParser from './standard'
 
 let all = [cucumberParser, multiTestParser, standardParser]
 
-function find (name) {
-  let parser = all.find((parser) => name === parser.name)
-  if (name && !parser) {
-    throw new Error('Invalid Parser Specified')
+function getParser (name, output = '') {
+  let parser
+  if (name) {
+    parser = all.find((parser) => name === parser.name)
+    if (!parser) { throw new Error(`Invalid Parser Specified: ${name}`) }
+  } else {
+    parser = all.find((p) => {
+      return p.test(output)
+    })
   }
-
   return parser
 }
 
-export default { all, find }
+export default { all, getParser }
