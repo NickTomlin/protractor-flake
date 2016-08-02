@@ -17,11 +17,12 @@ Via the CLI:
 ```shell
 npm i -g protractor-flake
 
+# Default options
 protractor-flake
 
 # Full options
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --node-bin node --max-attempts=3 -- path/to/protractor.conf.js
+protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 -- path/to/protractor.conf.js
 ```
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
@@ -31,8 +32,18 @@ Or programmatically:
 ```javascript
 var protractorFlake = require('protractor-flake');
 
+// Default Options
 protractorFlake({
+  parser: 'standard'
+}, function (status, output) {
+  proces.exit(status)
+})
+
+// Full Options
+protractorFlake({
+  protractorPath: '/path/to/protractor',
   maxAttempts: 3,
+  parser: 'standard',
   // expects node to be in path
   // set this to wherever the node bin is located
   nodeBin: 'node',
@@ -42,6 +53,12 @@ protractorFlake({
 });
 
 ```
+
+### Parsers
+
+Protractor flake defaults to using the `standard` parser, which will typically pick up failures run from non-sharded/multi-capability test runs using Jasmine 1 + 2 and Mocha.
+
+You can override this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
 
 # Caveats
 
