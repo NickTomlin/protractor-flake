@@ -1,19 +1,21 @@
 import parsers from '../../../src/parsers'
 import standardParser from '../../../src/parsers/standard'
+import cucumberParser from '../../../src/parsers/cucumber'
+import multiParser from '../../../src/parsers/multi'
 
 describe('parsers', () => {
   describe('#getParser', () => {
     context('with a name provided', () => {
       it('allows overriding parser with parserName option', () => {
         let fakeParser = {
-          name: 'fakeParser',
+          name: 'fake',
           test () {
             return false
           }
         }
-        parsers.all.unshift(fakeParser)
+        parsers.all.fake = fakeParser
 
-        let returnedParser = parsers.getParser('fakeParser')
+        let returnedParser = parsers.getParser('fake')
         expect(returnedParser).to.eql(fakeParser)
       })
 
@@ -22,25 +24,26 @@ describe('parsers', () => {
           parsers.getParser('not-a-parser', 'fake-output')
         }).to.throw(/Invalid Parser Specified: not-a-parser/)
       })
-    })
 
-    context('without a name', () => {
-      it('defaults to the standardParser if no name is provided and no parser test passes', () => {
-        let returnedParser = parsers.getParser(false, 'fake-output')
-        expect(returnedParser).to.eql(standardParser)
+      it('throws an error if no parser name is specified', () => {
+        expect(() => {
+          parsers.getParser()
+        }).to.throw(/Invalid Parser Specified: /)
       })
 
-      it('returns the first matching parser', () => {
-        let fakeParser = {
-          name: 'fakeParser',
-          test (output) {
-            return /YAY/.test(output)
-          }
-        }
-        parsers.all.unshift(fakeParser)
+      it('returns a standard parser if specified', () => {
+        let returnedParser = parsers.getParser('standard')
+        expect(returnedParser).to.eq(standardParser)
+      })
 
-        let returnedParser = parsers.getParser(false, 'some YAY output')
-        expect(returnedParser).to.eq(fakeParser)
+      it('returns a multi parser if specified', () => {
+        let returnedParser = parsers.getParser('multi')
+        expect(returnedParser).to.eq(multiParser)
+      })
+
+      it('returns a cucumber parser if specified', () => {
+        let returnedParser = parsers.getParser('cucumber')
+        expect(returnedParser).to.eq(cucumberParser)
       })
     })
   })

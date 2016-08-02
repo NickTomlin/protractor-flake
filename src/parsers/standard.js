@@ -1,10 +1,8 @@
 export default {
-  name: 'standardParser',
-  test (output) {
-    return true
-  },
+  name: 'standard',
 
-  parse (failedSpecs, output) {
+  parse (output) {
+    let failedSpecs = new Set()
     let match = null
     let FAILED_LINES = /at (?:\[object Object\]|Object)\.<anonymous> \((([A-Za-z]:\\)?.*?):.*\)/g
     while (match = FAILED_LINES.exec(output)) { // eslint-disable-line no-cond-assign

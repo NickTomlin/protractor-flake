@@ -2,14 +2,6 @@ import readFixture from '../support/read-fixture'
 import standardParser from '../../../src/parsers/standard'
 
 context('standardParser', function () {
-  describe('#test', () => {
-    it('properly identifies failed spec files', () => {
-      let output = readFixture('failed-test-output.txt')
-
-      expect(standardParser.test(output)).to.eql(true)
-    })
-  })
-
   describe('#parse', () => {
     it('returns an empty array if output has no matches', () => {
       let output = `
@@ -20,13 +12,13 @@ context('standardParser', function () {
       Wow
       `
 
-      expect(standardParser.parse(new Set(), output)).to.eql([])
+      expect(standardParser.parse(output)).to.eql([])
     })
 
     it('properly handles jasmine2 output', function () {
       let output = readFixture('failed-jasmine2-test-output.txt')
 
-      expect(standardParser.parse(new Set(), output)).to.eql([
+      expect(standardParser.parse(output)).to.eql([
         '/tests/another-flakey.test.js',
         '/tests/flakey.test.js'
       ])
@@ -41,7 +33,7 @@ context('standardParser', function () {
     [0m
       `
 
-      expect(standardParser.parse(new Set(), output)).to.eql([
+      expect(standardParser.parse(output)).to.eql([
         '/tests/a-flakey.test.js'
       ])
     })
@@ -49,7 +41,7 @@ context('standardParser', function () {
     it('handles output on windows', function () {
       let output = readFixture('failed-windows-test-output.txt')
 
-      expect(standardParser.parse(new Set(), output)).to.eql([
+      expect(standardParser.parse(output)).to.eql([
         'd:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\a-flakey.test.js',
         'C:\\Users\\IEUser\\Documents\\protractor-flake-master\\test\\support\\another-flakey.test.js'
       ])
@@ -58,7 +50,7 @@ context('standardParser', function () {
     it('does not duplicate specs with multicapabilities output', () => {
       let output = readFixture('multicapabilities-failed-test-output.txt')
 
-      expect(standardParser.parse(new Set(), output)).to.eql([
+      expect(standardParser.parse(output)).to.eql([
         '/tests/a-flakey.test.js',
         '/tests/another-flakey.test.js'
       ])

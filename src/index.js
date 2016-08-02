@@ -10,7 +10,7 @@ const DEFAULT_OPTIONS = {
   nodeBin: 'node',
   maxAttempts: 3,
   protractorArgs: DEFAULT_PROTRACTOR_ARGS,
-  parser: false
+  parser: 'standard'
 }
 
 export default function (options = {}, callback = function noop () {}) {
@@ -22,9 +22,10 @@ export default function (options = {}, callback = function noop () {}) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        let parser = getParser(parsedOptions.parser, output)
-        log('info', `Using ${parser.name} to parse output`)
-        let failedSpecs = parser.parse(new Set(), output)
+        let parser = getParser(parsedOptions.parser)
+        log('info', `Using ${parser.name} to parse output\n`)
+        let failedSpecs = parser.parse(output)
+
         log('info', `Re-running tests: test attempt ${testAttempt}\n`)
         log('info', 'Re-running the following test files:\n')
         log('info', failedSpecs.join('\n') + '\n')

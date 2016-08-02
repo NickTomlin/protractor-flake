@@ -1,16 +1,12 @@
-const PROTRACTOR_MULTITEST = /------------------------------------/g
-const SPECFILE_REG = /.+Specs:\s(.*\.js)/g
-
 export default {
-  name: 'multiTestParser',
-  test (output) {
-    return PROTRACTOR_MULTITEST.test(output) && SPECFILE_REG.test(output)
-  },
+  name: 'multi',
 
-  parse (failedSpecs, output) {
+  parse (output) {
     let match = null
+    let failedSpecs = []
     let testsOutput = output.split('------------------------------------')
     let RESULT_REG = /,\s0 failures/g
+    let SPECFILE_REG = /.+Specs:\s(.*\.js)/g
     testsOutput.forEach(function (test) {
       let specfile
       let result = 'failed'
@@ -24,11 +20,11 @@ export default {
       }
       if (specfile && result === 'failed') {
         if (!/node_modules/.test(specfile)) {
-          failedSpecs.add(specfile)
+          failedSpecs.push(specfile)
         }
       }
     })
 
-    return [...failedSpecs]
+    return failedSpecs
   }
 }
