@@ -59,4 +59,18 @@ describe('Protractor Flake Executable', function () {
       done()
     })
   })
+
+  it('integration: exits with error if invalid parser is specified', (done) => {
+    let output = ''
+    let proc = spawnFlake(['--max-attempts', '3', '--parser', 'foo', '--', configPath('sharded')])
+    proc.stderr.on('data', (buff) => {
+      output += buff.toString()
+    })
+
+    proc.on('close', (status) => {
+      expect(status).to.equal(1)
+      expect(output).to.contain('Error: Invalid Parser Specified: foo')
+      done()
+    })
+  })
 })

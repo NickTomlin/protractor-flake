@@ -15,6 +15,7 @@ const DEFAULT_OPTIONS = {
 
 export default function (options = {}, callback = function noop () {}) {
   let parsedOptions = Object.assign(DEFAULT_OPTIONS, options)
+  let parser = getParser(parsedOptions.parser)
   let testAttempt = 1
 
   function handleTestEnd (status, output = '') {
@@ -22,7 +23,6 @@ export default function (options = {}, callback = function noop () {}) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        let parser = getParser(parsedOptions.parser)
         log('info', `Using ${parser.name} to parse output\n`)
         let failedSpecs = parser.parse(output)
 
