@@ -1,0 +1,29 @@
+Using the selenium server at http://localhost:4444/wd/hub
+[launcher] Running 1 instances of WebDriver
+Feature: Flake unit tests
+
+  Scenario: A flakey scenario
+    Then a flakey integration test fails, in a horribly consistent manner
+
+Failures:
+
+1) Scenario: A flakey scenario - test/e2e/features/functional/flakey.feature:6
+   Step: Then a flakey integration test fails, in a horribly consistent manner - test/e2e/features/functional/flakey.feature:7
+   Step Definition: test/e2e/step_definitions/functional.steps.js:56
+   Message:
+     AssertionError: expected true to equal false
+         at World.<anonymous> (/Users/wswebcreation/e2e/step_definitions/functional.steps.js:59:32)
+         at doNTCallback0 (node.js:428:9)
+         at process._tickCallback (node.js:357:13)
+
+1 scenario (1 failed)
+1 step (1 failed)
+0m00.185s
+protractor-utils.hooks: DEVICETYPE IS NOT PROVIDED AND SET TO `undefined`
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] firefox #01 failed 1 test(s)
+[launcher] overall: 1 failed spec(s)
+[launcher] Process exited with error code 1
+Warning: Tests failed, protractor exited with code: 1 Use --force to continue.
+
+Aborted due to warnings.

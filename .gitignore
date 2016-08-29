@@ -3,3 +3,4 @@ node_modules
 test/integration/support/times-flaked
 dist
 !dist/.gitkeep
+.idea

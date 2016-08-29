@@ -1,0 +1,14 @@
+Using the selenium server at http://localhost:4444/wd/hub
+[launcher] Running 1 instances of WebDriver
+Feature: Flake unit tests
+
+  Scenario: A flakey scenario
+    Then a flakey integration test fails, in a horribly consistent manner
+
+1 scenario (1 passed)
+1 step (1 passed)
+0m00.005s
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01 passed
+
+Done.

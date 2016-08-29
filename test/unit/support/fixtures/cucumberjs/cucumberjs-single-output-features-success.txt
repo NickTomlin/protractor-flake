@@ -1,0 +1,18 @@
+[launcher] Running 1 instances of WebDriver
+Feature: More flake unit tests
+
+  Scenario: Another flakey scenario
+    Then another flakey integration test fails, in a horribly consistent manner
+
+Feature: Flake unit tests
+
+  Scenario: A flakey scenario
+    Then a flakey integration test fails, in a horribly consistent manner
+
+2 scenarios (2 passed)
+2 steps (2 passed)
+0m00.006s
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01 passed
+
+Done.

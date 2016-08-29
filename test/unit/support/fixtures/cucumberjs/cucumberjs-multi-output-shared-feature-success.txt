@@ -1,0 +1,37 @@
+[launcher] Running 2 instances of WebDriver
+.
+------------------------------------
+[chrome #01] PID: 33886
+[chrome #01] Specs: /Users/wswebcreation/e2e/features/functional/success.feature
+[chrome #01] 
+[chrome #01] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01] Feature: Working feature
+[chrome #01] 
+[chrome #01]   Scenario: A working scenario
+[chrome #01]     Then a integration test succeeds in a consistent manner
+[chrome #01] 
+[chrome #01] 1 scenario (1 passed)
+[chrome #01] 1 step (1 passed)
+[chrome #01] 0m00.006s
+
+[launcher] 1 instance(s) of WebDriver still running
+.
+------------------------------------
+[firefox #11] PID: 33887
+[firefox #11] Specs: /Users/wswebcreation/e2e/features/functional/success.feature
+[firefox #11]
+[firefox #11] Using the selenium server at http://localhost:4444/wd/hub
+[firefox #11] Feature: Flake unit tests
+[firefox #11]
+[firefox #11]   Scenario: A flakey scenario
+[firefox #11]     Then a flakey integration test fails, in a horribly consistent manner
+[firefox #11]
+[firefox #11] 1 scenario (1 passed)
+[firefox #11] 1 step (1 passed)
+[firefox #11] 0m00.005s
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01 passed
+[launcher] firefox #11 passed
+
+Done.
