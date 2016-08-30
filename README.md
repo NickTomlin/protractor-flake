@@ -60,6 +60,30 @@ Protractor flake defaults to using the `standard` parser, which will typically p
 
 You can override this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
 
+#### Cucumberjs parser
+Cucumberjs > v0.9.0 has a different logging and also a differen way in returning the path of the runned specs. (See example [logging](test/unit/support/fixtures/cucumberjs)). Based on the way the capability in Protractor has been configured the `Specs:` are printed. See the table below for the results.
+
+| Capability | shardTestFiles | Feature | Failures | Specs printed |
+| :--------: | :------------: | :-----: | :------: | :-----------: |
+|  single    |      true      |    1    |   true   |     false     |
+|  single    |     false      |    1    |   true   |     false     |
+|  single    |      true      |    1    |  false   |     false     |
+|  single    |     false      |    1    |  false   |     false     |
+|  single    |      true      |   >1    |   true   |    **true**   |
+|  single    |     false      |   >1    |   true   |     false     |
+|  single    |      true      |   >1    |  false   |    **true**   |
+|  single    |     false      |   >1    |  false   |     false     |
+|  multi     |      true      |    1    |   true   |    **true**   |
+|  multi     |     false      |    1    |   true   |    **true**   |
+|  multi     |      true      |    1    |  false   |    **true**   |
+|  multi     |     false      |    1    |  false   |    **true**   |
+|  multi     |      true      |   >1    |   true   |    **true**   |
+|  multi     |     false      |   >1    |   true   |   **false**   |
+|  multi     |      true      |   >1    |  false   |    **true**   |
+|  multi     |     false      |   >1    |  false   |     false     |
+
+When no `Specs:` are printed in the logging Protractor will run the Protractor command again which means that all the specs are run on all the instances (also the succeeded specs).
+
 # Caveats
 
 This has not yet been tested with Protractor + Mocha. It _should_ function similarly. Please update with an issue or PR if this is not the case.

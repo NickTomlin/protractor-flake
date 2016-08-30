@@ -2,50 +2,6 @@ import readFixture from '../support/read-fixture'
 import multiParser from '../../../src/parsers/cucumber.multi'
 
 describe('cucumberMultiParser', () => {
-  /**
-   * How it works:
-   * Single:
-   * - 1 webdriver instance + 1 feature + error + shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 1 webdriver instance + 1 feature + error + !shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 1 webdriver instance + 1 feature + success + shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 1 webdriver instance + 1 feature + success + !shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 1 webdriver instance + 2 features + error + shardTestFiles
-   *    SPECS ###################################################
-   * - 1 webdriver instance + 2 features + error + !shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 1 webdriver instance + 2 features + success + shardTestFiles
-   *    SPECS ###################################################
-   * - 1 webdriver instance + 2 features + success + !shardTestFiles
-   *    No Specs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   *
-   * Conclusion:
-   *
-   *
-   * Multi:
-   * - 2 webdriver instances + 1 feature + error + !shardTestFiles
-   *    SPECS for both ############################################
-   * - 2 webdriver instances + 1 feature + error + shardTestFiles
-   *    SPECS for both ############################################
-   * - 2 webdriver instances + 1 feature + success + !shardTestFiles
-   *    SPECS for both ############################################
-   * - 2 webdriver instances + 1 feature + success + shardTestFiles
-   *    SPECS for both ############################################
-   * - 2 webdriver instances + 2 features + error + !shardTestFiles
-   *    NO specs for both !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 2 webdriver instances + 2 features + error + shardTestFiles
-   *    SPECS for both ############################################
-   * - 2 webdriver instances + 2 features + success + !shardTestFiles
-   *    NO specs for both !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   * - 2 webdriver instances + 2 features + success + shardTestFiles
-   *    SPECS for both ############################################
-   *
-   * Conclusion:
-   * SHARED needs to be true for multiple. Then it's always printed. First check on `Failures:`, then on `Specs:`   *
-   */
   describe('#parse', () => {
     it('properly handles error output in multicapabilities tests with a feature', function () {
       let output = readFixture('cucumberjs/cucumberjs-multi-output-feature-failure.txt')
