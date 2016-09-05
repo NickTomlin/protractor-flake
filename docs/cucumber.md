@@ -1,5 +1,5 @@
 
-# Cucumberjs parser  
+# Cucumberjs parser
 
 ## cucumber
 > This parser only works with `cucumberjs` version < v0.9.0
@@ -57,3 +57,21 @@ multiCapabilities = [
 |  multi     |     false      |   >1    |  false   |     false     |
 
 When no `Specs:` are printed in the logging Protractor will run the Protractor command again which means that all the specs are run on **ALL** the instances (also the succeeded specs).
+  
+### Always print specs
+There is a way to always print `Specs:`. This can be done with the following hook, see [cucumberjs](https://github.com/cucumber/cucumber-js) for more hook info:
+
+```
+var afterHook = function () {
+  this.After(function (scenario, callback) {
+        if (scenario.isFailed()) {
+            console.log('Specs:', scenario.getUri());
+        }
+        callback();
+  });
+};
+
+module.exports = afterHook;
+```
+
+This will always print the `Specs:` in the testoutput. The parser will filter double specs. 
