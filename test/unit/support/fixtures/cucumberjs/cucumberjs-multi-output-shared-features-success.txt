@@ -1,0 +1,71 @@
+[launcher] Running 2 instances of WebDriver
+.
+------------------------------------
+[chrome #01-0] PID: 34243
+[chrome #01-0] Specs: /Users/wswebcreation/Rabobank/Online/cqc/test/e2e/features/functional/another.success.feature
+[chrome #01-0]
+[chrome #01-0] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-0] Feature: More successful unit tests
+[chrome #01-0]
+[chrome #01-0]   Scenario: Another successful scenario
+[chrome #01-0]     Then another integration test succeeds in a consistent manner
+[chrome #01-0]
+[chrome #01-0] 1 scenario (1 passed)
+[chrome #01-0] 1 step (1 passed)
+[chrome #01-0] 0m00.006s
+
+[launcher] 2 instance(s) of WebDriver still running
+.
+------------------------------------
+[firefox #11-0] PID: 34244
+[firefox #11-0] Specs: /Users/wswebcreation/Rabobank/Online/cqc/test/e2e/features/functional/another.success.feature
+[firefox #11-0]
+[firefox #11-0] Using the selenium server at http://localhost:4444/wd/hub
+[firefox #11-0] Feature: More successful unit tests
+[firefox #11-0]
+[firefox #11-0]   Scenario: Another successful scenario
+[firefox #11-0]     Then another integration test succeeds in a consistent manner
+[firefox #11-0]
+[firefox #11-0] 1 scenario (1 passed)
+[firefox #11-0] 1 step (1 passed)
+[firefox #11-0] 0m00.006s
+
+[launcher] 2 instance(s) of WebDriver still running
+.
+------------------------------------
+[chrome #01-1] PID: 34259
+[chrome #01-1] Specs: /Users/wswebcreation/Rabobank/Online/cqc/test/e2e/features/functional/flakey.feature
+[chrome #01-1]
+[chrome #01-1] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-1] Feature: Successful unit tests
+[chrome #01-1]
+[chrome #01-1]   Scenario: A successful scenario
+[chrome #01-1]     Then an integration test succeeds in a consistent manner
+[chrome #01-1]
+[chrome #01-1] 1 scenario (1 passed)
+[chrome #01-1] 1 step (1 passed)
+[chrome #01-1] 0m00.006s
+
+[launcher] 1 instance(s) of WebDriver still running
+.
+------------------------------------
+[firefox #11-1] PID: 34270
+[firefox #11-1] Specs: /Users/wswebcreation/Rabobank/Online/cqc/test/e2e/features/functional/flakey.feature
+[firefox #11-1]
+[firefox #11-1] Using the selenium server at http://localhost:4444/wd/hub
+[firefox #11-1] Feature: Successful unit tests
+[firefox #11-1]
+[firefox #11-1]   Scenario: A successful scenario
+[firefox #11-1]     Then an integration test succeeds in a consistent manner
+[firefox #11-1]
+[firefox #11-1] 1 scenario (1 passed)
+[firefox #11-1] 1 step (1 passed)
+[firefox #11-1] 0m00.005s
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01-0 passed
+[launcher] firefox #11-0 passed
+[launcher] chrome #01-1 passed
+[launcher] firefox #11-1 passed
+
+Done.

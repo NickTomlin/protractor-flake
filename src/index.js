@@ -23,12 +23,16 @@ export default function (options = {}, callback = function noop () {}) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        log('info', `Using ${parser.name} to parse output\n`)
+        log('info', `\nUsing ${parser.name} to parse output\n`)
         let failedSpecs = parser.parse(output)
 
         log('info', `Re-running tests: test attempt ${testAttempt}\n`)
-        log('info', 'Re-running the following test files:\n')
-        log('info', failedSpecs.join('\n') + '\n')
+        if (failedSpecs.length === 0) {
+          log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
+        } else {
+          log('info', 'Re-running the following test files:\n')
+          log('info', failedSpecs.join('\n') + '\n')
+        }
         return startProtractor(failedSpecs)
       }
 

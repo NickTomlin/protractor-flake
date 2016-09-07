@@ -1,0 +1,52 @@
+[launcher] Running 1 instances of WebDriver
+F
+------------------------------------
+[chrome #01-0] PID: 33345
+[chrome #01-0] Specs: /Users/wswebcreation/test/e2e/features/functional/another.flakey.feature
+[chrome #01-0] 
+[chrome #01-0] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-0] Feature: More flake unit tests
+[chrome #01-0] 
+[chrome #01-0]   Scenario: Another flakey scenario
+[chrome #01-0]     Then another flakey integration test fails, in a horribly consistent manner
+[chrome #01-0] 
+[chrome #01-0] Failures:
+[chrome #01-0] 
+[chrome #01-0] 1) Scenario: Another flakey scenario - test/e2e/features/functional/another.flakey.feature:6
+[chrome #01-0]    Step: Then another flakey integration test fails, in a horribly consistent manner - test/e2e/features/functional/another.flakey.feature:7
+[chrome #01-0]    Step Definition: test/e2e/step_definitions/functional.steps.js:62
+[chrome #01-0]    Message:
+[chrome #01-0]      AssertionError: expected true to equal false
+[chrome #01-0]          at World.<anonymous> (/Users/wswebcreation/test/e2e/step_definitions/functional.steps.js:63:32)
+[chrome #01-0]          at doNTCallback0 (node.js:428:9)
+[chrome #01-0]          at process._tickCallback (node.js:357:13)
+[chrome #01-0] 
+[chrome #01-0] 1 scenario (1 failed)
+[chrome #01-0] 1 step (1 failed)
+[chrome #01-0] 0m00.348s
+
+[launcher] 1 instance(s) of WebDriver still running
+.
+------------------------------------
+[chrome #01-1] PID: 33356
+[chrome #01-1] Specs: /Users/wswebcreation/test/e2e/features/functional/flakey.feature
+[chrome #01-1] 
+[chrome #01-1] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-1] Feature: Flake unit tests
+[chrome #01-1] 
+[chrome #01-1]   Scenario: A flakey scenario
+[chrome #01-1]     Then a flakey integration test fails, in a horribly consistent manner
+[chrome #01-1] 
+[chrome #01-1] 1 scenario (1 passed)
+[chrome #01-1] 1 step (1 passed)
+[chrome #01-1] 0m00.006s
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01-0 failed 1 test(s)
+[launcher] chrome #01-1 passed
+[launcher] overall: 1 failed spec(s)
+[launcher] Process exited with error code 1
+>> 
+Warning: Tests failed, protractor exited with code: 1 Use --force to continue.
+
+Aborted due to warnings.

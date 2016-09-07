@@ -1,0 +1,52 @@
+[launcher] Running 2 instances of WebDriver
+.
+------------------------------------
+[chrome #01] PID: 33652
+[chrome #01] Specs: /Users/wswebcreation/e2e/features/functional/flakey.feature
+[chrome #01] 
+[chrome #01] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01] Feature: Flake unit tests
+[chrome #01] 
+[chrome #01]   Scenario: A flakey scenario
+[chrome #01]     Then a flakey integration test fails for firefox
+[chrome #01] 
+[chrome #01] 1 scenario (1 passed)
+[chrome #01] 1 step (1 passed)
+[chrome #01] 0m00.007s
+
+[launcher] 1 instance(s) of WebDriver still running
+F
+------------------------------------
+[firefox #11] PID: 33653
+[firefox #11] Specs: /Users/wswebcreation/test/e2e/features/functional/flakey.feature
+[firefox #11] 
+[firefox #11] Using the selenium server at http://localhost:4444/wd/hub
+[firefox #11] Feature: Flake unit tests
+[firefox #11] 
+[firefox #11]   Scenario: A flakey scenario
+[firefox #11]     Then a flakey integration test fails for firefox
+[firefox #11] 
+[firefox #11] Failures:
+[firefox #11] 
+[firefox #11] 1) Scenario: A flakey scenario - test/e2e/features/functional/flakey.feature:6
+[firefox #11]    Step: Then a flakey integration test fails for firefox - test/e2e/features/functional/flakey.feature:7
+[firefox #11]    Step Definition: test/e2e/step_definitions/functional.steps.js:56
+[firefox #11]    Message:
+[firefox #11]      AssertionError: expected true to equal false
+[firefox #11]          at World.<anonymous> (/Users/wswebcreation/e2e/step_definitions/functional.steps.js:59:32)
+[firefox #11]          at doNTCallback0 (node.js:428:9)
+[firefox #11]          at process._tickCallback (node.js:357:13)
+[firefox #11] 
+[firefox #11] 1 scenario (1 failed)
+[firefox #11] 1 step (1 failed)
+[firefox #11] 0m00.116s
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01 passed
+[launcher] firefox #11 failed 1 test(s)
+[launcher] overall: 1 failed spec(s)
+[launcher] Process exited with error code 1
+>> 
+Warning: Tests failed, protractor exited with code: 1 Use --force to continue.
+
+Aborted due to warnings.

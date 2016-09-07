@@ -1,0 +1,37 @@
+[launcher] Running 1 instances of WebDriver
+.
+------------------------------------
+[chrome #01-0] PID: 33449
+[chrome #01-0] Specs: /Users/wswebcreation/e2e/features/functional/another.flakey.feature
+[chrome #01-0] 
+[chrome #01-0] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-0] Feature: More flake unit tests
+[chrome #01-0] 
+[chrome #01-0]   Scenario: Another flakey scenario
+[chrome #01-0]     Then another flakey integration test fails, in a horribly consistent manner
+[chrome #01-0] 
+[chrome #01-0] 1 scenario (1 passed)
+[chrome #01-0] 1 step (1 passed)
+[chrome #01-0] 0m00.005s
+
+[launcher] 1 instance(s) of WebDriver still running
+.
+------------------------------------
+[chrome #01-1] PID: 33460
+[chrome #01-1] Specs: /Users/wswebcreation/e2e/features/functional/flakey.feature
+[chrome #01-1] 
+[chrome #01-1] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #01-1] Feature: Flake unit tests
+[chrome #01-1] 
+[chrome #01-1]   Scenario: A flakey scenario
+[chrome #01-1]     Then a flakey integration test fails, in a horribly consistent manner
+[chrome #01-1] 
+[chrome #01-1] 1 scenario (1 passed)
+[chrome #01-1] 1 step (1 passed)
+[chrome #01-1] 0m00.005s
+
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #01-0 passed
+[launcher] chrome #01-1 passed
+
+Done.

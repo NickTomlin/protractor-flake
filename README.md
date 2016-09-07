@@ -60,6 +60,9 @@ Protractor flake defaults to using the `standard` parser, which will typically p
 
 You can override this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
 
+#### Parser documentation
+- [cucmber](docs/cucumber.md)
+
 # Caveats
 
 This has not yet been tested with Protractor + Mocha. It _should_ function similarly. Please update with an issue or PR if this is not the case.
