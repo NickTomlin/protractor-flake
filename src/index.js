@@ -56,6 +56,10 @@ export default function (options = {}, callback = function noop () {}) {
 
     if (specFiles.length) {
       protractorArgs = protractorArgs.filter((arg) => !/^--suite=/.test(arg))
+      var specIndex = protractorArgs.indexOf('--specs')
+      if (specIndex > -1) {
+        protractorArgs.splice(specIndex, 2)
+      }
       protractorArgs.push('--specs', specFiles.join(','))
     }
 
