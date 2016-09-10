@@ -22,6 +22,10 @@
   "contributors": [
     {
       "name": "Oliver Daems"
+    },
+    {
+      "name": "Wim Selles",
+      "email": "wim@wswebcreation.nl"
     }
   ],
   "license": "ISC",
