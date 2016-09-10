@@ -123,6 +123,29 @@ describe('Protractor Flake', () => {
         expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--suite=fail'])
       })
     })
+
+    context('with --specs in protractorArgs', function () {
+      it('removes --specs argument from protractorArgs if it is passed', () => {
+        protractorFlake({
+          maxAttempts: 3,
+          protractorArgs: ['--specs=specs/fail']
+        })
+
+        spawnStub.dataCallback(failedShardedTestOutput)
+        spawnStub.endCallback(1)
+
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
+      })
+
+      it('does not remove --specs for first test run', () => {
+        protractorFlake({
+          maxAttempts: 3,
+          protractorArgs: ['--specs=specs/fail']
+        })
+
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail'])
+      })
+    })
   })
 
   context('options', () => {

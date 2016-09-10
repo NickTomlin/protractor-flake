@@ -1,6 +1,6 @@
-import { spawn } from 'child_process'
-import { resolve } from 'path'
-import { getParser } from './parsers'
+import {spawn} from 'child_process'
+import {resolve} from 'path'
+import {getParser} from './parsers'
 import 'core-js/shim'
 import log from './logger'
 
@@ -41,12 +41,12 @@ export default function (options = {}, callback = function noop () {}) {
   }
 
   function startProtractor (specFiles = []) {
-    var protractorBinPath
+    let protractorBinPath
     if (parsedOptions.protractorPath) {
       protractorBinPath = resolve(parsedOptions.protractorPath)
     } else {
       // '.../node_modules/protractor/lib/protractor.js'
-      var protractorMainPath = require.resolve('protractor')
+      let protractorMainPath = require.resolve('protractor')
       // '.../node_modules/protractor/bin/protractor'
       protractorBinPath = resolve(protractorMainPath, '../../bin/protractor')
     }
@@ -55,11 +55,7 @@ export default function (options = {}, callback = function noop () {}) {
     let output = ''
 
     if (specFiles.length) {
-      protractorArgs = protractorArgs.filter((arg) => !/^--suite=/.test(arg))
-      var specIndex = protractorArgs.indexOf('--specs')
-      if (specIndex > -1) {
-        protractorArgs.splice(specIndex, 2)
-      }
+      protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)/.test(arg))
       protractorArgs.push('--specs', specFiles.join(','))
     }
 
