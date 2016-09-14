@@ -41,8 +41,8 @@ describe('cucumberMultiParser', () => {
       let output = readFixture('cucumberjs/cucumberjs-multi-output-shared-features-failures.txt')
 
       expect(multiParser.parse(output)).to.eql([
-        '/Users/wswebcreation/test/e2e/features/functional/another.flakey.feature',
-        '/Users/wswebcreation/test/e2e/features/functional/flakey.feature'
+        '/Users/wswebcreation/protractor-flake-tests/features/flakey.feature',
+        '/Users/wswebcreation/protractor-flake-tests/features/another.flakey.feature'
       ])
     })
 

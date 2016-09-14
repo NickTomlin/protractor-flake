@@ -1,108 +1,136 @@
-[launcher] Running 2 instances of WebDriver
-F
-------------------------------------
-[chrome #01-0] PID: 34060
-[chrome #01-0] Specs: /Users/wswebcreation/test/e2e/features/functional/another.flakey.feature
-[chrome #01-0] 
-[chrome #01-0] Using the selenium server at http://localhost:4444/wd/hub
-[chrome #01-0] Feature: More flake unit tests
-[chrome #01-0] 
-[chrome #01-0]   Scenario: Another flakey scenario
-[chrome #01-0]     Then another flakey integration test fails, in a horribly consistent manner
-[chrome #01-0] 
-[chrome #01-0] Failures:
-[chrome #01-0] 
-[chrome #01-0] 1) Scenario: Another flakey scenario - test/e2e/features/functional/another.flakey.feature:6
-[chrome #01-0]    Step: Then another flakey integration test fails, in a horribly consistent manner - test/e2e/features/functional/another.flakey.feature:7
-[chrome #01-0]    Step Definition: test/e2e/step_definitions/functional.steps.js:62
-[chrome #01-0]    Message:
-[chrome #01-0]      AssertionError: expected true to equal false
-[chrome #01-0]          at World.<anonymous> (/Users/wswebcreation/test/e2e/step_definitions/functional.steps.js:63:32)
-[chrome #01-0]          at doNTCallback0 (node.js:428:9)
-[chrome #01-0]          at process._tickCallback (node.js:357:13)
-[chrome #01-0] 
-[chrome #01-0] 1 scenario (1 failed)
-[chrome #01-0] 1 step (1 failed)
-[chrome #01-0] 0m00.370s
+[launcher] Running 4 instances of WebDriver
 
-[launcher] 2 instance(s) of WebDriver still running
-F
 ------------------------------------
-[firefox #11-0] PID: 34061
-[firefox #11-0] Specs: /Users/wswebcreation/test/e2e/features/functional/another.flakey.feature
-[firefox #11-0] 
-[firefox #11-0] Using the selenium server at http://localhost:4444/wd/hub
-[firefox #11-0] Feature: More flake unit tests
-[firefox #11-0] 
-[firefox #11-0]   Scenario: Another flakey scenario
-[firefox #11-0]     Then another flakey integration test fails, in a horribly consistent manner
-[firefox #11-0] 
-[firefox #11-0] Failures:
-[firefox #11-0] 
-[firefox #11-0] 1) Scenario: Another flakey scenario - test/e2e/features/functional/another.flakey.feature:6
-[firefox #11-0]    Step: Then another flakey integration test fails, in a horribly consistent manner - test/e2e/features/functional/another.flakey.feature:7
-[firefox #11-0]    Step Definition: test/e2e/step_definitions/functional.steps.js:62
-[firefox #11-0]    Message:
-[firefox #11-0]      AssertionError: expected true to equal false
-[firefox #11-0]          at World.<anonymous> (/Users/wswebcreation/test/e2e/step_definitions/functional.steps.js:63:32)
-[firefox #11-0]          at doNTCallback0 (node.js:428:9)
-[firefox #11-0]          at process._tickCallback (node.js:357:13)
-[firefox #11-0] 
-[firefox #11-0] 1 scenario (1 failed)
-[firefox #11-0] 1 step (1 failed)
-[firefox #11-0] 0m00.130s
+[chrome #1-2] PID: 95283
+[chrome #1-2] Specs: /Users/wswebcreation/protractor-flake-tests/features/no.tagged.tests.feature
+[chrome #1-2]
+[chrome #1-2] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #1-2] 0 scenarios
+[chrome #1-2] 0 steps
+[chrome #1-2] 0m00.000s
 
-[launcher] 2 instance(s) of WebDriver still running
-.
+[launcher] 3 instance(s) of WebDriver still running
+
 ------------------------------------
-[chrome #01-1] PID: 34073
-[chrome #01-1] Specs: /Users/wswebcreation/test/e2e/features/functional/flakey.feature
-[chrome #01-1] 
-[chrome #01-1] Using the selenium server at http://localhost:4444/wd/hub
-[chrome #01-1] Feature: Flake unit tests
-[chrome #01-1] 
-[chrome #01-1]   Scenario: A flakey scenario
-[chrome #01-1]     Then a flakey integration test fails for firefox
-[chrome #01-1] 
-[chrome #01-1] 1 scenario (1 passed)
-[chrome #01-1] 1 step (1 passed)
-[chrome #01-1] 0m00.006s
+[chrome #1-3] PID: 95284
+[chrome #1-3] Specs: /Users/wswebcreation/protractor-flake-tests/features/breaking.tests.feature
+[chrome #1-3]
+[chrome #1-3] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #1-3] Feature: Breaking tests
+[chrome #1-3]
+[chrome #1-3]   Scenario: This test should break after assertion
+[chrome #1-3]     Given "false" equals "true"
+[chrome #1-3] AssertionError: expected false to equal true
+[chrome #1-3]
+[chrome #1-3]
+
+[launcher] Runner process exited unexpectedly with error code: 1
+[launcher] 2 instance(s) of WebDriver still running
+F..F
+------------------------------------
+[chrome #1-1] PID: 95282
+[chrome #1-1] Specs: /Users/wswebcreation/protractor-flake-tests/features/flakey.feature
+[chrome #1-1]
+[chrome #1-1] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #1-1] Feature: Fill a form
+[chrome #1-1]
+[chrome #1-1]   Scenario: Fill form with minimal data
+[chrome #1-1]     Given I am on the form page
+[chrome #1-1]     When I fill the form with the following details
+[chrome #1-1]       | field  | value |
+[chrome #1-1]       | input  | Hello |
+[chrome #1-1]       | select | Male  |
+[chrome #1-1] Specs: /Users/wswebcreation/protractor-flake-tests/features/flakey.feature
+[chrome #1-1]
+[chrome #1-1] Failures:
+[chrome #1-1]
+[chrome #1-1] 1) Scenario: Fill form with minimal data
+[chrome #1-1]    Step: When I fill the form with the following details - features/flakey.feature:5
+[chrome #1-1]    Step Definition: step_definitions/form.steps.js:16
+[chrome #1-1]    Message:
+[chrome #1-1]      ElementNotVisibleError: element not visible
+[chrome #1-1]        (Session info: chrome=52.0.2743.116)
+[chrome #1-1]        (Driver info: chromedriver=2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4),platform=Mac OS X 10.11.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+[chrome #1-1]      Command duration or timeout: 13 milliseconds
+[chrome #1-1]      Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
+[chrome #1-1]      System info: host: 'MacBook-Pro-van-Wim-3.local', ip: '192.168.1.15', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_25'
+[chrome #1-1]      Driver info: org.openqa.selenium.chrome.ChromeDriver
+[chrome #1-1]      Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={chromedriverVersion=2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4), userDataDir=/var/folders/sg/zhl9hkyn40gf96ydvm7s93kw0000gn/T/.org.chromium.Chromium.KEUAbN}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=52.0.2743.116, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+[chrome #1-1]      Session ID: b32be51ef368d5c081a9fb5d445aa262
+[chrome #1-1]        at new bot.Error (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/atoms/error.js:108:18)
+[chrome #1-1]        at Object.bot.response.checkResponse (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/atoms/response.js:109:9)
+[chrome #1-1]        at /Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:379:20
+[chrome #1-1]        at [object Object].promise.ControlFlow.runInFrame_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:1857:20)
+[chrome #1-1]        at [object Object].goog.defineClass.notify (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2448:25)
+[chrome #1-1]        at [object Object].promise.Promise.notify_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:564:12)
+[chrome #1-1]        at Array.forEach (native)
+[chrome #1-1]        at [object Object].promise.Promise.notifyAll_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:553:15)
+[chrome #1-1]        at goog.async.run.processWorkQueue (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/async/run.js:130:15)
+[chrome #1-1]        at process._tickCallback (node.js:377:9)
+[chrome #1-1]
+[chrome #1-1]      Error
+[chrome #1-1]        at [object Object].ElementArrayFinder.applyAction_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/protractor/lib/element.js:392:21)
+[chrome #1-1]        at [object Object].self.(anonymous function) [as click] (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/protractor/lib/element.js:76:19)
+[chrome #1-1]        at [object Object].self.(anonymous function) [as click] (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/protractor/lib/element.js:721:11)
+[chrome #1-1]        at /Users/wswebcreation/protractor-flake-tests/node_modules/form-pageobjects/lib/inputselect.js:28:80
+[chrome #1-1]        at /Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/protractor/lib/element.js:683:16
+[chrome #1-1]        at [object Object].promise.ControlFlow.runInFrame_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:1857:20)
+[chrome #1-1]        at [object Object].goog.defineClass.notify (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:2448:25)
+[chrome #1-1]        at [object Object].promise.Promise.notify_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:564:12)
+[chrome #1-1]        at Array.forEach (native)
+[chrome #1-1]        at [object Object].promise.Promise.notifyAll_ (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/../webdriver/promise.js:553:15)
+[chrome #1-1]        at goog.async.run.processWorkQueue (/Users/wswebcreation/protractor-flake-tests/node_modules/protractor-flake/node_modules/selenium-webdriver/lib/goog/async/run.js:130:15)
+[chrome #1-1]        at process._tickCallback (node.js:377:9)
+[chrome #1-1]
+[chrome #1-1]
+[chrome #1-1] 1 scenario (1 failed)
+[chrome #1-1] 4 steps (1 failed, 1 skipped, 2 passed)
+[chrome #1-1] 0m11.880s
 
 [launcher] 1 instance(s) of WebDriver still running
-F
+.
 ------------------------------------
-[firefox #11-1] PID: 34086
-[firefox #11-1] Specs: /Users/wswebcreation/test/e2e/features/functional/flakey.feature
-[firefox #11-1] 
-[firefox #11-1] Using the selenium server at http://localhost:4444/wd/hub
-[firefox #11-1] Feature: Flake unit tests
-[firefox #11-1] 
-[firefox #11-1]   Scenario: A flakey scenario
-[firefox #11-1]     Then a flakey integration test fails for firefox
-[firefox #11-1] 
-[firefox #11-1] Failures:
-[firefox #11-1] 
-[firefox #11-1] 1) Scenario: A flakey scenario - test/e2e/features/functional/flakey.feature:6
-[firefox #11-1]    Step: Then a flakey integration test fails for firefox - test/e2e/features/functional/flakey.feature:7
-[firefox #11-1]    Step Definition: test/e2e/step_definitions/functional.steps.js:56
-[firefox #11-1]    Message:
-[firefox #11-1]      AssertionError: expected true to equal false
-[firefox #11-1]          at World.<anonymous> (/Users/wswebcreation/test/e2e/step_definitions/functional.steps.js:59:32)
-[firefox #11-1]          at doNTCallback0 (node.js:428:9)
-[firefox #11-1]          at process._tickCallback (node.js:357:13)
-[firefox #11-1] 
-[firefox #11-1] 1 scenario (1 failed)
-[firefox #11-1] 1 step (1 failed)
-[firefox #11-1] 0m00.116s
+[chrome #1-0] PID: 95281
+[chrome #1-0] Specs: /Users/wswebcreation/protractor-flake-tests/features/another.flakey.feature
+[chrome #1-0]
+[chrome #1-0] Using the selenium server at http://localhost:4444/wd/hub
+[chrome #1-0] @contact
+[chrome #1-0] Feature: Contact options
+[chrome #1-0]
+[chrome #1-0]   Scenario Outline: Open contact options
+[chrome #1-0]     Given I am on the homepage
+[chrome #1-0]     When I select Chat
+[chrome #1-0]     Then the Chat window should be shown
+[chrome #1-0] Specs: /Users/wswebcreation/protractor-flake-tests/features/another.flakey.feature
+[chrome #1-0]
+[chrome #1-0]   Scenario Outline: Open contact options
+[chrome #1-0]     Given I am on the homepage
+[chrome #1-0]     When I select Call
+[chrome #1-0]     Then the Call window should be shown
+[chrome #1-0]
+[chrome #1-0]   Scenario Outline: Open contact options
+[chrome #1-0]     Given I am on the homepage
+[chrome #1-0]     When I select E-mail
+[chrome #1-0]     Then the E-mail window should be shown
+[chrome #1-0]
+[chrome #1-0] Failures:
+[chrome #1-0]
+[chrome #1-0] 1) Scenario: Open contact options - features/another.flakey.feature:14
+[chrome #1-0]    Step: Then the Chat window should be shown - features/another.flakey.feature:10
+[chrome #1-0]    Step Definition: step_definitions/contact.steps.js:21
+[chrome #1-0]    Message:
+[chrome #1-0]      AssertionError: expected false to equal true
+[chrome #1-0]
+[chrome #1-0]
+[chrome #1-0]
+[chrome #1-0] 4 scenarios (1 failed, 3 passed)
+[chrome #1-0] 16 steps (1 failed, 15 passed)
+[chrome #1-0] 0m20.286s
 
 [launcher] 0 instance(s) of WebDriver still running
-[launcher] chrome #01-0 failed 1 test(s)
-[launcher] firefox #11-0 failed 1 test(s)
-[launcher] chrome #01-1 passed
-[launcher] firefox #11-1 failed 1 test(s)
-[launcher] overall: 3 failed spec(s)
-[launcher] Process exited with error code 1
->> 
-Warning: Tests failed, protractor exited with code: 1 Use --force to continue.
-
-Aborted due to warnings.
+[launcher] chrome #1-2 passed
+[launcher] chrome #1-3 failed with exit code: 1
+[launcher] chrome #1-1 failed 1 test(s)
+[launcher] chrome #1-0 failed 1 test(s)
+[launcher] overall: 2 failed spec(s) and 1 process(es) failed to complete
+[launcher] Process exited with error code 100

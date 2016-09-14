@@ -105,13 +105,21 @@ describe('Protractor Flake', () => {
       it('removes --suite argument from protractorArgs if it is passed', () => {
         protractorFlake({
           maxAttempts: 3,
-          protractorArgs: ['--suite=fail']
+          protractorArgs: [
+            '--suite=fail',
+            '--suite', 'fail',
+            '--should-remain=yes'
+          ]
         })
 
         spawnStub.dataCallback(failedShardedTestOutput)
         spawnStub.endCallback(1)
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
+        expect(spawnStub).to.have.been.calledWith('node', [
+          pathToProtractor(),
+          '--should-remain=yes',
+          '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'
+        ])
       })
 
       it('does not remove --suite for first test run', () => {
@@ -128,22 +136,30 @@ describe('Protractor Flake', () => {
       it('removes --specs argument from protractorArgs if it is passed', () => {
         protractorFlake({
           maxAttempts: 3,
-          protractorArgs: ['--specs=specs/fail']
+          protractorArgs: [
+            '--specs=specs/fail',
+            '--should-remain=yes',
+            '--specs', 'specs/fail'
+          ]
         })
 
         spawnStub.dataCallback(failedShardedTestOutput)
         spawnStub.endCallback(1)
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
+        expect(spawnStub).to.have.been.calledWith('node', [
+          pathToProtractor(),
+          '--should-remain=yes',
+          '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'
+        ])
       })
 
       it('does not remove --specs for first test run', () => {
         protractorFlake({
           maxAttempts: 3,
-          protractorArgs: ['--specs=specs/fail']
+          protractorArgs: ['--specs=specs/fail', '--specs', 'specs/fail']
         })
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail'])
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail', '--specs', 'specs/fail'])
       })
     })
   })
