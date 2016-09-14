@@ -53,9 +53,12 @@ export default function (options = {}, callback = function noop () {}) {
 
     let protractorArgs = [protractorBinPath].concat(parsedOptions.protractorArgs)
     let output = ''
-
     if (specFiles.length) {
-      protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)/.test(arg))
+      protractorArgs = protractorArgs.filter((arg) => !/^--suite=/.test(arg))
+      let specIndex = protractorArgs.indexOf('--specs')
+      if (specIndex > -1) {
+        protractorArgs.splice(specIndex, 2)
+      }
       protractorArgs.push('--specs', specFiles.join(','))
     }
 

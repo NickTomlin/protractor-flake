@@ -128,7 +128,7 @@ describe('Protractor Flake', () => {
       it('removes --specs argument from protractorArgs if it is passed', () => {
         protractorFlake({
           maxAttempts: 3,
-          protractorArgs: ['--specs=specs/fail']
+          protractorArgs: ['--specs', '/specs/fail']
         })
 
         spawnStub.dataCallback(failedShardedTestOutput)
@@ -140,10 +140,10 @@ describe('Protractor Flake', () => {
       it('does not remove --specs for first test run', () => {
         protractorFlake({
           maxAttempts: 3,
-          protractorArgs: ['--specs=specs/fail']
+          protractorArgs: ['--specs', '/specs/fail']
         })
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail'])
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs', '/specs/fail'])
       })
     })
   })
