@@ -13,6 +13,17 @@ const DEFAULT_OPTIONS = {
   parser: 'standard'
 }
 
+function filterArgs (protractorArgs) {
+  protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)=/.test(arg));
+  ['--suite', '--specs'].forEach((item) => {
+    let index = protractorArgs.indexOf(item)
+    if (index !== -1) {
+      protractorArgs.splice(index, 2)
+    }
+  })
+  return protractorArgs
+}
+
 export default function (options = {}, callback = function noop () {}) {
   let parsedOptions = Object.assign(DEFAULT_OPTIONS, options)
   let parser = getParser(parsedOptions.parser)
@@ -53,12 +64,9 @@ export default function (options = {}, callback = function noop () {}) {
 
     let protractorArgs = [protractorBinPath].concat(parsedOptions.protractorArgs)
     let output = ''
+
     if (specFiles.length) {
-      protractorArgs = protractorArgs.filter((arg) => !/^--suite=/.test(arg))
-      let specIndex = protractorArgs.indexOf('--specs')
-      if (specIndex > -1) {
-        protractorArgs.splice(specIndex, 2)
-      }
+      protractorArgs = filterArgs(protractorArgs)
       protractorArgs.push('--specs', specFiles.join(','))
     }
 
