@@ -69,8 +69,7 @@ multiCapabilities = [
 When no `Specs:` are printed in the logging Protractor will run the Protractor command again which means that all the specs are run on **ALL** the instances (also the succeeded specs).
 
 ### Keep in mind
-Keep in mind that if the testsuite holds multiple featurefiles and only 1 featurefile is flakey the following will occur
-For exaple
+Keep in mind that if the testsuite holds multiple featurefiles and only 1 featurefile is flakey the following will occur. For example:
 * Run 1:
   * 2 featurefiles are run 
   * 1 is flakey => `protractor-flake` will parse the output, finds 1 failed specs output (see table) and reruns protractor
