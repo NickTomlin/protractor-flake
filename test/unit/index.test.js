@@ -189,4 +189,55 @@ describe('Protractor Flake', () => {
       expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor()], { cwd: './' })
     })
   })
+
+  context('retryArgs', () => {
+
+    it('does not use retryArgs with only 1 attempt', function () {
+      protractorFlake({
+        maxAttempts: 1,
+        retryArgs: '--shouldNotBePassed=true'
+      });
+
+      spawnStub.dataCallback(failedShardedTestOutput);
+      spawnStub.endCallback(1);
+
+      expect(spawnStub).to.have.been.calledWith('node', [
+        pathToProtractor()
+      ]);
+    });
+
+    it('passes retryArgs with 2 or more attempts as a string', function () {
+      protractorFlake({
+        maxAttempts: 2,
+        retryArgs: '--shouldBePassed=true,--shouldNotBePassed=false'
+      });
+
+      spawnStub.dataCallback(failedShardedTestOutput);
+      spawnStub.endCallback(1);
+
+      expect(spawnStub).to.have.been.calledWith('node', [
+        pathToProtractor(),
+        '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js',
+        '--shouldBePassed=true', '--shouldNotBePassed=false'
+      ]);
+    });
+
+    it('passes retryArgs with 2 or more attempts as an array', function () {
+      protractorFlake({
+        maxAttempts: 3,
+        retryArgs: ['--shouldNotBePassed=false', '--shouldBePassed=true']
+      });
+
+      spawnStub.dataCallback(failedShardedTestOutput);
+      spawnStub.endCallback(1);
+
+      expect(spawnStub).to.have.been.calledWith('node', [
+        pathToProtractor(),
+        '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js',
+        '--shouldNotBePassed=false',
+        '--shouldBePassed=true'
+      ]);
+    });
+
+  });
 })

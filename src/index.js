@@ -11,7 +11,7 @@ const DEFAULT_OPTIONS = {
   maxAttempts: 3,
   protractorArgs: DEFAULT_PROTRACTOR_ARGS,
   parser: 'standard',
-  retryArgs: ''
+  retryArgs: []
 }
 
 function filterArgs (protractorArgs) {
@@ -71,8 +71,14 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs.push('--specs', specFiles.join(','));
 
       //Add parameters to set/override values in protractor.conf.js file in event of spec failure
-      if (parsedOptions.retryArgs.length){
-        protractorArgs = protractorArgs.concat(parsedOptions.retryArgs.split(','));
+      if (parsedOptions.retryArgs){
+        let args = [];
+        if (Array.isArray(parsedOptions.retryArgs)){
+          args = parsedOptions.retryArgs;
+        } else if (typeof parsedOptions.retryArgs === 'string' || parsedOptions.retryArgs instanceof String) {
+          args = parsedOptions.retryArgs.split(',')
+        }
+        protractorArgs = protractorArgs.concat(args);
       }
     }
 
