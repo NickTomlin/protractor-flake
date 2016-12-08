@@ -1,6 +1,7 @@
 'use strict';
 
-var JOB_NAME = 'Flake';
+var JOB_NUMBER = (process.env.TRAVIS_JOB_NUMBER || '')
+var JOB_NAME = 'Flake' + JOB_NUMBER
 
 exports.config = {
   specs: [
@@ -9,15 +10,17 @@ exports.config = {
   ],
 
   capabilities: {
-    browserName: process.platform === 'darwin' ? 'chrome' : 'firefox',
+    browserName: 'chrome',
     name: JOB_NAME,
     shardTestFiles: true,
-    maxInstances: 2
+    maxInstances: 2,
+    'tunnel-identifier': JOB_NUMBER
   },
 
-  baseUrl: 'http://localhost:3000/',
+  sauceUser: process.env.SAUCE_USERNAME,
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
 
-  directConnect: true,
+  baseUrl: 'http://localhost:3000/',
 
   framework: 'jasmine',
 

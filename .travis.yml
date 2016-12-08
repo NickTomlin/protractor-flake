@@ -21,3 +21,8 @@ after_success:
   - export $(cat .to_export_back)
   - npm run semantic-release
 script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test
+addons:
+  sauce_connect:
+    username: pluckdeep
+  jwt:
+    secure: "YPCvwHU+vzXfC6CCS3il2BJOd8tpcgnUv7VoTOtYXJN9LHw5AvVDTw6D3uqm7A++BeWOPEsGHLYkgBuLtAxzT1gQc0G4Gkg8w8ykkTZMQ+1r3D+i/J1r9GiNyn4PGDy7DIcgU8+TxNh2TG6x+MqU6fhWIeJY4aoht1Ux/DVNnUfk21s5sXJjpn7lnVXGjGeUIqIt1rq9jvpC5XOsBDKdoo/3PICptdm/77Ej4v6K61VU3TNdJ9fvjpA7lVHDv4hfPGO8h3d0aBFxkCAXHUqhNjmpzqH8O5qozU0R4drMSa1wEdGhld77PGs8LNDbCFMfHkOY59A4aYFyEI7iAg+AvlZ1O1rV3UXfWPYzQsWvVJCZgV0WWioXi8ariStc+VRfVp5eVegw9d64vXzmD76p5sJL4Jqs4bHfYleb7MMDHOBJg3JEyowI3IMVqGBSlEbCxUz8fCkSC0a+BbL1xI3amaQNBDv58Fb/ooF78bkAt4uzPYxA005pGzudVgSKVGspXpDpkwhANGH9kbZRTSzif0po3jy6y2etZNZwCZUWmz7t0aHvFXj5joWJw54Oj5u/zAn9X45e41xsn0p2WiOdNKshr1xajbkeBRuaNqDbnUGQCxA/Ti9wBGSXAaVhDRHmnkkvKAS/OtaDe5pU7TA8IAdmHDphd8GyAxhIQL9GH+k="
