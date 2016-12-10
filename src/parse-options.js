@@ -1,10 +1,12 @@
 import {resolve} from 'path'
 
-const DEFAULT_PROTRACTOR_ARGS = []
 const DEFAULT_OPTIONS = {
   nodeBin: 'node',
   maxAttempts: 3,
-  protractorArgs: DEFAULT_PROTRACTOR_ARGS,
+  protractorArgs: [],
+  // the name of one of the included parsers
+  // a function to be used as a parser
+  // or the path to a node module that exports a parser
   parser: 'standard'
 }
 

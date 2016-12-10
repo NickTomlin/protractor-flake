@@ -1,4 +1,6 @@
-module.exports = function (output) {
+module.exports = {
+  name: 'custom parser',
+  parse (output) {
     let failedSpecs = []
     let match = null
     let FAILED_LINES = /custom failure trace: (.*)/g
@@ -9,4 +11,5 @@ module.exports = function (output) {
     }
 
     return failedSpecs
+  }
 }

@@ -60,6 +60,19 @@ describe('Protractor Flake Executable', function () {
     })
   })
 
+  it.only('integration: requires and uses a custom parser module if a "path" is provided', (done) => {
+    // this is a parser that returns 'passing-test.js'
+    // without it the tests will fail since we are using the 'always-fail' spec.
+    // not the most direct way of testing this functionality...
+    const customParserPath = resolve(__dirname, 'support/custom-parser-that-will-pass.js')
+    let proc = spawnFlake(['--max-attempts', '2', '--parser', customParserPath, '--', configPath('always-fail')])
+
+    proc.on('close', (status) => {
+      expect(status).to.equal(0)
+      done()
+    })
+  })
+
   it('integration: exits with error if invalid parser is specified', (done) => {
     let output = ''
     let proc = spawnFlake(['--max-attempts', '3', '--parser', 'foo', '--', configPath('sharded')])
