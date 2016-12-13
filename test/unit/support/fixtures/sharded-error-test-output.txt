@@ -34,6 +34,27 @@ F
 [0m[chrome #1-0] 
 
 [launcher] 1 instance(s) of WebDriver still running
+F------------------------------------
+[firefox #1-0] PID: 9864
+[firefox #1-0] Specs: /tests/a-flakey.test.js
+[firefox #1-0]
+[firefox #1-0] Using ChromeDriver directly...
+[firefox #1-0] [31mF[0m
+[firefox #1-0]
+[firefox #1-0] Failures:
+[firefox #1-0]
+[firefox #1-0]   1) a flakey integration test fails, in a horribly consistent manner
+[firefox #1-0]    Message:
+[firefox #1-0]      [31mExpected false to be truthy.[0m
+[firefox #1-0]    Stacktrace:
+[firefox #1-0]      Error: Failed expectation
+[firefox #1-0]     at [object Object].<anonymous> (/tests/a-flakey.test.js:9:39)
+[firefox #1-0]
+[firefox #1-0] Finished in 1.021 seconds
+[firefox #1-0] [31m1 test, 1 assertion, 1 failure
+[0m[firefox #1-0]
+
+[launcher] 1 instance(s) of WebDriver still running
 F
 ------------------------------------
 [chrome #1-43] PID: 7548

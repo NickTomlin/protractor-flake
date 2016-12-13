@@ -20,7 +20,9 @@ export default {
       }
       if (specfile && result === 'failed') {
         if (!/node_modules/.test(specfile)) {
-          failedSpecs.push(specfile)
+          if (failedSpecs.indexOf(specfile) === -1) {
+            failedSpecs.push(specfile)
+          }
         }
       }
     })
