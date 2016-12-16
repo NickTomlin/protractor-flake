@@ -3,7 +3,7 @@ export default {
 
   parse (output) {
     let match = null
-    let failedSpecs = []
+    let failedSpecs = new Set()
     let testsOutput = output.split('------------------------------------')
     let RESULT_REG = /,\s0 failures/g
     let SPECFILE_REG = /.+Specs:\s(.*\.js)/g
@@ -20,11 +20,11 @@ export default {
       }
       if (specfile && result === 'failed') {
         if (!/node_modules/.test(specfile)) {
-          failedSpecs.push(specfile)
+          failedSpecs.add(specfile)
         }
       }
     })
 
-    return failedSpecs
+    return [...failedSpecs]
   }
 }
