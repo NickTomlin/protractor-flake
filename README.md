@@ -22,7 +22,7 @@ protractor-flake
 
 # Full options
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 -- path/to/protractor.conf.js
+protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 --retryArgs= -- path/to/protractor.conf.js
 ```
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
@@ -47,7 +47,8 @@ protractorFlake({
   // expects node to be in path
   // set this to wherever the node bin is located
   nodeBin: 'node',
-  protractorArgs: []
+  protractorArgs: [],
+  retryArgs: []
 }, function (status, output) {
   process.exit(status);
 });
@@ -64,6 +65,11 @@ You can override this with the `parser` option, specifying one of the [built in 
 - Mocha (TODO)
 - Jasmine (TODO)
 - [cucumber](docs/cucumber.md)
+
+### Additional Flags
+
+#### retryArgs
+Allows the user to pass arguments to protractor when re-running failed specs. `Accepts an array of strings or comma delimited string`
 
 # Caveats
 
