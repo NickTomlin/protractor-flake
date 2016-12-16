@@ -12,6 +12,14 @@ context('multiParser', function () {
       ])
     })
 
+    it('properly handles a single test that failed in multiple browsers', function () {
+      let output = readFixture('multicapabilities-multifailures-withspecs.txt')
+
+      expect(multiParser.parse(output)).to.eql([
+        '/tests/a-flakey.test.js'
+      ])
+    })
+
     it('properly handles sharded output with a single failure', function () {
       let output = readFixture('sharded-output-single-failure.txt')
 
