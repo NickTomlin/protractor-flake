@@ -69,13 +69,14 @@ Parsers should be defined as an object with a `parse` method (and optionally a `
 ```
 module.exports = {
   parse (protractorTestOutput) {
-    let specFiles = []
+    let failedSpecs = new Set()
     // ... analyze protractor test output
     // ... and add to specFiles
+    failedSpecs.add('path/to/failed/specfile')
 
     // specFiles to be re-run by protractor-flake
     // if an empty array is returned, all specs will be re-run
-    return specFiles;
+    return [...failedSpecs]
   }
 }
 ```
