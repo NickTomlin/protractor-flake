@@ -14,7 +14,7 @@ function handleObject (parserObject) {
   return parserObject
 }
 
-function handlePah (parserPath) {
+function handlePath (parserPath) {
   try {
     let customParserPath = require.resolve(parserPath)
     return require(customParserPath)
@@ -37,7 +37,7 @@ function getParser (parser = '') {
   }
 
   if (extname(parser)) {
-    return handlePah(parser)
+    return handlePath(parser)
   }
 
   return handleFlakeParser(parser)
