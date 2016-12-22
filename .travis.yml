@@ -20,7 +20,7 @@ after_success:
   - python travis_after_all.py
   - export $(cat .to_export_back)
   - npm run semantic-release
-script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test
+script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test && npm run test:integration
 addons:
   sauce_connect:
     username: pluckdeep
