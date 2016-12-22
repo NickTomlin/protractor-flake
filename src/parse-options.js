@@ -4,6 +4,8 @@ const DEFAULT_OPTIONS = {
   nodeBin: 'node',
   maxAttempts: 3,
   protractorArgs: [],
+  // set logColor to one of the colors available in 'chalk' - https://github.com/chalk/chalk
+  logColor: null,
   // the name of one of the included parsers
   // a function to be used as a parser
   // or the path to a node module that exports a parser
