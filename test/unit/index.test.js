@@ -1,6 +1,7 @@
 import proxyquire from 'proxyquire'
 import { resolve } from 'path'
 import readFixture from './support/read-fixture'
+import parseOptions from '../../src/parse-options'
 
 const failedSingleTestOutput = readFixture('failed-test-output.txt')
 const failedShardedTestOutput = readFixture('sharded-failed-test-output.txt')
@@ -187,6 +188,40 @@ describe('Protractor Flake', () => {
       protractorFlake({protractorSpawnOptions: { cwd: './' }})
 
       expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor()], { cwd: './' })
+    })
+
+    context('color option', (options) => {
+      it('defaults to magenta color', () => {
+        expect(parseOptions(options)).to.include({color: 'magenta'})
+      })
+
+      it('disables when color is set to (bool)false', () => {
+        let options = {
+          color: false
+        }
+        expect(parseOptions(options)).to.include({color: false})
+      })
+
+      it('disables when color is set to (string)false', () => {
+        let options = {
+          color: 'false'
+        }
+        expect(parseOptions(options)).to.include({color: false})
+      })
+
+      it('sets a custom color', () => {
+        let options = {
+          color: 'yellow'
+        }
+        expect(parseOptions(options)).to.include({color: 'yellow'})
+      })
+
+      it('throws an exeption when invalid color is used', () => {
+        let options = {
+          color: 'yolo'
+        }
+        expect(() => { parseOptions(options) }).to.throw('Invalid color option. Color must be one of the supported chalk colors: https://github.com/chalk/ansi-styles#colors')
+      })
     })
   })
 })
