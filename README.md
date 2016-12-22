@@ -58,7 +58,28 @@ protractorFlake({
 
 Protractor flake defaults to using the `standard` parser, which will typically pick up failures run from non-sharded/multi-capability test runs using Jasmine 1 + 2 and Mocha.
 
-You can override this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
+There are a few other ways that you can customize your parsing:
+
+- overriding this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
+- providing a path to a module (e.g. `/my/module.js` or `./module.js`) that exports a [parser](test/unit/support/custom-parser.js)
+- a parser (if used programatically)
+
+Parsers should be defined as an object with a `parse` method (and optionally a `name` property):
+
+```
+module.exports = {
+  parse (protractorTestOutput) {
+    let failedSpecs = new Set()
+    // ... analyze protractor test output
+    // ... and add to specFiles
+    failedSpecs.add('path/to/failed/specfile')
+
+    // specFiles to be re-run by protractor-flake
+    // if an empty array is returned, all specs will be re-run
+    return [...failedSpecs]
+  }
+}
+```
 
 #### Parser documentation
 - Mocha (TODO)

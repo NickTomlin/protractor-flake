@@ -1,17 +1,8 @@
 import {spawn} from 'child_process'
-import {resolve} from 'path'
 import {getParser} from './parsers'
+import parseOptions from './parse-options'
 import 'core-js/shim'
 import log from './logger'
-
-const DEFAULT_PROTRACTOR_ARGS = []
-
-const DEFAULT_OPTIONS = {
-  nodeBin: 'node',
-  maxAttempts: 3,
-  protractorArgs: DEFAULT_PROTRACTOR_ARGS,
-  parser: 'standard'
-}
 
 function filterArgs (protractorArgs) {
   protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)=/.test(arg));
@@ -25,9 +16,9 @@ function filterArgs (protractorArgs) {
 }
 
 export default function (options = {}, callback = function noop () {}) {
-  let parsedOptions = Object.assign(DEFAULT_OPTIONS, options)
-  let parser = getParser(parsedOptions.parser)
   let testAttempt = 1
+  let parsedOptions = parseOptions(options)
+  let parser = getParser(parsedOptions.parser)
 
   function handleTestEnd (status, output = '') {
     if (status === 0) {
@@ -52,18 +43,8 @@ export default function (options = {}, callback = function noop () {}) {
   }
 
   function startProtractor (specFiles = []) {
-    let protractorBinPath
-    if (parsedOptions.protractorPath) {
-      protractorBinPath = resolve(parsedOptions.protractorPath)
-    } else {
-      // '.../node_modules/protractor/lib/protractor.js'
-      let protractorMainPath = require.resolve('protractor')
-      // '.../node_modules/protractor/bin/protractor'
-      protractorBinPath = resolve(protractorMainPath, '../../bin/protractor')
-    }
-
-    let protractorArgs = [protractorBinPath].concat(parsedOptions.protractorArgs)
     let output = ''
+    let protractorArgs = [parsedOptions.protractorPath].concat(parsedOptions.protractorArgs)
 
     if (specFiles.length) {
       protractorArgs = filterArgs(protractorArgs)
@@ -73,7 +54,7 @@ export default function (options = {}, callback = function noop () {}) {
     let protractor = spawn(
       parsedOptions.nodeBin,
       protractorArgs,
-      options.protractorSpawnOptions
+      parsedOptions.protractorSpawnOptions
     )
 
     protractor.stdout.on('data', (buffer) => {
