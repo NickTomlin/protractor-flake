@@ -1,4 +1,4 @@
-import color_message from './color'
+import {styles, supportsColor} from 'chalk'
 
 const LOG_LEVELS = {
   debug: 1,
@@ -6,12 +6,31 @@ const LOG_LEVELS = {
   silent: 3
 }
 
-export default function (levelName, message, color) {
-  let currentLevel = LOG_LEVELS[process.env.PROTRACTOR_FLAKE_LOG_LEVEL] || LOG_LEVELS.info
-  let incomingLevel = LOG_LEVELS[levelName]
+class Logger {
+  constructor (color) {
+    this.color = null
+    if (supportsColor) {
+      this.color = color
+    }
+  }
 
-  if (incomingLevel >= currentLevel) {
-    message = color_message(message, color)
-    process.stdout.write(message)
+  log (levelName, message) {
+    let currentLevel = LOG_LEVELS[process.env.PROTRACTOR_FLAKE_LOG_LEVEL] || LOG_LEVELS.info
+    let incomingLevel = LOG_LEVELS[levelName]
+
+    if (incomingLevel >= currentLevel) {
+      message = this.colorize(message)
+      process.stdout.write(message)
+    }
+  }
+
+  colorize (message) {
+    if (this.color in styles) {
+      return styles[this.color].open + message + styles[this.color].close
+    } else {
+      return message
+    }
   }
 }
+
+export default Logger

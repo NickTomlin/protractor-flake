@@ -22,7 +22,7 @@ protractor-flake
 
 # Full options
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 -- path/to/protractor.conf.js
+protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 --color=magenta -- path/to/protractor.conf.js
 ```
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
@@ -47,6 +47,8 @@ protractorFlake({
   // expects node to be in path
   // set this to wherever the node bin is located
   nodeBin: 'node',
+  // set color to one of the colors available in 'chalk' - https://github.com/chalk/ansi-styles#colors
+  color: null,
   protractorArgs: []
 }, function (status, output) {
   process.exit(status);

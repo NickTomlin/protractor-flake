@@ -2,7 +2,7 @@ import {spawn} from 'child_process'
 import {getParser} from './parsers'
 import parseOptions from './parse-options'
 import 'core-js/shim'
-import log from './logger'
+import Logger from './logger'
 
 function filterArgs (protractorArgs) {
   protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)=/.test(arg));
@@ -19,22 +19,23 @@ export default function (options = {}, callback = function noop () {}) {
   let testAttempt = 1
   let parsedOptions = parseOptions(options)
   let parser = getParser(parsedOptions.parser)
-  let log_color = parsedOptions.logColor
+  let plainLogger = new Logger(null)
+  let colorLogger = new Logger(parsedOptions.color)
 
   function handleTestEnd (status, output = '') {
     if (status === 0) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        log('info', `\nUsing ${parser.name} to parse output\n`)
+        plainLogger.log('info', `\nUsing ${parser.name} to parse output\n`)
         let failedSpecs = parser.parse(output)
 
-        log('info', `Re-running tests: test attempt ${testAttempt}\n`, log_color)
+        colorLogger.log('info', `Re-running tests: test attempt ${testAttempt}\n`)
         if (failedSpecs.length === 0) {
-          log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n', log_color)
+          colorLogger.log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
         } else {
-          log('info', 'Re-running the following test files:\n')
-          log('info', failedSpecs.join('\n') + '\n', log_color)
+          colorLogger.log('info', 'Re-running the following test files:\n')
+          colorLogger.log('info', failedSpecs.join('\n') + '\n')
         }
         return startProtractor(failedSpecs)
       }
@@ -60,13 +61,13 @@ export default function (options = {}, callback = function noop () {}) {
 
     protractor.stdout.on('data', (buffer) => {
       let text = buffer.toString()
-      log('info', text)
+      plainLogger.log('info', text)
       output = output + text
     })
 
     protractor.stderr.on('data', (buffer) => {
       let text = buffer.toString()
-      log('info', text)
+      plainLogger.log('info', text)
       output = output + text
     })
 
