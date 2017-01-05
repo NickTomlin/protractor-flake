@@ -19,23 +19,22 @@ export default function (options = {}, callback = function noop () {}) {
   let testAttempt = 1
   let parsedOptions = parseOptions(options)
   let parser = getParser(parsedOptions.parser)
-  let plainLogger = new Logger(null)
-  let colorLogger = new Logger(parsedOptions.color)
+  let logger = new Logger(parsedOptions.color)
 
   function handleTestEnd (status, output = '') {
     if (status === 0) {
       callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
-        plainLogger.log('info', `\nUsing ${parser.name} to parse output\n`)
+        logger.log('info', `\nUsing ${parser.name} to parse output\n`)
         let failedSpecs = parser.parse(output)
 
-        colorLogger.log('info', `Re-running tests: test attempt ${testAttempt}\n`)
+        logger.log('info', `Re-running tests: test attempt ${testAttempt}\n`)
         if (failedSpecs.length === 0) {
-          colorLogger.log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
+          logger.log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
         } else {
-          colorLogger.log('info', 'Re-running the following test files:\n')
-          colorLogger.log('info', failedSpecs.join('\n') + '\n')
+          logger.log('info', 'Re-running the following test files:\n')
+          logger.log('info', failedSpecs.join('\n') + '\n')
         }
         return startProtractor(failedSpecs)
       }
@@ -61,13 +60,13 @@ export default function (options = {}, callback = function noop () {}) {
 
     protractor.stdout.on('data', (buffer) => {
       let text = buffer.toString()
-      plainLogger.log('info', text)
+      logger.protractor(text)
       output = output + text
     })
 
     protractor.stderr.on('data', (buffer) => {
       let text = buffer.toString()
-      plainLogger.log('info', text)
+      logger.protractor(text)
       output = output + text
     })
 
