@@ -1,4 +1,4 @@
-import {styles, supportsColor} from 'chalk'
+import chalk from 'chalk'
 
 const LOG_LEVELS = {
   debug: 1,
@@ -9,7 +9,7 @@ const LOG_LEVELS = {
 class Logger {
   constructor (color) {
     this.color = null
-    if (supportsColor) {
+    if (chalk.supportsColor) {
       this.color = color
     }
   }
@@ -25,8 +25,8 @@ class Logger {
   }
 
   colorize (message) {
-    if (this.color in styles) {
-      return styles[this.color].open + message + styles[this.color].close
+    if (this.color in chalk.styles) {
+      return chalk[this.color](message)
     } else {
       return message
     }
