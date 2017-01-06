@@ -5,8 +5,9 @@ const DEFAULT_OPTIONS = {
   nodeBin: 'node',
   maxAttempts: 3,
   protractorArgs: [],
-  // set color to true to use a default color or set to one of the colors available at 'chalk' - https://github.com/chalk/ansi-styles#colors
-  color: true,
+  // set color to one of the colors available at 'chalk' - https://github.com/chalk/ansi-styles#colors
+  // set false to disable coloring
+  color: 'magenta',
   // the name of one of the included parsers
   // a function to be used as a parser
   // or the path to a node module that exports a parser
@@ -17,9 +18,9 @@ function parseOptions (providedOptions) {
   let options = Object.assign({}, DEFAULT_OPTIONS, providedOptions)
 
   // normalizing options.color to be a boolean or a color value
-  options.color = (options.color === 'true') ? true : options.color
+  options.color = (options.color === 'false' || options.color === false) ? false : options.color
 
-  if (!(options.color === true || options.color in styles)) {
+  if (!(options.color === false || options.color in styles)) {
     throw new Error('Invalid color option. Set color to true or to one of the value from https://github.com/chalk/ansi-styles#colors')
   }
 
