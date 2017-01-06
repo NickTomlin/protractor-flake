@@ -47,7 +47,7 @@ protractorFlake({
   // expects node to be in path
   // set this to wherever the node bin is located
   nodeBin: 'node',
-  // set color to one of the colors available in 'chalk' - https://github.com/chalk/ansi-styles#colors
+  // set color to true to use a default color or set to one of the colors available at 'chalk' - https://github.com/chalk/ansi-styles#colors
   color: null,
   protractorArgs: []
 }, function (status, output) {

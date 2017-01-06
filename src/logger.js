@@ -11,14 +11,10 @@ const DEFAULT_COLOR = 'magenta'
 
 class Logger {
   constructor (color) {
-    this.color = null
-    if (chalk.supportsColor) {
-      if (color == "true") {
-        this.color = DEFAULT_COLOR
-      }
-      else {
-        this.color = color
-      }
+    if (color === true) {
+      this.color = DEFAULT_COLOR
+    } else {
+      this.color = color
     }
   }
 
