@@ -13,11 +13,6 @@ const DEFAULT_OPTIONS = {
   parser: 'standard'
 }
 
-function OptionsException (message) {
-  this.message = message
-  this.name = 'OptionsException'
-}
-
 function parseOptions (providedOptions) {
   let options = Object.assign({}, DEFAULT_OPTIONS, providedOptions)
 
@@ -25,7 +20,7 @@ function parseOptions (providedOptions) {
   options.color = (options.color === 'true' || options.color === true) ? true : options.color
 
   if (options.color !== true && options.color !== null && !(options.color in styles)) {
-    throw new OptionsException('Invalid color option. Set color to true or to one of the value from https://github.com/chalk/ansi-styles#colors')
+    throw new Error('Invalid color option. Set color to true or to one of the value from https://github.com/chalk/ansi-styles#colors')
   }
 
   if (options.protractorPath) {
