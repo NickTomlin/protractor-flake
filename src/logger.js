@@ -7,15 +7,9 @@ const LOG_LEVELS = {
   silent: 4
 }
 
-const DEFAULT_COLOR = 'magenta'
-
 class Logger {
   constructor (color) {
-    if (color === true) {
-      this.color = DEFAULT_COLOR
-    } else {
       this.color = color
-    }
   }
 
   log (levelName, message, useColor = true) {
@@ -33,7 +27,7 @@ class Logger {
   }
 
   colorize (message, useColor) {
-    if (chalk.supportsColor && this.color && useColor) {
+    if (useColor && chalk.supportsColor && this.color) {
       return chalk[this.color](message)
     } else {
       return message
