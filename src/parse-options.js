@@ -21,8 +21,6 @@ function parseOptions (providedOptions) {
   if (!(options.color in styles)) {
     if (options.color === false || options.color === 'false') {
       options.color = false
-    } else if (options.color === true || options.color === 'true') {
-      options.color = DEFAULT_OPTIONS.color
     } else {
       throw new Error('Invalid color option. Color must be one of the supported chalk colors: https://github.com/chalk/ansi-styles#colors')
     }

@@ -9,7 +9,7 @@ const LOG_LEVELS = {
 
 class Logger {
   constructor (color) {
-      this.color = color
+    this.color = color
   }
 
   log (levelName, message, useColor = true) {
