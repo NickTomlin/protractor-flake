@@ -15,12 +15,21 @@ context('standardParser', function () {
       expect(standardParser.parse(output)).to.eql([])
     })
 
-    it('properly handles jasmine2 output', function () {
+    it('properly handles jasmine2 <anonymous> output', function () {
       let output = readFixture('failed-jasmine2-test-output.txt')
 
       expect(standardParser.parse(output)).to.eql([
         '/tests/another-flakey.test.js',
         '/tests/flakey.test.js'
+      ])
+    })
+
+    it('properly handles jasmine2 `it` output', function () {
+      let output = readFixture('failed-jasminewd2-it-test-output.txt')
+
+      expect(standardParser.parse(output)).to.eql([
+        '/opt/superdesk/client-core/spec/search_spec.js',
+        '/opt/superdesk/client-core/spec/analytics_spec.js'
       ])
     })
 

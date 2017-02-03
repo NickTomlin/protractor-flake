@@ -1,0 +1,84 @@
+Failures:
+1) search can search by search field
+  Message:
+    Expected 0 to be 1.
+  Stack:
+    Error: Failed expectation
+        at Object.it (/opt/superdesk/client-core/spec/search_spec.js:135:49)
+        at /opt/superdesk/client-core/node_modules/jasminewd2/index.js:94:23
+        at new ManagedPromise (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1082:7)
+        at controlFlowExecute (/opt/superdesk/client-core/node_modules/jasminewd2/index.js:80:18)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2820:25)
+        at /opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:639:7
+  Message:
+    Failed: Index out of bound. Trying to access element at index: 0, but there are only 0 elements that match locator By(css selector, .media-box)
+  Stack:
+    NoSuchElementError: Index out of bound. Trying to access element at index: 0, but there are only 0 elements that match locator By(css selector, .media-box)
+        at /opt/superdesk/client-core/node_modules/protractor/built/element.js:291:27
+        at ManagedPromise.invokeCallback_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1379:14)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2775:27)
+        at /opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:639:7
+        at process._tickCallback (internal/process/next_tick.js:103:7)Error
+        at ElementArrayFinder.applyAction_ (/opt/superdesk/client-core/node_modules/protractor/built/element.js:461:27)
+        at ElementArrayFinder._this.(anonymous function) [as getText] (/opt/superdesk/client-core/node_modules/protractor/built/element.js:103:30)
+        at ElementFinder.(anonymous function) [as getText] (/opt/superdesk/client-core/node_modules/protractor/built/element.js:829:22)
+        at Object.it (/opt/superdesk/client-core/spec/search_spec.js:136:51)
+        at /opt/superdesk/client-core/node_modules/jasminewd2/index.js:94:23
+        at new ManagedPromise (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1082:7)
+        at controlFlowExecute (/opt/superdesk/client-core/node_modules/jasminewd2/index.js:80:18)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2820:25)
+    From: Task: Run it("can search by search field") in control flow
+        at Object.<anonymous> (/opt/superdesk/client-core/node_modules/jasminewd2/index.js:79:14)
+        at /opt/superdesk/client-core/node_modules/jasminewd2/index.js:16:5
+        at ManagedPromise.invokeCallback_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1379:14)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2775:27)
+    From asynchronous test:
+    Error
+        at Suite.describe (/opt/superdesk/client-core/spec/search_spec.js:14:5)
+        at Object.<anonymous> (/opt/superdesk/client-core/spec/search_spec.js:9:1)
+        at Module._compile (module.js:571:32)
+        at Object.Module._extensions..js (module.js:580:10)
+        at Module.load (module.js:488:32)
+        at tryModuleLoad (module.js:447:12)
+2) search can action on items
+  Message:
+    Expected false to be true.
+  Stack:
+    Error: Failed expectation
+        at Object.it (/opt/superdesk/client-core/spec/search_spec.js:194:41)
+        at /opt/superdesk/client-core/node_modules/jasminewd2/index.js:94:23
+        at new ManagedPromise (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1082:7)
+        at controlFlowExecute (/opt/superdesk/client-core/node_modules/jasminewd2/index.js:80:18)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2820:25)
+        at /opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:639:7
+3) analytics manage activity reports
+  Message:
+    Expected 2 to equal 1.
+  Stack:
+    Error: Failed expectation
+        at Object.it (/opt/superdesk/client-core/spec/analytics_spec.js:68:47)
+        at /opt/superdesk/client-core/node_modules/jasminewd2/index.js:94:23
+        at new ManagedPromise (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:1082:7)
+        at controlFlowExecute (/opt/superdesk/client-core/node_modules/jasminewd2/index.js:80:18)
+        at TaskQueue.execute_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+        at TaskQueue.executeNext_ (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+        at asyncRun (/opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:2820:25)
+        at /opt/superdesk/client-core/node_modules/selenium-webdriver/lib/promise.js:639:7
+        at process._tickCallback (internal/process/next_tick.js:103:7)
+
+3 specs, 3 failures
+Finished in 162.22 seconds
+[17:33:44] I/launcher - 0 instance(s) of WebDriver still running
+[17:33:44] I/launcher - chrome #01 failed 1 test(s)
+[17:33:44] I/launcher - overall: 1 failed spec(s)
+[17:33:44] E/launcher - Process exited with error code 1
