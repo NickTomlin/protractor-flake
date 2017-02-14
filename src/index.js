@@ -36,16 +36,20 @@ export default function (options = {}, callback = function noop () {}) {
           logger.log('info', 'Re-running the following test files:\n')
           logger.log('info', failedSpecs.join('\n') + '\n')
         }
-        return startProtractor(failedSpecs)
+        return startProtractor(failedSpecs, true)
       }
 
       callback(status, output)
     }
   }
 
-  function startProtractor (specFiles = []) {
+  function startProtractor (specFiles = [], retry = false) {
     let output = ''
     let protractorArgs = [parsedOptions.protractorPath].concat(parsedOptions.protractorArgs)
+
+    if (retry) {
+      protractorArgs.push('--params.flake.retry', true)
+    }
 
     if (specFiles.length) {
       protractorArgs = filterArgs(protractorArgs)
