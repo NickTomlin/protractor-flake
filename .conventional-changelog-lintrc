@@ -1,0 +1,9 @@
+{
+  "extends": ["angular"],
+  "rules": {
+    "subject-tense": "never",
+    "body-tense": "never",
+    "footer-tense": "never",
+    "lang": "never"
+  }
+}
