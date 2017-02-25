@@ -68,7 +68,7 @@ There are a few other ways that you can customize your parsing:
 
 Parsers should be defined as an object with a `parse` method (and optionally a `name` property):
 
-```
+```javascript
 module.exports = {
   parse (protractorTestOutput) {
     let failedSpecs = new Set()
