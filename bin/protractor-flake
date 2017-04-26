@@ -4,7 +4,8 @@ var argv = require('minimist')(process.argv.slice(2), {
   '--': true,
   alias: {
     maxAttempts: 'max-attempts',
-    protractorPath: 'protractor-path'
+    protractorPath: 'protractor-path',
+    nodeBin: 'node-bin'
   }
 });
 
