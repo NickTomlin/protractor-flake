@@ -42,7 +42,7 @@
     "mversion": "^1.10.0",
     "protractor": "^4.0.11",
     "proxyquire": "^1.6.0",
-    "semantic-release": "^4.3.4",
+    "semantic-release": "^6.3.6",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0",
     "standard": "^5.4.1"
@@ -79,5 +79,6 @@
       "browser",
       "$"
     ]
-  }
+  },
+  "version": "0.0.0-placeholder"
 }

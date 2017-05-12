@@ -10,15 +10,11 @@ node_js:
   - 5
   - 6
 before_install:
-  - npm i -g npm@^2.0.0
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 before_script:
   - npm prune
-  - 'curl -Lo travis_after_all.py https://git.io/vLSON'
 after_success:
-  - python travis_after_all.py
-  - export $(cat .to_export_back)
   - npm run semantic-release
 script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test && npm run test:integration
 addons:
