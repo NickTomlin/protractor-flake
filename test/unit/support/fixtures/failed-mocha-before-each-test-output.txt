@@ -1,0 +1,58 @@
+ret for "should be able to capture, retake and delete images for a prescription":
+   ScriptTimeoutError: Timed out waiting for asynchronous Angular tasks to finish after 15 seconds. This may be because the current page is not an Angular application. Please see the FAQ for more details: https://github.com/angular/protractor/blob/master/docs/timeouts.md#waiting-for-angular
+ile waiting for element with locator - Locator: By(css selector, .sidebar__user-name)
+    at WebDriverError (node_modules/selenium-webdriver/lib/error.js:27:5)
+    at ScriptTimeoutError (node_modules/selenium-webdriver/lib/error.js:203:5)
+    at Object.checkLegacyResponse (node_modules/selenium-webdriver/lib/error.js:505:15)
+    at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:509:13)
+    at doSend.then.response (node_modules/selenium-webdriver/lib/http.js:440:13)
+    at process._tickDomainCallback (internal/process/next_tick.js:135:7)
+    at WebDriver.schedule (node_modules/selenium-webdriver/lib/webdriver.js:816:17)
+    at ProtractorBrowser.executeAsyncScript_ (node_modules/protractor/lib/browser.ts:609:24)
+    at angularAppRoot.then (node_modules/protractor/lib/browser.ts:643:23)
+    at ManagedPromise.invokeCallback_ (node_modules/selenium-webdriver/lib/promise.js:1366:14)
+    at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+    at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+    at asyncRun (node_modules/selenium-webdriver/lib/promise.js:2813:27)
+    at node_modules/selenium-webdriver/lib/promise.js:676:7
+    at process._tickDomainCallback (internal/process/next_tick.js:135:7)
+    at pollCondition (node_modules/selenium-webdriver/lib/promise.js:2101:19)
+    at node_modules/selenium-webdriver/lib/promise.js:2097:7
+    at new ManagedPromise (node_modules/selenium-webdriver/lib/promise.js:1067:7)
+    at ControlFlow.promise (node_modules/selenium-webdriver/lib/promise.js:2396:12)
+    at node_modules/selenium-webdriver/lib/promise.js:2096:22
+    at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+    at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+    at asyncRun (node_modules/selenium-webdriver/lib/promise.js:2813:27)
+    at node_modules/selenium-webdriver/lib/promise.js:676:7
+    at process._tickDomainCallback (internal/process/next_tick.js:135:7)
+    at scheduleWait (node_modules/selenium-webdriver/lib/promise.js:2094:20)
+    at ControlFlow.wait (node_modules/selenium-webdriver/lib/promise.js:2408:12)
+    at WebDriver.wait (node_modules/selenium-webdriver/lib/webdriver.js:943:29)
+    at run (node_modules/protractor/lib/browser.ts:66:27)
+    at ProtractorBrowser.to.(anonymous function) [as wait] (node_modules/protractor/lib/browser.ts:74:12)
+    at test-e2e/util/session.js:156:17
+    at next (native)
+From previous event:
+    at waitForElementAsync (test-e2e/util/session.js:126:18)
+    at waitFor$Async (test-e2e/util/session.js:166:10)
+    at test-e2e/util/session.js:29:9
+    at next (native)
+From previous event:
+    at initializeSessionWithUserAsync (test-e2e/util/session.js:28:17)
+    at Object.Session.Technician.session [as initializeAsync] (test-e2e/util/session.js:54:69)
+    at test-e2e/util/session.js:131:32
+    at next (native)
+From previous event:
+    at useSessionAsync (test-e2e/util/session.js:115:18)
+    at Context.beforeEach (test-v2-e2e/filling.e2e.js:14:12)
+    at runTest (node_modules/selenium-webdriver/testing/index.js:166:22)
+    at node_modules/selenium-webdriver/testing/index.js:187:16
+    at new ManagedPromise (node_modules/selenium-webdriver/lib/promise.js:1067:7)
+    at controlFlowExecute (node_modules/selenium-webdriver/testing/index.js:186:14)
+    at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+    at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+    at asyncRun (node_modules/selenium-webdriver/lib/promise.js:2860:25)
+    at node_modules/selenium-webdriver/lib/promise.js:676:7
+From: Task: Filling "before each" hook: ret
+    at Context.ret (node_modules/selenium-webdriver/testing/index.js:185:10)
