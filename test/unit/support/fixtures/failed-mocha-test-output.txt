@@ -1,0 +1,26 @@
+1) Filling should pull hardcopy image from a previous fill:
+
+      AssertionError: expected 1 to deeply equal 3
+      + expected - actual
+
+      -1
+      +3
+      
+      at Context.<anonymous> (test-v2-e2e/filling.e2e.js:46:18)
+      at next (native)
+  From previous event:
+      at runTest (node_modules/selenium-webdriver/testing/index.js:166:22)
+      at node_modules/selenium-webdriver/testing/index.js:187:16
+      at new ManagedPromise (node_modules/selenium-webdriver/lib/promise.js:1067:7)
+      at controlFlowExecute (node_modules/selenium-webdriver/testing/index.js:186:14)
+      at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+      at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+      at asyncRun (node_modules/selenium-webdriver/lib/promise.js:2860:25)
+      at node_modules/selenium-webdriver/lib/promise.js:676:7
+  From: Task: Filling should pull hardcopy image from a previous fill
+      at Context.ret (node_modules/selenium-webdriver/testing/index.js:185:10)
+      at node_modules/selenium-webdriver/testing/index.js:104:5
+      at ManagedPromise.invokeCallback_ (node_modules/selenium-webdriver/lib/promise.js:1366:14)
+      at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+      at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+      at asyncRun (node_modules/selenium-webdriver/lib/promise.js

@@ -4,7 +4,7 @@ export default {
   parse (output) {
     let failedSpecs = new Set()
     let match = null
-    let FAILED_LINES = /at (?:\[object Object\]|Object|UserContext)\.(?:<anonymous>|it) \((([A-Za-z]:\\)?.*?):.*\)/g
+    let FAILED_LINES = /at (?:\[object Object\]|Object|Context|UserContext)\.(?:<anonymous>|it|beforeEach|afterEach|before|after) \((([A-Za-z]:\\)?.*?):.*\)/g
     while (match = FAILED_LINES.exec(output)) { // eslint-disable-line no-cond-assign
       // windows output includes stack traces from
       // webdriver so we filter those out here

@@ -47,6 +47,28 @@ context('standardParser', function () {
       ])
     })
 
+    it('properly finds specs in mocha Context based stack traces', () => {
+      const output = readFixture('failed-mocha-test-output.txt')
+
+      expect(standardParser.parse(output)).to.eql([
+        'test-v2-e2e/filling.e2e.js'
+      ])
+    })
+
+    it('properly finds specs in mocha beforeEach', () => {
+      const output = readFixture('failed-mocha-before-each-test-output.txt')
+      expect(standardParser.parse(output)).to.eql([
+        'test-v2-e2e/filling.e2e.js'
+      ])
+    })
+
+    it('properly finds specs in mocha afterEach', () => {
+      const output = readFixture('failed-mocha-after-each-test-output.txt')
+      expect(standardParser.parse(output)).to.eql([
+        'test-v2-e2e/util/reset.js'
+      ])
+    })
+
     it('handles output on windows', function () {
       let output = readFixture('failed-windows-test-output.txt')
 
