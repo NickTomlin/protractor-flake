@@ -1,0 +1,12 @@
+Hi there!
+
+Thanks for submitting an issue! Please provide the following information:
+
+- Operating system and version
+- Node.js version
+- Protractor version
+- Protractor flake version
+- Protractor configuration file
+- Output from your test suite
+
+You can collect the first few items easily with the [trouble](https://github.com/NickTomlin/node-trouble) cli `npx @nicktomlin/trouble protractor protractor-flake` (or `npm i -g @nicktomlin/trouble && trouble protractor protractor-flake`)
