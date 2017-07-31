@@ -17,13 +17,11 @@ Via the CLI:
 ```shell
 npm i -g protractor-flake
 
-# Default options
-protractor-flake
-
-# Full options
 # protractor-flake <protractor-flake-options> -- <options to be passed to protractor>
-protractor-flake --protractor-path=/path/to/protractor --parser standard --node-bin node --max-attempts=3 --color=magenta -- path/to/protractor.conf.js
+protractor-flake --parser standard  --max-attempts=3 -- path/to/protractor.conf.js
 ```
+
+See [src/parse-options.js](src/parse-options.js#L4-L15) for the full list of command line options.
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
 
