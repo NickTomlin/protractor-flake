@@ -1,0 +1,66 @@
+### Running local browser against local transaction application ###
+Version 3.1.1
+Report destination:   target/reports/report.html
+[launcher] Running 2 instances of WebDriver
+........
+------------------------------------
+[chrome #1] PID: 58317
+[chrome #1] Specs: /tests/a-working.test.coffee
+[chrome #1]
+[chrome #1] Using ChromeDriver directly...
+[chrome #1] Spec started
+[chrome #1] Started
+[chrome #1]
+[chrome #1]   The Cluster Create Page
+[chrome #1]     ✓ only saves after proper validation
+[chrome #1] .
+[chrome #1] Executed 1 of 1 specs SUCCESS in 21 secs.
+[chrome #1]
+[chrome #1]
+[chrome #1]
+[chrome #1] 1 specs, 0 failures
+[chrome #1] Finished in 20.561 seconds
+[chrome #1] Fetching browser logs...
+[chrome #1] Done fetching browser logs.
+
+[launcher] 1 instance(s) of WebDriver still running
+
+------------------------------------
+[firefox #2] PID: 58318
+[firefox #2] Specs: /tests/a-flakey.test.coffee
+[firefox #2]
+[firefox #2] Using FirefoxDriver directly...
+[firefox #2]
+[firefox #2] /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/http/util.js:89
+[firefox #2]           Error('Timed out waiting for the WebDriver server at ' + url));
+[firefox #2]           ^
+[firefox #2] Error: Timed out waiting for the WebDriver server at http://127.0.0.1:50845/hub
+[firefox #2]     at Error (native)
+[firefox #2]     at onResponse (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/http/util.js:89:11)
+[firefox #2]     at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/http/util.js:44:21
+[firefox #2]     at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/http/http.js:140:5
+[firefox #2]     at ClientRequest.<anonymous> (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/http/index.js:174:7)
+[firefox #2]     at emitOne (events.js:77:13)
+[firefox #2]     at ClientRequest.emit (events.js:169:7)
+[firefox #2]     at Socket.socketErrorListener (_http_client.js:256:9)
+[firefox #2]     at emitOne (events.js:77:13)
+[firefox #2]     at Socket.emit (events.js:169:7)
+[firefox #2] From: Task: WebDriver.createSession()
+[firefox #2]     at Function.webdriver.WebDriver.acquireSession_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:157:22)
+[firefox #2]     at Function.webdriver.WebDriver.createSession (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/webdriver.js:131:30)
+[firefox #2]     at new Driver (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/firefox/index.js:278:36)
+[firefox #2]     at [object Object].DirectDriverProvider.getNewDriver (/usr/local/lib/node_modules/protractor/lib/driverProviders/direct.js:74:16)
+[firefox #2]     at [object Object].Runner.createBrowser (/usr/local/lib/node_modules/protractor/lib/runner.js:190:37)
+[firefox #2]     at /usr/local/lib/node_modules/protractor/lib/runner.js:280:21
+[firefox #2]     at _fulfilled (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:834:54)
+[firefox #2]     at self.promiseDispatch.done (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:863:30)
+[firefox #2]     at Promise.promise.promiseDispatch (/usr/local/lib/node_modules/protractor/node_modules/q/q.js:796:13)
+[firefox #2]     at /usr/local/lib/node_modules/protractor/node_modules/q/q.js:556:49
+
+[launcher] Runner process exited unexpectedly with error code: 1
+[launcher] 0 instance(s) of WebDriver still running
+[launcher] chrome #1 passed
+[launcher] firefox #2 failed with exit code: 1
+[launcher] overall: 1 process(es) failed to complete
+Closing report
+[launcher] Process exited with error code 100

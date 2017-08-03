@@ -43,5 +43,13 @@ context('multiParser', function () {
         '/tests/a-flakey.test.js'
       ])
     })
+
+    it('properly handles error output in multicapabilities tests with coffee specs', function () {
+      let output = readFixture('multicapabilities-with-coffee-specs.txt')
+
+      expect(multiParser.parse(output)).to.eql([
+        '/tests/a-flakey.test.coffee'
+      ])
+    })
   })
 })
