@@ -60,7 +60,7 @@ describe('Protractor Flake Executable', function () {
     })
   })
 
-  it.only('integration: requires and uses a custom parser module if a "path" is provided', (done) => {
+  it('integration: requires and uses a custom parser module if a "path" is provided', (done) => {
     // this is a parser that returns 'passing-test.js'
     // without it the tests will fail since we are using the 'always-fail' spec.
     // not the most direct way of testing this functionality...
