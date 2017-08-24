@@ -1,0 +1,53 @@
+[14:29:59] I/launcher - Running 2 instances of WebDriver
+[14:30:04] I/testLogger -
+------------------------------------
+
+[14:30:04] I/testLogger - [chrome #01-1] PID: 81285
+[chrome #01-1] Specs: /tests/passing-test.js
+[chrome #01-1]
+[chrome #01-1] (node:81285) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.
+[chrome #01-1] [14:30:00] I/sauce - Using SauceLabs selenium server at https://ondemand.saucelabs.com:443/wd/hub
+[chrome #01-1] Jasmine started
+[chrome #01-1]
+[chrome #01-1]   A test that passes
+[chrome #01-1]     ✓ passes
+[chrome #01-1]
+[chrome #01-1] Executed 1 of 1 spec SUCCESS in 0.014 sec.
+[chrome #01-1] [14:30:03] I/sauce - SauceLabs results available at http://saucelabs.com/jobs/93e3737e1fa147ea9d517c0fee7ea76e
+
+[14:30:04] I/testLogger -
+
+[14:30:04] I/launcher - 1 instance(s) of WebDriver still running
+[14:30:04] I/testLogger -
+------------------------------------
+[14:30:04] I/testLogger - [chrome #01-0] PID: 81284
+[chrome #01-0] Specs: /tests/flakey.test.js
+[chrome #01-0]
+[chrome #01-0] (node:81284) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.
+[chrome #01-0] [14:30:00] I/sauce - Using SauceLabs selenium server at https://ondemand.saucelabs.com:443/wd/hub
+[chrome #01-0] Jasmine started
+[chrome #01-0]
+[chrome #01-0]   a flakey integration test
+[chrome #01-0]     ✗ fails, in a horribly consistent manner
+[chrome #01-0]       - Expected false to be truthy.
+[chrome #01-0]           at UserContext.<anonymous> (/tests/flakey.test.js:7:39)
+[chrome #01-0]           at /node_modules/protractor/node_modules/jasminewd2/index.js:112:25
+[chrome #01-0]           at new ManagedPromise (/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1067:7)
+[chrome #01-0]           at ControlFlow.promise (/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2396:12)
+[chrome #01-0]           at schedulerExecute (/node_modules/protractor/node_modules/jasminewd2/index.js:95:18)
+[chrome #01-0]           at TaskQueue.execute_ (node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2970:14)
+[chrome #01-0]           at TaskQueue.executeNext_ (node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2953:27)
+[chrome #01-0]           at asyncRun (node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2813:27)
+[chrome #01-0]           at node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:676:7
+[chrome #01-0]
+[chrome #01-0] **************************************************
+[chrome #01-0] *                    Failures                    *
+[chrome #01-0] **************************************************
+[chrome #01-0]
+[chrome #01-0] 1) a flakey integration test fails, in a horribly consistent manner
+[chrome #01-0]   - Expected false to be truthy.
+[chrome #01-0]
+[chrome #01-0] Executed 1 of 1 spec (1 FAILED) in 0.933 sec.
+[chrome #01-0] [14:30:03] I/sauce - SauceLabs results available at http://saucelabs.com/jobs/dfdb1646bae041a08b0c36cdbf3b19a5
+
+[14:30:04] I/testLogger -

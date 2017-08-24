@@ -6,6 +6,7 @@ import parseOptions from '../../src/parse-options'
 const failedSingleTestOutput = readFixture('failed-test-output.txt')
 const failedShardedTestOutput = readFixture('sharded-failed-test-output.txt')
 const failedJasmineSpecReporterTestOutput = readFixture('failed-jasmine-spec-reporter-test-output.txt')
+const failedShardedJasmineSpecReporterTestOutput = readFixture('multicapabilities-failed-jasmine-spec-reporter-test-output.txt')
 
 describe('Protractor Flake', () => {
   let spawnStub = null
@@ -98,6 +99,15 @@ describe('Protractor Flake', () => {
       protractorFlake({maxAttempts: 3})
 
       spawnStub.dataCallback(failedJasmineSpecReporterTestOutput)
+      spawnStub.endCallback(1)
+
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
+    })
+
+    it('isolates individual failed specs for sharded jasmine-spec-reporter output', () => {
+      protractorFlake({maxAttempts: 3})
+
+      spawnStub.dataCallback(failedShardedJasmineSpecReporterTestOutput)
       spawnStub.endCallback(1)
 
       expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
