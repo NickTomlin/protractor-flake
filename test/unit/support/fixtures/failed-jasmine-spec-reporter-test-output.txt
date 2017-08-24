@@ -1,0 +1,32 @@
+[08:04:24] I/launcher - Running 1 instances of WebDriver
+[08:04:24] I/direct - Using ChromeDriver directly...
+Jasmine started
+
+  a flakey integration test
+    ✗ fails, in a horribly consistent manner
+      - Expected false to be truthy.
+          at UserContext.<anonymous> (/tests/flakey.test.js:7:39)
+          at node_modules/jasminewd2/index.js:112:25
+          at new ManagedPromise (node_modules/selenium-webdriver/lib/promise.js:1067:7)
+          at ControlFlow.promise (node_modules/selenium-webdriver/lib/promise.js:2396:12)
+          at schedulerExecute (node_modules/jasminewd2/index.js:95:18)
+          at TaskQueue.execute_ (node_modules/selenium-webdriver/lib/promise.js:2970:14)
+          at TaskQueue.executeNext_ (node_modules/selenium-webdriver/lib/promise.js:2953:27)
+          at asyncRun (node_modules/selenium-webdriver/lib/promise.js:2813:27)
+          at node_modules/selenium-webdriver/lib/promise.js:676:7
+
+  A test that passes
+    ✓ passes
+
+**************************************************
+*                    Failures                    *
+**************************************************
+
+1) a flakey integration test fails, in a horribly consistent manner
+  - Expected false to be truthy.
+
+Executed 2 of 2 specs (1 FAILED) in 0.742 sec.
+[08:04:26] I/launcher - 0 instance(s) of WebDriver still running
+[08:04:26] I/launcher - chrome #01 failed 1 test(s)
+[08:04:26] I/launcher - overall: 1 failed spec(s)
+[08:04:26] E/launcher - Process exited with error code 1

@@ -38,7 +38,7 @@
     "mocha": "^2.2.5",
     "morgan": "^1.6.1",
     "mversion": "^1.10.0",
-    "protractor": "^4.0.11",
+    "protractor": "^5.1.2",
     "proxyquire": "^1.6.0",
     "semantic-release": "^6.3.6",
     "sinon": "^1.15.4",
