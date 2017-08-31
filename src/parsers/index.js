@@ -1,10 +1,9 @@
 import cucumber from './cucumber'
-import cucumberMulti from './cucumber.multi'
 import { extname } from 'path'
 import multi from './multi'
 import standard from './standard'
 
-let all = { cucumber, cucumberMulti, multi, standard }
+let all = { cucumber, multi, standard }
 
 function handleObject (parserObject) {
   if (typeof parserObject.parse !== 'function') {
