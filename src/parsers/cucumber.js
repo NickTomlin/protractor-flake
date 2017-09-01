@@ -1,5 +1,5 @@
 export default {
-  name: 'cucumberMulti',
+  name: 'cucumber',
   parse (output) {
     let match = null
     let failedSpecs = []
