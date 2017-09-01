@@ -88,9 +88,9 @@ const {defineSupportCode, Status} = require('cucumber');
 
 defineSupportCode(({After}) => {
     After(function (testCase) {
-        if (testCase.status === 'failed') {
+        if (testCase.result.status === 'failed') {
             // Log the spec to the console for protractor-flake to be able to rerun the failed specs
-            console.log('Specs:', testCase.scenario.uri);
+            console.log('Specs:', testCase.sourceLocation.uri);
         }
 
         return Promise.resolve();
