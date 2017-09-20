@@ -49,7 +49,6 @@ context('standardParser', function () {
 
     it('properly finds specs in mocha Context based stack traces', () => {
       const output = readFixture('failed-mocha-test-output.txt')
-
       expect(standardParser.parse(output)).to.eql([
         'test-v2-e2e/filling.e2e.js'
       ])
