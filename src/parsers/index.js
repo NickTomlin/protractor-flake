@@ -1,5 +1,5 @@
 import cucumber from './cucumber'
-import { extname } from 'path'
+import { resolve, extname } from 'path'
 import multi from './multi'
 import standard from './standard'
 
@@ -14,12 +14,17 @@ function handleObject (parserObject) {
 }
 
 function handlePath (parserPath) {
+  // 'my-custom-parser' or './my-custom-parser'
   try {
-    let customParserPath = require.resolve(parserPath)
-    return require(customParserPath)
-  } catch (e) {
-    throw new Error(`Invalid Custom Parser Path Specified: ${parserPath}`)
-  }
+    return require(parserPath)
+  } catch (e) {}
+
+  // /path/to/parser or ../path/to/parser
+  try {
+    return require(resolve(parserPath))
+  } catch (e) {}
+
+  throw new Error(`Invalid Custom Parser Path Specified: ${parserPath}`)
 }
 
 function handleFlakeParser (parserName) {
