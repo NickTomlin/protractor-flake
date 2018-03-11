@@ -47,6 +47,7 @@ export default function (options = {}, callback = function noop () {}) {
     let output = ''
     let protractorArgs = [parsedOptions.protractorPath].concat(parsedOptions.protractorArgs)
 
+    protractorArgs.push('--params.flake.iteration', testAttempt)
     if (retry) {
       protractorArgs.push('--params.flake.retry', true)
     }
@@ -55,7 +56,6 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs = filterArgs(protractorArgs)
       protractorArgs.push('--specs', specFiles.join(','))
     }
-
     let protractor = spawn(
       parsedOptions.nodeBin,
       protractorArgs,
