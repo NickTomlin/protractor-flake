@@ -43,7 +43,7 @@ describe('Protractor Flake', () => {
   it('uses node to run protractor', () => {
     protractorFlake()
 
-    expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor()])
+    expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
   })
 
   context('failed specs', () => {
@@ -91,8 +91,7 @@ describe('Protractor Flake', () => {
 
       spawnStub.dataCallback(failedSingleTestOutput)
       spawnStub.endCallback(1)
-
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js'])
     })
 
     it('isolates individual failed specs from jasmine-spec-reporter output', () => {
@@ -101,7 +100,7 @@ describe('Protractor Flake', () => {
       spawnStub.dataCallback(failedJasmineSpecReporterTestOutput)
       spawnStub.endCallback(1)
 
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
     })
 
     it('isolates individual failed specs for sharded jasmine-spec-reporter output', () => {
@@ -110,7 +109,7 @@ describe('Protractor Flake', () => {
       spawnStub.dataCallback(failedShardedJasmineSpecReporterTestOutput)
       spawnStub.endCallback(1)
 
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/flakey.test.js'])
     })
 
     it('isolates failed specs for sharded protractor output', () => {
@@ -119,7 +118,7 @@ describe('Protractor Flake', () => {
       spawnStub.dataCallback(failedShardedTestOutput)
       spawnStub.endCallback(1)
 
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'])
     })
 
     context('with --suite in protractorArgs', function () {
@@ -139,6 +138,7 @@ describe('Protractor Flake', () => {
         expect(spawnStub).to.have.been.calledWith('node', [
           pathToProtractor(),
           '--should-remain=yes',
+          '--params.flake.iteration', 2,
           '--params.flake.retry', true,
           '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'
         ])
@@ -150,7 +150,7 @@ describe('Protractor Flake', () => {
           protractorArgs: ['--suite=fail']
         })
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--suite=fail'])
+        expect(spawnStub).to.have.been.calledWith('node', [ pathToProtractor(), '--suite=fail', '--params.flake.iteration', 1 ])
       })
     })
 
@@ -171,6 +171,7 @@ describe('Protractor Flake', () => {
         expect(spawnStub).to.have.been.calledWith('node', [
           pathToProtractor(),
           '--should-remain=yes',
+          '--params.flake.iteration', 2,
           '--params.flake.retry', true,
           '--specs', '/tests/a-flakey.test.js,/tests/another-flakey.test.js'
         ])
@@ -182,7 +183,7 @@ describe('Protractor Flake', () => {
           protractorArgs: ['--specs=specs/fail', '--specs', 'specs/fail']
         })
 
-        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail', '--specs', 'specs/fail'])
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--specs=specs/fail', '--specs', 'specs/fail', '--params.flake.iteration', 1])
       })
     })
   })
@@ -191,25 +192,25 @@ describe('Protractor Flake', () => {
     it('allows a different path for protractor by using protractorPath option', () => {
       protractorFlake({protractorPath: '/arbitrary/path/to/protractor'})
 
-      expect(spawnStub).to.have.been.calledWith('node', ['/arbitrary/path/to/protractor'])
+      expect(spawnStub).to.have.been.calledWith('node', ['/arbitrary/path/to/protractor', '--params.flake.iteration', 1])
     })
 
     it('allows a different path for node by using nodeBin option', () => {
       protractorFlake({nodeBin: '/path/node'})
 
-      expect(spawnStub).to.have.been.calledWith('/path/node', [pathToProtractor()])
+      expect(spawnStub).to.have.been.calledWith('/path/node', [pathToProtractor(), '--params.flake.iteration', 1])
     })
 
     it('passes protractorArgs to spawned protractor process', () => {
       protractorFlake({protractorArgs: ['--suite=fail']})
 
-      expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor(), '--suite=fail'])
+      expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor(), '--suite=fail', '--params.flake.iteration', 1])
     })
 
     it('uses protractorSpawnOptions for spawned protractor process', () => {
       protractorFlake({protractorSpawnOptions: { cwd: './' }})
 
-      expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor()], { cwd: './' })
+      expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor(), '--params.flake.iteration', 1], { cwd: './' })
     })
 
     context('color option', (options) => {
