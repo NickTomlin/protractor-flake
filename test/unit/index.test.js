@@ -150,7 +150,7 @@ describe('Protractor Flake', () => {
           protractorArgs: ['--suite=fail']
         })
 
-        expect(spawnStub).to.have.been.calledWith('node', [ pathToProtractor(), '--suite=fail', '--params.flake.iteration', 1 ])
+        expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--suite=fail', '--params.flake.iteration', 1])
       })
     })
 
@@ -211,6 +211,22 @@ describe('Protractor Flake', () => {
       protractorFlake({protractorSpawnOptions: { cwd: './' }})
 
       expect(spawnStub).to.have.been.calledWithMatch('node', [pathToProtractor(), '--params.flake.iteration', 1], { cwd: './' })
+    })
+
+    it('uses protractorRetryConfig file for spawned protractor process only after first attempt', () => {
+      protractorFlake({protractorRetryConfig: __dirname + '/protractor.flake.config.js'})
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
+      spawnStub.dataCallback(failedSingleTestOutput)
+      spawnStub.endCallback(1)
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', resolve(__dirname + '/protractor.flake.config.js')])
+    })
+
+    it('uses protractorRetryConfig cli args for spawned protractor process only after first attempt', () => {
+      protractorFlake({protractorRetryConfig: '--capabilities.browser=chrome --capabilities.sharding=false'})
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
+      spawnStub.dataCallback(failedSingleTestOutput)
+      spawnStub.endCallback(1)
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', '--capabilities.browser=chrome --capabilities.sharding=false'])
     })
 
     context('color option', (options) => {

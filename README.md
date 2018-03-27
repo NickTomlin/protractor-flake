@@ -47,7 +47,10 @@ protractorFlake({
   nodeBin: 'node',
   // set color to one of the colors available at 'chalk' - https://github.com/chalk/ansi-styles#colors
   color: 'magenta',
-  protractorArgs: []
+  protractorArgs: [],
+  // specify a different protractor config to apply after the first execution attempt
+  // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
+  protractorRetryConfig: 'path/to/<protractor-retry-config>.js' 
 }, function (status, output) {
   process.exit(status);
 });

@@ -56,6 +56,12 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs = filterArgs(protractorArgs)
       protractorArgs.push('--specs', specFiles.join(','))
     }
+
+    // If an alternative protractor config is specified, pass it in at the end of protractorArgs
+    if (parsedOptions.protractorRetryConfig && testAttempt > 1) {
+      protractorArgs.push(parsedOptions.protractorRetryConfig)
+    }
+
     let protractor = spawn(
       parsedOptions.nodeBin,
       protractorArgs,
