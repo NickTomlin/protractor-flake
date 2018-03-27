@@ -61,7 +61,7 @@ export default function (options = {}, callback = function noop () {}) {
     }
 
     // If an alternative protractor config is specified, pass it in at the end of protractorArgs
-    if (parsedOptions.protractorRetryConfig && testAttempt > 1) {
+    if (parsedOptions.protractorRetryConfig && retry) {
       protractorArgs.push(parsedOptions.protractorRetryConfig)
     }
 
