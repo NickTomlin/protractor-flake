@@ -1,7 +1,6 @@
 import {resolve} from 'path'
 import styles from 'chalk'
 import * as fs from 'fs'
-import Logger from './logger'
 
 const DEFAULT_OPTIONS = {
   nodeBin: 'node',
@@ -32,14 +31,12 @@ function parseOptions (providedOptions) {
   }
 
   if (options.protractorRetryConfig) {
-    let logger = new Logger(options.color)
     let configPath = resolve(options.protractorRetryConfig)
     try {
       fs.lstatSync(configPath).isFile()
-      logger.log('info', 'Retry config file specified: ', configPath)
       options.protractorRetryConfig = configPath
     } catch (e) {
-      logger.log('info', 'Retry config params specified: ', options.protractorRetryConfig)
+      // do nothing, not a config path
     }
   }
 
