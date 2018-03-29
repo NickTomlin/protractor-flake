@@ -214,11 +214,11 @@ describe('Protractor Flake', () => {
     })
 
     it('uses protractorRetryConfig file for spawned protractor process only after first attempt', () => {
-      protractorFlake({protractorRetryConfig: __dirname + '/protractor.flake.config.js'})
+      protractorFlake({protractorRetryConfig: __dirname + '/support/protractor.flake.config.js'})
       expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
       spawnStub.dataCallback(failedSingleTestOutput)
       spawnStub.endCallback(1)
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', resolve(__dirname + '/protractor.flake.config.js')])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', resolve(__dirname + '/support/protractor.flake.config.js')])
     })
 
     it('uses protractorRetryConfig cli args for spawned protractor process only after first attempt', () => {

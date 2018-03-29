@@ -60,7 +60,6 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs.push('--specs', specFiles.join(','))
     }
 
-    // If an alternative protractor config is specified, pass it in at the end of protractorArgs
     if (parsedOptions.protractorRetryConfig && retry) {
       protractorArgs.push(parsedOptions.protractorRetryConfig)
     }
