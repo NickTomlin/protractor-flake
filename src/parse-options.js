@@ -1,5 +1,6 @@
 import {resolve} from 'path'
 import styles from 'chalk'
+import * as fs from 'fs'
 
 const DEFAULT_OPTIONS = {
   nodeBin: 'node',
@@ -11,7 +12,10 @@ const DEFAULT_OPTIONS = {
   // the name of one of the included parsers
   // a function to be used as a parser
   // or the path to a node module that exports a parser
-  parser: 'standard'
+  parser: 'standard',
+  // specify a different protractor config to apply after the first execution attempt
+  // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
+  protractorRetryConfig: undefined
 }
 
 function parseOptions (providedOptions) {
@@ -23,6 +27,16 @@ function parseOptions (providedOptions) {
       options.color = false
     } else {
       throw new Error('Invalid color option. Color must be one of the supported chalk colors: https://github.com/chalk/ansi-styles#colors')
+    }
+  }
+
+  if (options.protractorRetryConfig) {
+    let configPath = resolve(options.protractorRetryConfig)
+    try {
+      fs.lstatSync(configPath).isFile()
+      options.protractorRetryConfig = configPath
+    } catch (e) {
+      // do nothing, not a config path
     }
   }
 

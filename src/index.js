@@ -30,6 +30,9 @@ export default function (options = {}, callback = function noop () {}) {
         let failedSpecs = parser.parse(output)
 
         logger.log('info', `Re-running tests: test attempt ${testAttempt}\n`)
+        if (parsedOptions.protractorRetryConfig) {
+          logger.log('info', `Using provided protractorRetryConfig: ${parsedOptions.protractorRetryConfig}\n`)
+        }
         if (failedSpecs.length === 0) {
           logger.log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
         } else {
@@ -56,6 +59,11 @@ export default function (options = {}, callback = function noop () {}) {
       protractorArgs = filterArgs(protractorArgs)
       protractorArgs.push('--specs', specFiles.join(','))
     }
+
+    if (parsedOptions.protractorRetryConfig && retry) {
+      protractorArgs.push(parsedOptions.protractorRetryConfig)
+    }
+
     let protractor = spawn(
       parsedOptions.nodeBin,
       protractorArgs,
