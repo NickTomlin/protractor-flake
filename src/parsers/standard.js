@@ -1,7 +1,7 @@
 // note: we use String.raw here to avoid the need to double escape '\' characters
 // e.g. using a traditional string we would need '\\[object Object\\]'
 // whereas raw allows us the terser `\[` because it doesn't interpret '\' as an escape
-const context = String.raw`\[object Object\]|Object|Context|UserContext`
+const context = String.raw`\[object Object\]|Object|Context|UserContext|Suite`
 const source = String.raw`<anonymous>|it|beforeEach|afterEach|before|after`
 const filepath = String.raw`(([A-Za-z]:\\)?.*?):.*`
 const regexString = String.raw`at (?:${context})\.(?:${source}) \(${filepath}\)`
