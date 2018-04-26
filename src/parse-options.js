@@ -15,7 +15,9 @@ const DEFAULT_OPTIONS = {
   parser: 'standard',
   // specify a different protractor config to apply after the first execution attempt
   // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
-  protractorRetryConfig: undefined
+  protractorRetryConfig: undefined,
+  // if no specs are found to be failing, restart past attempt specs if true
+  allowRestartAllSpecs: true
 }
 
 function parseOptions (providedOptions) {

@@ -50,7 +50,9 @@ protractorFlake({
   protractorArgs: [],
   // specify a different protractor config to apply after the first execution attempt
   // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
-  protractorRetryConfig: 'path/to/<protractor-retry-config>.js' 
+  protractorRetryConfig: 'path/to/<protractor-retry-config>.js',
+  // if no specs are found to be failing, restart past attempt specs if true
+  allowRestartAllSpecs: true
 }, function (status, output) {
   process.exit(status);
 });

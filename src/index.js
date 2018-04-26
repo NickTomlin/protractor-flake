@@ -21,7 +21,7 @@ export default function (options = {}, callback = function noop () {}) {
   let parser = getParser(parsedOptions.parser)
   let logger = new Logger(parsedOptions.color)
 
-  function handleTestEnd (status, output = '') {
+  function handleTestEnd (status, output = '', pastSpecs = []) {
     if (status === 0) {
       callback(status)
     } else {
@@ -33,8 +33,12 @@ export default function (options = {}, callback = function noop () {}) {
         if (parsedOptions.protractorRetryConfig) {
           logger.log('info', `Using provided protractorRetryConfig: ${parsedOptions.protractorRetryConfig}\n`)
         }
-        if (failedSpecs.length === 0) {
-          logger.log('info', '\nTests failed but no specs were found. All specs will be run again.\n\n')
+        if (failedSpecs.length === 0 && parsedOptions.allowRestartAllSpecs) {
+          logger.log('info', '\nTests failed but no specs were found. Specs from past attempt will be run again.\n\n')
+          failedSpecs = pastSpecs
+        } else if (failedSpecs.length === 0 && !parsedOptions.allowRestartAllSpecs) {
+          logger.log('info', '\nTests failed but no specs were found. Ending.')
+          return
         } else {
           logger.log('info', 'Re-running the following test files:\n')
           logger.log('info', failedSpecs.join('\n') + '\n')
@@ -83,7 +87,7 @@ export default function (options = {}, callback = function noop () {}) {
     })
 
     protractor.on('exit', function (status) {
-      handleTestEnd(status, output)
+      handleTestEnd(status, output, specFiles)
     })
   }
 
