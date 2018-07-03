@@ -1,7 +1,7 @@
 {
   "name": "protractor-flake",
   "description": "A wrapper for protractor to automatically re-run failed specs for a specific number of attempts",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/NickTomlin/protractor-flake.git"
@@ -65,7 +65,7 @@
   "standard": {
     "ignore": [
       "test/integration/support/protractor-config",
-      "dist"
+      "lib"
     ],
     "globals": [
       "describe",

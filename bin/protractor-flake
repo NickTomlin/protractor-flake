@@ -7,13 +7,13 @@ var argv = require('minimist')(process.argv.slice(2), {
     protractorPath: 'protractor-path',
     nodeBin: 'node-bin'
   }
-});
+})
 
-argv.protractorArgs = argv['--'];
-delete argv['--'];
+argv.protractorArgs = argv['--']
+delete argv['--']
 
-var flake = require('../dist/index').default;
+var flake = require('../lib/index').default
 
 flake(argv, function (status) {
-  process.exit(status);
-});
+  process.exit(status)
+})
