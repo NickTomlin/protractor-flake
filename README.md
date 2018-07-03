@@ -74,6 +74,7 @@ Parsers should be defined as an object with a `parse` method (and optionally a `
 
 ```javascript
 module.exports = {
+  name: 'my-custom-parser',
   parse (protractorTestOutput) {
     let failedSpecs = new Set()
     // ... analyze protractor test output
@@ -85,6 +86,26 @@ module.exports = {
     return [...failedSpecs]
   }
 }
+```
+
+```typescript
+import {Parser} from 'protractor-flake'
+
+const MyParser: Parser = {
+  name: 'my-custom-parser',
+  parse (protractorTestOutput) {
+    let failedSpecs = new Set()
+    // ... analyze protractor test output
+    // ... and add to specFiles
+    failedSpecs.add('path/to/failed/specfile')
+
+    // specFiles to be re-run by protractor-flake
+    // if an empty array is returned, all specs will be re-run
+    return [...failedSpecs]
+  }
+}
+
+exports = MyParser
 ```
 
 #### Parser documentation
