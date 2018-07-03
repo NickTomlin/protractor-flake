@@ -1,5 +1,5 @@
-test/helper.js
-test/integration/bin.js
---compilers js:babel/register
+test/helper.ts
+test/integration/bin.ts
+--require ts-node/register
 --timeout 12000
 --slow 12000

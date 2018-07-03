@@ -12,7 +12,7 @@ var argv = require('minimist')(process.argv.slice(2), {
 argv.protractorArgs = argv['--'];
 delete argv['--'];
 
-var flake = require('../dist/index');
+var flake = require('../dist/index').default;
 
 flake(argv, function (status) {
   process.exit(status);

@@ -1,3 +1,5 @@
+///<reference path="../../globals.d.ts" />
+
 import readFixture from '../support/read-fixture'
 import standardParser from '../../../src/parsers/standard'
 

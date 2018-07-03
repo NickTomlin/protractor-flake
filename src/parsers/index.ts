@@ -1,11 +1,16 @@
 import cucumber from './cucumber'
+import Parser from './parser'
 import { resolve, extname } from 'path'
 import multi from './multi'
 import standard from './standard'
 
-let all = { cucumber, multi, standard }
+type ParserList = {
+  [key: string]: Parser
+}
 
-function handleObject (parserObject) {
+const all: ParserList = { cucumber, multi, standard }
+
+function handleObject (parserObject: any) {
   if (typeof parserObject.parse !== 'function') {
     throw new Error(`Invalid Parser Object specified. Your parser must define a \`parse\` method`)
   }
@@ -13,7 +18,7 @@ function handleObject (parserObject) {
   return parserObject
 }
 
-function handlePath (parserPath) {
+function handlePath (parserPath: string) {
   // 'my-custom-parser' or './my-custom-parser'
   try {
     return require(parserPath)
@@ -27,7 +32,7 @@ function handlePath (parserPath) {
   throw new Error(`Invalid Custom Parser Path Specified: ${parserPath}`)
 }
 
-function handleFlakeParser (parserName) {
+function handleFlakeParser (parserName: string) {
   if (all[parserName]) {
     return all[parserName]
   } else {
@@ -35,16 +40,16 @@ function handleFlakeParser (parserName) {
   }
 }
 
-function getParser (parser = '') {
+function getParser (parser: (Parser | string) = '') {
   if (parser.hasOwnProperty('parse')) {
     return handleObject(parser)
   }
 
-  if (extname(parser)) {
-    return handlePath(parser)
+  if (extname(parser as string)) {
+    return handlePath(parser as string)
   }
 
-  return handleFlakeParser(parser)
+  return handleFlakeParser(parser as string)
 }
 
-export default { all, getParser }
+export { all, getParser }

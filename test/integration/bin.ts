@@ -1,16 +1,19 @@
-import server from './support/server'
+///<reference path='../globals.d.ts' />
+
 import { unlink } from 'fs'
 import { resolve } from 'path'
 import { spawn } from 'child_process'
 
+const server = require('./support/server')
+
 const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked')
 const CONFIG_DIR = resolve(__dirname, 'support/protractor-config')
 
-function configPath (filename) {
+function configPath (filename: string) {
   return `${CONFIG_DIR}/${filename}.conf.js`
 }
 
-function spawnFlake (flakeArgs = []) {
+function spawnFlake (flakeArgs: string[] = []) {
   let proc = spawn('./bin/protractor-flake', flakeArgs)
   proc.stdout.on('data', (buff) => {
     process.stdout.write(buff.toString())
