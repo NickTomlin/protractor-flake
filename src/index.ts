@@ -1,6 +1,7 @@
 import {spawn} from 'child_process'
 import {getParser} from './parsers'
 import parseOptions from './parse-options'
+import Parser from './parsers/parser'
 import Logger from './logger'
 
 function filterArgs (protractorArgs: string[]) {
@@ -14,7 +15,7 @@ function filterArgs (protractorArgs: string[]) {
   return protractorArgs
 }
 
-export default function (options = {}, callback = function noop (status: number, output?: string) {}) {
+function flake (options = {}, callback = function noop (status: number, output?: string) {}) {
   let testAttempt = 1
   let parsedOptions = parseOptions(options)
   let parser = getParser(parsedOptions.parser)
@@ -88,3 +89,6 @@ export default function (options = {}, callback = function noop (status: number,
 
   startProtractor()
 }
+
+export { Parser }
+export default flake

@@ -28,13 +28,16 @@ Protractor flake expects `protractor` to be on $PATH by default, but you can use
 Or programmatically:
 
 ```javascript
-var protractorFlake = require('protractor-flake');
+// using commonjs:
+var protractorFlake = require('protractor-flake').default;
+// OR using es6 modules:
+import protractorFlake from 'protractor-flake'
 
 // Default Options
 protractorFlake({
   parser: 'standard'
 }, function (status, output) {
-  proces.exit(status)
+  process.exit(status)
 })
 
 // Full Options
