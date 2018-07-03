@@ -82,6 +82,10 @@
       "$"
     ]
   },
+  "files": [
+    "lib/**",
+    "bin/protractor-flake"
+  ],
   "engines": {
     "node": ">=6.9.x"
   },
