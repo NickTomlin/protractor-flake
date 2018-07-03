@@ -6,7 +6,7 @@ var path = require('path')
 var app = express()
 var fs = require('fs')
 
-var FLAKE_FILE = path.resolve(__dirname, '/times-flaked')
+var FLAKE_FILE = path.resolve(__dirname, 'times-flaked')
 var server = null
 
 app.use(function logMiddleware (req, res, next) {

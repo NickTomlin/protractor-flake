@@ -6,7 +6,7 @@ import { spawn } from 'child_process'
 
 const server = require('./support/server')
 
-const FLAKE_FILE = resolve(__dirname + '/../support/times-flaked')
+const FLAKE_FILE = resolve(__dirname, '../support/times-flaked')
 const CONFIG_DIR = resolve(__dirname, 'support/protractor-config')
 
 function configPath (filename: string) {
