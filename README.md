@@ -47,6 +47,8 @@ protractorFlake({
   nodeBin: 'node',
   // set color to one of the colors available at 'chalk' - https://github.com/chalk/ansi-styles#colors
   color: 'magenta',
+  // set the arguments for protractor
+  // note: the protractor config have to be the first option in protractorArgs
   protractorArgs: [],
   // specify a different protractor config to apply after the first execution attempt
   // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
