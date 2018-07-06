@@ -214,16 +214,16 @@ describe('Protractor Flake', () => {
     })
 
     it('uses protractorRetryConfig file for spawned protractor process only after first attempt', () => {
-      protractorFlake({protractorRetryConfig: __dirname + '/support/protractor.flake.config.js'})
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
+      protractorFlake({protractorArgs: [resolve(__dirname + '/support/protractor.flake.config.js')], protractorRetryConfig: resolve(__dirname + '/support/protractor.flake.retryConfig.js')})
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), resolve(__dirname + '/support/protractor.flake.config.js'), '--params.flake.iteration', 1])
       spawnStub.dataCallback(failedSingleTestOutput)
       spawnStub.endCallback(1)
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', resolve(__dirname + '/support/protractor.flake.config.js')])
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', resolve(__dirname + '/support/protractor.flake.retryConfig.js')])
     })
 
     it('uses protractorRetryConfig cli args for spawned protractor process only after first attempt', () => {
-      protractorFlake({protractorRetryConfig: '--capabilities.browser=chrome --capabilities.sharding=false'})
-      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 1])
+      protractorFlake({protractorArgs: [resolve(__dirname + '/support/protractor.flake.config.js')], protractorRetryConfig: '--capabilities.browser=chrome --capabilities.sharding=false'})
+      expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), resolve(__dirname + '/support/protractor.flake.config.js'), '--params.flake.iteration', 1])
       spawnStub.dataCallback(failedSingleTestOutput)
       spawnStub.endCallback(1)
       expect(spawnStub).to.have.been.calledWith('node', [pathToProtractor(), '--params.flake.iteration', 2, '--params.flake.retry', true, '--specs', '/tests/a-flakey.test.js', '--capabilities.browser=chrome --capabilities.sharding=false'])

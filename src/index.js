@@ -61,6 +61,7 @@ export default function (options = {}, callback = function noop () {}) {
     }
 
     if (parsedOptions.protractorRetryConfig && retry) {
+      protractorArgs.splice(1, 1)
       protractorArgs.push(parsedOptions.protractorRetryConfig)
     }
 
