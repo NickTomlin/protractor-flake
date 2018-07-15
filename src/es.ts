@@ -1,3 +1,3 @@
 import { Parser, protractorFlake } from './protractor-flake'
 
-export = protractorFlake
+export { Parser, protractorFlake }
