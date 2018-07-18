@@ -35,11 +35,11 @@ describe('Protractor Flake', () => {
       }
     })
 
-    protractorFlake = proxyquire('../../src/protractor-flake', {
+    protractorFlake = proxyquire('../../src/index', {
       child_process: {
         spawn: spawnStub
       }
-    }).protractorFlake
+    }).default
   })
 
   it('uses node to run protractor', () => {

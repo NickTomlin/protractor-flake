@@ -29,9 +29,9 @@ Or programmatically:
 
 ```javascript
 // using commonjs:
-var protractorFlake = require('protractor-flake');
-// OR using es6 modules/typescript
-import {protractorFlake} from 'protractor-flake/es'
+var protractorFlake = require('protractor-flake').default;
+// OR using es6 modules:
+import protractorFlake from 'protractor-flake'
 
 // Default Options
 protractorFlake({
