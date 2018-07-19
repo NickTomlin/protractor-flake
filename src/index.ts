@@ -15,7 +15,9 @@ function filterArgs (protractorArgs: string[]) {
   return protractorArgs
 }
 
-function flake (options = {}, callback = function noop (status: number, output?: string) {}) {
+function noop (status: number, output?: string) {}
+
+function flake (options: object | undefined = {}, callback: Function | undefined = noop) {
   let testAttempt = 1
   let parsedOptions = parseOptions(options)
   let parser = getParser(parsedOptions.parser)
