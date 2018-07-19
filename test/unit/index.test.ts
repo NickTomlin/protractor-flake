@@ -39,7 +39,7 @@ describe('Protractor Flake', () => {
       child_process: {
         spawn: spawnStub
       }
-    }).default
+    })
   })
 
   it('uses node to run protractor', () => {

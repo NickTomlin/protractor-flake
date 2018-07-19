@@ -29,9 +29,9 @@ Or programmatically:
 
 ```javascript
 // using commonjs:
-var protractorFlake = require('protractor-flake').default;
-// OR using es6 modules:
-import protractorFlake from 'protractor-flake'
+var protractorFlake = require('protractor-flake')
+// OR using es6 modules/typescript
+import protractorFlake = require('protractor-flake')
 
 // Default Options
 protractorFlake({
@@ -55,8 +55,8 @@ protractorFlake({
   // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
   protractorRetryConfig: 'path/to/<protractor-retry-config>.js' 
 }, function (status, output) {
-  process.exit(status);
-});
+  process.exit(status)
+})
 
 ```
 
@@ -89,7 +89,7 @@ module.exports = {
 ```
 
 ```typescript
-import {Parser} from 'protractor-flake'
+import Parser from 'protractor-flake/parsers/parser'
 
 const MyParser: Parser = {
   name: 'my-custom-parser',

@@ -90,5 +90,4 @@ function flake (options = {}, callback = function noop (status: number, output?:
   startProtractor()
 }
 
-export { Parser }
-export default flake
+export = flake
