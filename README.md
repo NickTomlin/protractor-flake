@@ -89,7 +89,7 @@ module.exports = {
 ```
 
 ```typescript
-import Parser from 'protractor-flake/parsers/parser'
+import Parser from 'protractor-flake/lib/parsers/parser'
 
 const MyParser: Parser = {
   name: 'my-custom-parser',
