@@ -1,10 +1,9 @@
 import {spawn} from 'child_process'
 import {getParser} from './parsers'
 import parseOptions from './parse-options'
-import 'core-js/shim'
 import Logger from './logger'
 
-function filterArgs (protractorArgs) {
+function filterArgs (protractorArgs: string[]) {
   protractorArgs = protractorArgs.filter((arg) => !/^--(suite|specs)=/.test(arg));
   ['--suite', '--specs'].forEach((item) => {
     let index = protractorArgs.indexOf(item)
@@ -15,13 +14,15 @@ function filterArgs (protractorArgs) {
   return protractorArgs
 }
 
-export default function (options = {}, callback = function noop () {}) {
+function noop (status: number, output?: string) {}
+
+function flake (options: object | undefined = {}, callback: Function | undefined = noop) {
   let testAttempt = 1
   let parsedOptions = parseOptions(options)
   let parser = getParser(parsedOptions.parser)
   let logger = new Logger(parsedOptions.color)
 
-  function handleTestEnd (status, output = '') {
+  function handleTestEnd (status: number, output = '') {
     if (status === 0) {
       callback(status)
     } else {
@@ -46,13 +47,13 @@ export default function (options = {}, callback = function noop () {}) {
     }
   }
 
-  function startProtractor (specFiles = [], retry = false) {
+  function startProtractor (specFiles: string[] = [], retry = false) {
     let output = ''
     let protractorArgs = [parsedOptions.protractorPath].concat(parsedOptions.protractorArgs)
 
-    protractorArgs.push('--params.flake.iteration', testAttempt)
+    protractorArgs.push('--params.flake.iteration', testAttempt.toString())
     if (retry) {
-      protractorArgs.push('--params.flake.retry', true)
+      protractorArgs.push('--params.flake.retry', true.toString())
     }
 
     if (specFiles.length) {
@@ -89,3 +90,5 @@ export default function (options = {}, callback = function noop () {}) {
 
   startProtractor()
 }
+
+export = flake

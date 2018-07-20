@@ -1,8 +1,10 @@
-export default {
+import Parser from './parser'
+
+const cucumberParser: Parser = {
   name: 'cucumber',
   parse (output) {
     let match = null
-    let failedSpecs = []
+    let failedSpecs: string[] = []
     let testsOutput = output.split('------------------------------------')
     let RESULT_FAIL = 'Failures:'
     let SPECFILE_REG = /Specs:\s(.*\.feature)/g
@@ -19,3 +21,5 @@ export default {
     return [...new Set(failedSpecs)]
   }
 }
+
+export default cucumberParser

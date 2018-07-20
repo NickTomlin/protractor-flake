@@ -1,6 +1,6 @@
 npm-debug.log
 node_modules
 test/integration/support/times-flaked
-dist
+lib
 !dist/.gitkeep
 .idea

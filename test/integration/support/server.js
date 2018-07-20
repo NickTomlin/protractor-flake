@@ -2,10 +2,11 @@
 
 // we keep this es5 for easier interop with bin files
 var express = require('express')
+var path = require('path')
 var app = express()
 var fs = require('fs')
 
-var FLAKE_FILE = __dirname + '/times-flaked'
+var FLAKE_FILE = path.resolve(__dirname, 'times-flaked')
 var server = null
 
 app.use(function logMiddleware (req, res, next) {

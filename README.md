@@ -21,20 +21,23 @@ npm i -g protractor-flake
 protractor-flake --parser standard  --max-attempts=3 -- path/to/protractor.conf.js
 ```
 
-See [src/parse-options.js](src/parse-options.js#L4-L15) for the full list of command line options.
+See [src/options.js](src/options.js#L4-L15) for the full list of command line options.
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
 
 Or programmatically:
 
 ```javascript
-var protractorFlake = require('protractor-flake');
+// using commonjs:
+var protractorFlake = require('protractor-flake')
+// OR using es6 modules/typescript
+import protractorFlake = require('protractor-flake')
 
 // Default Options
 protractorFlake({
   parser: 'standard'
 }, function (status, output) {
-  proces.exit(status)
+  process.exit(status)
 })
 
 // Full Options
@@ -52,8 +55,8 @@ protractorFlake({
   // either specify a config file, or cli args (ex. --capabilities.browser=chrome)
   protractorRetryConfig: 'path/to/<protractor-retry-config>.js' 
 }, function (status, output) {
-  process.exit(status);
-});
+  process.exit(status)
+})
 
 ```
 
@@ -71,6 +74,7 @@ Parsers should be defined as an object with a `parse` method (and optionally a `
 
 ```javascript
 module.exports = {
+  name: 'my-custom-parser',
   parse (protractorTestOutput) {
     let failedSpecs = new Set()
     // ... analyze protractor test output
@@ -82,6 +86,26 @@ module.exports = {
     return [...failedSpecs]
   }
 }
+```
+
+```typescript
+import Parser from 'protractor-flake/lib/parsers/parser'
+
+const MyParser: Parser = {
+  name: 'my-custom-parser',
+  parse (protractorTestOutput) {
+    let failedSpecs = new Set()
+    // ... analyze protractor test output
+    // ... and add to specFiles
+    failedSpecs.add('path/to/failed/specfile')
+
+    // specFiles to be re-run by protractor-flake
+    // if an empty array is returned, all specs will be re-run
+    return [...failedSpecs]
+  }
+}
+
+exports = MyParser
 ```
 
 #### Parser documentation

@@ -1,6 +1,7 @@
-export default {
-  name: 'multi',
+import Parser from './parser'
 
+const multiParser: Parser = {
+  name: 'multi',
   parse (output) {
     let match = null
     let failedSpecs = new Set()
@@ -28,3 +29,5 @@ export default {
     return [...failedSpecs]
   }
 }
+
+export default multiParser
