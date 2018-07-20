@@ -1,7 +1,6 @@
 import {spawn} from 'child_process'
 import {getParser} from './parsers'
 import parseOptions from './parse-options'
-import Parser from './parsers/parser'
 import Logger from './logger'
 
 function filterArgs (protractorArgs: string[]) {
