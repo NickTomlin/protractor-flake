@@ -14,7 +14,7 @@ before_install:
 before_script:
   - npm prune
 after_success:
-  - npm run semantic-release
+  - nvm install 8 && npm run semantic-release
 script: PROTRACTOR_FLAKE_LOG_LEVEL=debug npm test && npm run test:integration
 addons:
   sauce_connect:
