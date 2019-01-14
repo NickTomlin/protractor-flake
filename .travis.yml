@@ -24,4 +24,4 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - nvm install 8 && npm run semantic-release
+          - npx semantic-release
