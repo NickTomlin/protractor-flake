@@ -24,7 +24,7 @@ function flake (options: object | undefined = {}, callback: Function | undefined
 
   function handleTestEnd (status: number, output = '') {
     if (status === 0) {
-      callback(status, output)
+      callback(status)
     } else {
       if (++testAttempt <= parsedOptions.maxAttempts) {
         logger.log('info', `\nUsing ${parser.name} to parse output\n`)
