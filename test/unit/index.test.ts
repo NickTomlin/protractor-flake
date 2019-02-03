@@ -80,6 +80,17 @@ describe('Protractor Flake', () => {
       spawnStub.endCallback(1)
     })
 
+    it('calls callback with output from protractor process if the status is 0', (done) => {
+      protractorFlake({maxAttempts: 1}, (status: number, output: string) => {
+        expect(status).to.equal(status, 0)
+        expect(output).to.equal('Test')
+        done()
+      })
+
+      spawnStub.dataCallback('Test')
+      spawnStub.endCallback(0)
+    })
+
     it('does not blow up if no callback is passed', function () {
       protractorFlake({maxAttempts: 1})
 
