@@ -20,7 +20,7 @@ class Logger {
 
   log (levelName: string, message: string, useColor = true) {
     let logLevel: string = process.env.PROTRACTOR_FLAKE_LOG_LEVEL
-    let currentLevel = LOG_LEVELS[logLevel]
+    let currentLevel = LOG_LEVELS[logLevel] || LOG_LEVELS.protractor
     let incomingLevel = LOG_LEVELS[levelName]
 
     if (incomingLevel >= currentLevel) {

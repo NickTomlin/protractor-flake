@@ -1,7 +1,4 @@
-'use strict';
-
-var JOB_NUMBER = (process.env.TRAVIS_JOB_NUMBER || '')
-var JOB_NAME = 'Flake' + JOB_NUMBER
+const puppeteer = require('puppeteer')
 
 exports.config = {
   specs: [
@@ -9,16 +6,14 @@ exports.config = {
     '../failing-test.js'
   ],
 
+  directConnect: true,
   capabilities: {
     browserName: 'chrome',
-    name: JOB_NAME,
-    shardTestFiles: true,
-    maxInstances: 2,
-    'tunnel-identifier': JOB_NUMBER
+    chromeOptions: {
+      args: ['--headless', '--no-sandbox', '--disable-dev-shm-usage'],
+      binary: puppeteer.executablePath()
+    }
   },
-
-  sauceUser: process.env.SAUCE_USERNAME,
-  sauceKey: process.env.SAUCE_ACCESS_KEY,
 
   baseUrl: 'http://localhost:3000/',
 
@@ -34,7 +29,7 @@ exports.config = {
 
   onPrepare: function () {
     // let protractor know it doesn't need to look for angular on the page
-    browser.ignoreSynchronization = true;
+    browser.ignoreSynchronization = true
   }
-};
+}
 

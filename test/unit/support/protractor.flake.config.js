@@ -1,11 +1,14 @@
+const puppeteer = require('puppeteer')
+
 // An example configuration file
 exports.config = {
-  // The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-
-  // Capabilities to be passed to the webdriver instance.
+  directConnect: true,
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    chromeOptions: {
+      args: ['--headless', '--no-sandbox', '--disable-dev-shm-usage'],
+      binary: puppeteer.executablePath()
+    }
   },
 
   // Spec patterns are relative to the configuration file location passed
