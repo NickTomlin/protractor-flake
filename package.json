@@ -11,11 +11,12 @@
     "lint": "standard",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "mocha --opts test/unit/mocha.opts",
-    "test:integration": "npm run build && mocha --opts test/integration/mocha.opts --slow 30001 --timeout 30000 --reporter tap",
+    "test:integration": "npm run build && npm run webdriver:update && mocha --opts test/integration/mocha.opts --slow 30001 --timeout 30000 --reporter tap",
     "test:dev": "mocha --watch --opts test/unit/mocha.opts",
     "build": "tsc",
     "prepare": "npm run build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "webdriver:update": "webdriver-manager update --standalone false --gecko false"
   },
   "bin": "./bin/protractor-flake",
   "author": "Nick Tomlin",
@@ -44,6 +45,7 @@
     "mversion": "^1.12.0",
     "protractor": "^5.4.2",
     "proxyquire": "^1.6.0",
+    "puppeteer": "^1.12.1",
     "semantic-release": "^15.6.2",
     "sinon": "^6.1.0",
     "sinon-chai": "^3.2.0",
@@ -53,7 +55,8 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "minimist": "^1.1.2"
+    "minimist": "^1.1.2",
+    "webdriver-manager": "^12.1.1"
   },
   "peerDependencies": {
     "protractor": ">= 2.x"

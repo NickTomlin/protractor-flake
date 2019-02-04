@@ -13,15 +13,15 @@ function configPath (filename: string) {
   return `${CONFIG_DIR}/${filename}.conf.js`
 }
 
+function log (buff: Buffer) {
+  process.stdout.write("        " + buff.toString())
+}
+
 function spawnFlake (flakeArgs: string[] = []) {
   let proc = spawn('./bin/protractor-flake', flakeArgs)
-  proc.stdout.on('data', (buff) => {
-    process.stdout.write(buff.toString())
-  })
 
-  proc.stderr.on('data', (x) => {
-    process.stdout.write(x.toString())
-  })
+  proc.stdout.on('data', log)
+  proc.stderr.on('data', log)
 
   return proc
 }
