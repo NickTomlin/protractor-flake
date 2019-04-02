@@ -21,7 +21,7 @@ npm i -g protractor-flake
 protractor-flake --parser standard  --max-attempts=3 -- path/to/protractor.conf.js
 ```
 
-See [src/options.js](src/options.ts#L4-L15) for the full list of command line options.
+See [src/options.ts](src/options.ts#L4-L15) for the full list of command line options.
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
 
