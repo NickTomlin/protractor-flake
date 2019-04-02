@@ -21,7 +21,7 @@ npm i -g protractor-flake
 protractor-flake --parser standard  --max-attempts=3 -- path/to/protractor.conf.js
 ```
 
-See [src/options.js](src/options.js#L4-L15) for the full list of command line options.
+See [src/options.js](src/options.ts#L4-L15) for the full list of command line options.
 
 Protractor flake expects `protractor` to be on $PATH by default, but you can use the `--protractor-path` argument to point to the protractor executable.
 
@@ -66,7 +66,7 @@ Protractor flake defaults to using the `standard` parser, which will typically p
 
 There are a few other ways that you can customize your parsing:
 
-- overriding this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.js).
+- overriding this with the `parser` option, specifying one of the [built in parsers](src/parsers/index.ts).
 - providing a path to a module (e.g. `/my/module.js` or `./module.js`) that exports a [parser](test/unit/support/custom-parser.js)
 - a parser (if used programatically)
 
