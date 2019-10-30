@@ -3,8 +3,8 @@ language: node_js
 notifications:
   email: false
 node_js:
-  - 6
   - 8
+  - 12
 script:
  - npm run webdriver:update
  - npm test && PROTRACTOR_FLAKE_LOG_LEVEL=debug npm run test:integration
